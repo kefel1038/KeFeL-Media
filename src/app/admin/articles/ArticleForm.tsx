@@ -302,14 +302,22 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
                 className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
               />
               {image && (
-                <img
-                  src={image}
-                  alt="Preview"
-                  className="mt-2 w-full h-32 object-cover rounded-xl"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
-                />
+                <div className="mt-2 w-full h-32 rounded-xl overflow-hidden bg-gray-100 dark:bg-zinc-800 relative">
+                  <img
+                    src={image}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                      const fallback = target.nextElementSibling;
+                      if (fallback) (fallback as HTMLElement).style.display = "flex";
+                    }}
+                  />
+                  <div className="absolute inset-0 items-center justify-center text-gray-400 text-xs hidden">
+                    Image failed to load
+                  </div>
+                </div>
               )}
             </div>
             <div>
