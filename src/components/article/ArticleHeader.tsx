@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Clock, Calendar, Link2, Check } from "lucide-react";
 import { useState } from "react";
 import { Article } from "@/lib/types";
@@ -130,13 +129,19 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
       {/* Author + Meta */}
       <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-gray-200 dark:border-zinc-700">
         <div className="flex items-center gap-3">
-          <Image
-            src={article.author.avatar}
-            alt={article.author.name}
-            width={44}
-            height={44}
-            className="rounded-full object-cover ring-2 ring-brand"
-          />
+          {article.author.avatar ? (
+            <img
+              src={article.author.avatar}
+              alt={article.author.name}
+              width={44}
+              height={44}
+              className="rounded-full object-cover ring-2 ring-brand w-11 h-11"
+            />
+          ) : (
+            <div className="w-11 h-11 rounded-full ring-2 ring-brand bg-brand flex items-center justify-center text-white text-sm font-bold shrink-0">
+              {article.author.name.charAt(0).toUpperCase()}
+            </div>
+          )}
           <div>
             <p className="font-bold text-gray-900 dark:text-white text-sm">
               {article.author.name}
