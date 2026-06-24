@@ -1,7 +1,7 @@
 import { Article } from "@/lib/types";
+import * as db from "@/lib/supabase-queries";
 
 export const articles: Article[] = [
-  // ─────────── FEATURED / HERO ───────────
   {
     id: "1",
     slug: "african-innovation-transforming-digital-future",
@@ -93,8 +93,6 @@ export const articles: Article[] = [
     tags: ["energy", "africa", "sustainability"],
     views: 5100,
   },
-
-  // ─────────── TRENDING ───────────
   {
     id: "5",
     slug: "urban-farming-downtown-lofts",
@@ -158,8 +156,6 @@ export const articles: Article[] = [
     tags: ["sports", "community", "africa"],
     views: 7800,
   },
-
-  // ─────────── LATEST FEED ───────────
   {
     id: "8",
     slug: "kampala-smart-city-initiative",
@@ -286,7 +282,6 @@ export const articles: Article[] = [
     tags: ["football", "afcon", "sports", "africa"],
     views: 11300,
   },
-  // ─────────── SIDEBAR / WEEKLY HIGHLIGHTS ───────────
   {
     id: "14",
     slug: "inside-the-cyber-heist",
@@ -436,54 +431,98 @@ export const articles: Article[] = [
   },
 ];
 
-export function getFeaturedArticle(): Article {
+export async function getFeaturedArticle(): Promise<Article> {
+  try {
+    const result = await db.getFeaturedArticle();
+    if (result) return result;
+  } catch {}
   return articles.find((a) => a.featured) ?? articles[0];
 }
 
-export function getTrendingArticles(limit = 3): Article[] {
-  return articles.filter((a) => a.trending && !a.featured).slice(0, limit);
+export async function getTrendingArticles(limit = 3): Promise<Article[]> {
+  try {
+    return await db.getTrendingArticles(limit);
+  } catch {
+    return articles.filter((a) => a.trending && !a.featured).slice(0, limit);
+  }
 }
 
-export function getLatestArticles(limit = 8): Article[] {
-  return [...articles]
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, limit);
+export async function getLatestArticles(limit = 8): Promise<Article[]> {
+  try {
+    return await db.getLatestArticles(limit);
+  } catch {
+    return [...articles]
+      .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+      .slice(0, limit);
+  }
 }
 
-export function getArticlesByCategory(category: string, limit?: number): Article[] {
-  const filtered = articles.filter(
-    (a) => a.category.toLowerCase() === category.toLowerCase()
-  );
-  return limit ? filtered.slice(0, limit) : filtered;
+export async function getArticlesByCategory(category: string, limit?: number): Promise<Article[]> {
+  try {
+    return await db.getArticlesByCategory(category, limit);
+  } catch {
+    const filtered = articles.filter(
+      (a) => a.category.toLowerCase() === category.toLowerCase()
+    );
+    return limit ? filtered.slice(0, limit) : filtered;
+  }
 }
 
-export function getArticleBySlug(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug);
+export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
+  try {
+    return await db.getArticleBySlug(slug);
+  } catch {
+    return articles.find((a) => a.slug === slug);
+  }
 }
 
-export function getSidebarLatest(limit = 4): Article[] {
-  return [...articles]
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, limit);
+export async function getSidebarLatest(limit = 4): Promise<Article[]> {
+  try {
+    return await db.getSidebarLatest(limit);
+  } catch {
+    return [...articles]
+      .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+      .slice(0, limit);
+  }
 }
 
-export function getWeeklyHighlights(limit = 4): Article[] {
-  return [...articles].sort((a, b) => (b.views ?? 0) - (a.views ?? 0)).slice(0, limit);
+export async function getWeeklyHighlights(limit = 4): Promise<Article[]> {
+  try {
+    return await db.getWeeklyHighlights(limit);
+  } catch {
+    return [...articles].sort((a, b) => (b.views ?? 0) - (a.views ?? 0)).slice(0, limit);
+  }
 }
 
-export function getRelatedArticles(article: Article, limit = 3): Article[] {
-  return articles
-    .filter((a) => a.id !== article.id && a.category === article.category)
-    .slice(0, limit);
+export async function getRelatedArticles(article: Article, limit = 3): Promise<Article[]> {
+  try {
+    return await db.getRelatedArticles(article, limit);
+  } catch {
+    return articles
+      .filter((a) => a.id !== article.id && a.category === article.category)
+      .slice(0, limit);
+  }
 }
 
-export function searchArticles(query: string): Article[] {
-  const q = query.toLowerCase();
-  return articles.filter(
-    (a) =>
-      a.title.toLowerCase().includes(q) ||
-      a.excerpt.toLowerCase().includes(q) ||
-      a.category.toLowerCase().includes(q) ||
-      a.tags.some((t) => t.includes(q))
-  );
+export async function searchArticles(query: string): Promise<Article[]> {
+  try {
+    return await db.searchArticles(query);
+  } catch {
+    const q = query.toLowerCase();
+    return articles.filter(
+      (a) =>
+        a.title.toLowerCase().includes(q) ||
+        a.excerpt.toLowerCase().includes(q) ||
+        a.category.toLowerCase().includes(q) ||
+        a.tags.some((t) => t.includes(q))
+    );
+  }
+}
+
+export async function getAllArticles(): Promise<Article[]> {
+  try {
+    return await db.getAllArticles();
+  } catch {
+    return articles;
+  }
 }

@@ -5,10 +5,9 @@ import { getSidebarLatest, getWeeklyHighlights } from "@/data/articles";
 import { formatRelativeTime } from "@/lib/utils";
 import CategoryBadge from "@/components/ui/CategoryBadge";
 
-export default function Sidebar() {
-  const latestArticles = getSidebarLatest(4);
-  const weeklyHighlights = getWeeklyHighlights(4);
-  const textHighlights = getWeeklyHighlights(8).slice(4);
+export default async function Sidebar() {
+  const latestArticles = await getSidebarLatest(4);
+  const weeklyHighlights = await getWeeklyHighlights(4);
 
   return (
     <aside className="space-y-6">

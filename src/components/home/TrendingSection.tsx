@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { getTrendingArticles } from "@/data/articles";
 import ArticleCard from "@/components/ui/ArticleCard";
 
-export default function TrendingSection() {
-  const trending = getTrendingArticles(3);
+export default async function TrendingSection() {
+  const trending = await getTrendingArticles(3);
 
   return (
     <section className="mb-10">

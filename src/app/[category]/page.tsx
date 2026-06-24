@@ -40,8 +40,8 @@ export default async function CategoryPage({ params }: Props) {
   const cat = getCategoryBySlug(category);
   const articles =
     category === "latest"
-      ? getLatestArticles(20)
-      : getArticlesByCategory(category);
+      ? await getLatestArticles(20)
+      : await getArticlesByCategory(category);
 
   const [hero, ...rest] = articles;
 

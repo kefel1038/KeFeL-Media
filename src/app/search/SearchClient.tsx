@@ -17,7 +17,7 @@ export default function SearchClient() {
   useEffect(() => {
     if (q) {
       setInputValue(q);
-      setResults(searchArticles(q));
+      searchArticles(q).then(setResults);
     }
   }, [q]);
 

@@ -3,15 +3,19 @@
 import { useState } from "react";
 import { searchArticles } from "@/data/articles";
 import { Article } from "@/lib/types";
-import ArticleCard from "@/components/ui/ArticleCard";
 
 export default function useSearch() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Article[]>([]);
 
-  const search = (q: string) => {
+  const search = async (q: string) => {
     setQuery(q);
-    setResults(q.trim().length > 1 ? searchArticles(q) : []);
+    if (q.trim().length > 1) {
+      const res = await searchArticles(q);
+      setResults(res);
+    } else {
+      setResults([]);
+    }
   };
 
   const clear = () => {

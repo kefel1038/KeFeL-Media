@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { getLatestArticles } from "@/data/articles";
 import ArticleCard from "@/components/ui/ArticleCard";
 
-export default function LatestFeed() {
-  const latest = getLatestArticles(8).slice(3); // skip first 3 (used in hero/sidebar)
+export default async function LatestFeed() {
+  const latest = (await getLatestArticles(8)).slice(3); // skip first 3 (used in hero/sidebar)
 
   return (
     <section>

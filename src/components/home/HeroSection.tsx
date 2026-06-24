@@ -2,9 +2,9 @@ import Image from "next/image";
 import { getFeaturedArticle, getLatestArticles } from "@/data/articles";
 import ArticleCard from "@/components/ui/ArticleCard";
 
-export default function HeroSection() {
-  const featured = getFeaturedArticle();
-  const sideArticles = getLatestArticles(8).filter((a) => a.id !== featured.id).slice(0, 3);
+export default async function HeroSection() {
+  const featured = await getFeaturedArticle();
+  const sideArticles = (await getLatestArticles(8)).filter((a) => a.id !== featured.id).slice(0, 3);
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-10">

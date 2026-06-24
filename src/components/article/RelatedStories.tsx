@@ -8,8 +8,8 @@ interface RelatedStoriesProps {
   article: Article;
 }
 
-export default function RelatedStories({ article }: RelatedStoriesProps) {
-  const related = getRelatedArticles(article, 3);
+export default async function RelatedStories({ article }: RelatedStoriesProps) {
+  const related = await getRelatedArticles(article, 3);
 
   if (related.length === 0) return null;
 
