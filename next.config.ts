@@ -5,18 +5,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "plus.unsplash.com",
-        pathname: "/**",
+        hostname: "**",
       },
     ],
-  },
-  experimental: {
-    // Enable React compiler optimizations
   },
 };
 

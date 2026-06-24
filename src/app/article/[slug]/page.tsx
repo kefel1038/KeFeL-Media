@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -74,13 +73,10 @@ export default async function ArticlePage({ params }: Props) {
 
       {/* Cover Image */}
       <div className="relative w-full h-[40vh] sm:h-[55vh] lg:h-[65vh] max-h-[700px] bg-gray-900 overflow-hidden">
-        <Image
+        <img
           src={article.image}
           alt={article.title}
-          fill
-          priority
-          className="object-cover opacity-85"
-          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover opacity-85"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-50 dark:from-zinc-950 via-transparent to-black/20" />
       </div>
