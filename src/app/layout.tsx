@@ -1,0 +1,101 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://kefelmedia.com"),
+  title: {
+    template: "%s | KeFeL Media",
+    default: "KeFeL Media — Informing, Inspiring, Connecting Africa and the World",
+  },
+  description:
+    "KeFeL Media is Africa's premier digital news platform, delivering breaking news, in-depth analysis, and compelling stories from Uganda, Africa, and the world.",
+  keywords: ["Africa news", "Uganda news", "African journalism", "KeFeL Media", "breaking news Africa"],
+  authors: [{ name: "KeFeL Media Editorial Team" }],
+  creator: "KeFeL Media",
+  publisher: "KeFeL Media",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://kefelmedia.com",
+    siteName: "KeFeL Media",
+    title: "KeFeL Media — Informing, Inspiring, Connecting Africa and the World",
+    description:
+      "Africa's premier digital news platform. Breaking news, analysis, and stories from Uganda, Africa, and the world.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "KeFeL Media",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KeFeL Media",
+    description: "Africa's premier digital news platform.",
+    creator: "@KeFeLMedia",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap"
+          rel="stylesheet"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (stored === 'dark' || (!stored && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body
+        className={`${inter.variable} font-sans bg-gray-50 dark:bg-zinc-950 text-gray-900 dark:text-white antialiased min-h-screen flex flex-col`}
+      >
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

@@ -1,0 +1,36 @@
+export interface Author {
+  name: string;
+  avatar: string;
+  role: string;
+  bio?: string;
+}
+
+export interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  author: Author;
+  image: string;
+  publishedAt: string;
+  readingTime: number;
+  featured: boolean;
+  trending: boolean;
+  tags: string[];
+  views?: number;
+}
+
+export interface Category {
+  slug: string;
+  label: string;
+  color: string;
+  description: string;
+}
+
+export interface SearchResult {
+  articles: Article[];
+  query: string;
+  total: number;
+}
