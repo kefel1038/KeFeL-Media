@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -22,12 +22,15 @@ import {
   Zap,
   TrendingUp,
 } from "lucide-react";
+import { canManageArticles, canPublishArticles, canManageMedia, canManageNewsletter, canManageBreakingNews, canManageUsers, canManageSettings } from "@/lib/permissions";
+import type { Role } from "@/lib/permissions";
 
 type NavItem = {
   href: string;
   label: string;
   icon: React.ElementType;
   badge?: string;
+  check?: (role: Role) => boolean;
 };
 
 const navSections: { heading: string; items: NavItem[] }[] = [
@@ -35,34 +38,34 @@ const navSections: { heading: string; items: NavItem[] }[] = [
     heading: "Main",
     items: [
       { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-      { href: "/admin/articles", label: "Articles", icon: FileText },
-      { href: "/admin/articles/new", label: "New Article", icon: Plus },
+      { href: "/admin/articles", label: "Articles", icon: FileText, check: canManageArticles },
+      { href: "/admin/articles/new", label: "New Article", icon: Plus, check: canPublishArticles },
     ],
   },
   {
     heading: "Content",
     items: [
-      { href: "/admin/categories", label: "Categories", icon: FolderTree },
-      { href: "/admin/tags", label: "Tags", icon: Tags },
-      { href: "/admin/media", label: "Media Library", icon: Image },
+      { href: "/admin/categories", label: "Categories", icon: FolderTree, check: canManageArticles },
+      { href: "/admin/tags", label: "Tags", icon: Tags, check: canManageArticles },
+      { href: "/admin/media", label: "Media Library", icon: Image, check: canManageMedia },
     ],
   },
   {
     heading: "Engagement",
     items: [
-      { href: "/admin/breaking", label: "Breaking News", icon: Zap },
-      { href: "/admin/trending", label: "Trending", icon: TrendingUp },
-      { href: "/admin/comments", label: "Comments", icon: MessageSquare },
-      { href: "/admin/newsletter", label: "Newsletter", icon: Mail },
+      { href: "/admin/breaking", label: "Breaking News", icon: Zap, check: canManageBreakingNews },
+      { href: "/admin/trending", label: "Trending", icon: TrendingUp, check: canManageBreakingNews },
+      { href: "/admin/comments", label: "Comments", icon: MessageSquare, check: canManageNewsletter },
+      { href: "/admin/newsletter", label: "Newsletter", icon: Mail, check: canManageNewsletter },
     ],
   },
   {
     heading: "Management",
     items: [
       { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
-      { href: "/admin/users", label: "Users", icon: Users },
-      { href: "/admin/advertisements", label: "Advertisements", icon: DollarSign },
-      { href: "/admin/settings", label: "Settings", icon: Settings },
+      { href: "/admin/users", label: "Users", icon: Users, check: canManageUsers },
+      { href: "/admin/advertisements", label: "Advertisements", icon: DollarSign, check: canManageSettings },
+      { href: "/admin/settings", label: "Settings", icon: Settings, check: canManageSettings },
     ],
   },
 ];
@@ -75,6 +78,16 @@ export default function AdminLayout({
   const pathname = usePathname();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [role, setRole] = useState<Role>("super_admin");
+
+  useEffect(() => {
+    fetch("/api/admin/auth/me")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success && d.user?.role) setRole(d.user.role);
+      })
+      .catch(() => {});
+  }, []);
 
   if (pathname === "/admin/login") return <>{children}</>;
 
@@ -124,7 +137,7 @@ export default function AdminLayout({
                 {section.heading}
               </p>
               <div className="space-y-0.5">
-                {section.items.map((item) => {
+                {section.items.filter((item) => !item.check || item.check(role)).map((item) => {
                   const active = pathname === item.href;
                   const Icon = item.icon;
                   return (

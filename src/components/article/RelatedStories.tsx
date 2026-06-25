@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Article } from "@/lib/types";
-import { getRelatedArticles } from "@/data/articles";
 import ArticleCard from "@/components/ui/ArticleCard";
 
-interface RelatedStoriesProps { article: Article; }
+interface RelatedStoriesProps {
+  article: Article;
+  related: Article[];
+}
 
-export default async function RelatedStories({ article }: RelatedStoriesProps) {
-  const related = await getRelatedArticles(article, 3);
+export default function RelatedStories({ article, related }: RelatedStoriesProps) {
   if (related.length === 0) return null;
 
   return (

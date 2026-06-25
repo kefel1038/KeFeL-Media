@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabase";
 
 const ADMIN_COOKIE = "kfl_admin_session";
 
@@ -11,8 +12,21 @@ export async function POST(request: Request) {
     const validPass = process.env.ADMIN_PASSWORD || "KeFeL@Admin2024!";
 
     if (username === validUser && password === validPass) {
-      const response = NextResponse.json({ success: true });
-      response.cookies.set(ADMIN_COOKIE, "authenticated", {
+      // Fetch role from profiles table, default to super_admin
+      let role = "super_admin";
+      try {
+        const { data } = await supabaseAdmin
+          .from("profiles")
+          .select("role")
+          .eq("username", username)
+          .single();
+        if (data?.role) role = data.role;
+      } catch {
+        // profiles table may not exist yet, default role
+      }
+
+      const response = NextResponse.json({ success: true, role });
+      response.cookies.set(ADMIN_COOKIE, role, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
@@ -24,12 +38,12 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { success: false, message: "Invalid username or password." },
-      { status: 401 }
+      { status: 401 },
     );
   } catch {
     return NextResponse.json(
       { success: false, message: "Server error. Please try again." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

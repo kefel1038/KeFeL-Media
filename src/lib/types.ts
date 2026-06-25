@@ -25,6 +25,8 @@ export interface Article {
   status: string;
   tags: string[];
   views?: number;
+  highlights?: string[];
+  template?: string;
 }
 
 export interface Category {
