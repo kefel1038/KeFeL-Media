@@ -20,6 +20,7 @@ function fromDb(row: any): Article {
     secondaryImageCaption: row.secondary_image_caption ?? undefined,
     highlights: row.highlights ?? [],
     template: row.template ?? "",
+    articleType: row.article_type ?? "news",
     publishedAt: row.published_at,
     readingTime: row.reading_time,
     featured: row.featured,

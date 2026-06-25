@@ -170,19 +170,47 @@ export const articles: Article[] = [
   {
     id: "26",
     slug: "world-cup-2026-african-teams",
-    title: "World Cup 2026: African Teams Ready To Make History on Global Stage",
+    title: "World Cup 2026: African Teams Shine as Nine Nations Represent the Continent",
     excerpt:
-      "Five African nations are set to compete in the expanded 48-team World Cup, with Morocco, Senegal, Nigeria, Ghana, and Egypt carrying the continent's hopes.",
-    content: `<p>The 2026 FIFA World Cup marks a historic moment for African football. For the first time, five African nations have qualified for an expanded 48-team tournament, reflecting the continent's growing influence in global football.</p>
-<p>Morocco, fresh from their historic semi-final run in 2022, lead the African charge. The Atlas Lions have retained much of their core squad and added exciting new talent from their domestic league, which has become one of Africa's strongest.</p>
-<p>"We proved in 2022 that African teams can compete with the best in the world," said Morocco coach Walid Regragui. "Now we want to show that it was not a one-off. African football is here to stay."</p>
-<h2>Senegal's Golden Generation</h2>
+      "Africa is set to make history at the FIFA World Cup 2026 as nine nations prepare to represent the continent on football's biggest stage. The expanded tournament has created a new opportunity for African teams to compete, showcase talent, and challenge the world's best football nations.",
+    content: `<p>Africa is set to make history at the FIFA World Cup 2026 as nine nations prepare to represent the continent on football's biggest stage. The expanded tournament has created a new opportunity for African teams to compete, showcase talent, and challenge the world's best football nations.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Nine African nations qualified for World Cup 2026 — a record for the continent</li>
+<li>Africa enters the tournament with one of its strongest-ever squad pools</li>
+<li>Morocco leads after historic 2022 semi-final run</li>
+<li>Several teams aim to reach the knockout stage for the first time</li>
+</ul>
+</div>
+<h2>Africa's Biggest World Cup Representation Yet</h2>
+<p>Africa has continued to grow in global football, with more nations than ever competing at the highest level. The qualification of multiple teams reflects the increasing investment in player development, coaching, and football infrastructure across the continent.</p>
+<p>The 48-team format has opened the door for more African nations to experience the world's biggest sporting event. This expanded representation means more African talent on display, more stories to tell, and more dreams to follow.</p>
+<h2>The African Teams Carrying Continental Hope</h2>
+<h3>🇲🇦 Morocco</h3>
+<p>Morocco enters the tournament with confidence after their historic semi-final run in 2022. The Atlas Lions have retained much of their core squad and added exciting new talent from their domestic league, which has become one of Africa's strongest.</p>
+<blockquote>"We proved in 2022 that African teams can compete with the best in the world. Now we want to show that it was not a one-off. African football is here to stay." — Walid Regragui, Morocco Coach</blockquote>
+<h3>🇸🇳 Senegal</h3>
 <p>Senegal, the reigning Africa Cup of Nations champions, boast arguably their strongest squad ever. With Sadio Mané still leading the line and a new generation of talent emerging from their academy system, the Teranga Lions are targeting a quarter-final berth at minimum.</p>
+<h3>🇳🇬 Nigeria</h3>
 <p>Nigeria's Super Eagles have undergone a remarkable resurgence under their new coaching staff. The blend of European-based stars and home-grown talent has created a squad with depth and versatility that previous Nigerian teams lacked.</p>
-<h2>Ghana and Egypt Complete the Quintet</h2>
-<p>Ghana's Black Stars, making their fourth World Cup appearance, are banking on their famed youth development system. The 2025 U-20 Africa Cup of Nations winners have several players who could make the step up.</p>
+<h3>🇬🇭 Ghana</h3>
+<p>Ghana's Black Stars, making their fourth World Cup appearance, are banking on their famed youth development system. The 2025 U-20 Africa Cup of Nations winners have several players ready to make the step up to senior international football.</p>
+<h3>🇪🇬 Egypt</h3>
 <p>Egypt, led by Mohamed Salah in what is likely his final World Cup, bring experience and tactical discipline. The Pharaohs' defensive record in qualifying — just two goals conceded in eight matches — makes them a dangerous proposition for any opponent.</p>
-<p>The expanded format offers African teams a greater chance of progression, with four teams qualifying from each eight-team group. African football officials believe at least two African nations could reach the round of 16, with a quarter-final appearance a realistic target.</p>`,
+<h2>Why This World Cup Matters for Africa</h2>
+<p>The 2026 tournament represents more than football. It reflects Africa's growing influence in global sports and provides a platform for young players to showcase their abilities to the world.</p>
+<p>The expanded format offers African teams a greater chance of progression, with four teams qualifying from each eight-team group. African football officials believe at least two African nations could reach the round of 16, with a quarter-final appearance a realistic target.</p>
+<h2>What To Watch</h2>
+<div class="highlight-box">
+<ul>
+<li>⚽ Emerging African talents ready to announce themselves on the global stage</li>
+<li>⚽ Tactical battles between African teams and traditional powerhouses</li>
+<li>⚽ Potential breakthrough performances from debutant nations</li>
+<li>⚽ Historic moments as Africa chases its first semi-final since Morocco 2022</li>
+</ul>
+</div>
+<p>As the tournament approaches, African teams will carry the hopes of millions of fans across the continent. With talent, experience, and ambition on their side, this could become one of Africa's most memorable World Cup campaigns.</p>`,
     category: "sports",
     author: {
       name: "David Osei",
@@ -190,11 +218,11 @@ export const articles: Article[] = [
       role: "Sports Editor",
     },
     image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200&q=80",
-    imageCaption: "African players celebrate during World Cup qualifying. Five nations will represent the continent in 2026.",
+    imageCaption: "African players celebrate during World Cup qualifying. Nine nations will represent the continent in 2026.",
     imageCredit: "Photo: FIFA / Getty Images",
     publishedAt: "2026-06-25T06:00:00Z",
-    readingTime: 5,
-    featured: false,
+    readingTime: 6,
+    featured: true,
     trending: true,
     status: "published",
     tags: ["world-cup", "football", "africa", "morocco", "senegal", "nigeria", "ghana", "egypt"],

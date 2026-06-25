@@ -34,6 +34,7 @@ export async function POST(request: Request) {
         image_credit: body.imageCredit ?? "",
         highlights: body.highlights ?? [],
         template: body.template ?? "",
+        article_type: body.articleType ?? "news",
         status: body.status ?? "draft",
         published_at: body.publishedAt ?? new Date().toISOString(),
         reading_time: body.readingTime ?? 5,

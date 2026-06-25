@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 
-type ToolId = "grammar" | "rewrite" | "engage" | "shorten" | "headline" | "summary" | "subheadings" | "readingTime";
+type ToolId = "grammar" | "rewrite" | "engage" | "shorten" | "paragraphs" | "headline" | "summary" | "subheadings" | "readingTime";
 
 const SYSTEM_PROMPTS: Record<ToolId, string> = {
   grammar: "Fix all spelling, grammar, and punctuation errors. Return only the corrected HTML content. Preserve all HTML tags like <p>, <h2>, <blockquote>, <ul>, <li>, <strong>, <em>.",
   rewrite: "Rewrite the following news article in a professional journalistic tone. Return only the rewritten HTML. Preserve HTML structure with <p> tags and any existing <h2>, <blockquote>, <ul>, <li>.",
   engage: "Rewrite to be more engaging and compelling for readers. Use active voice and vivid but factual language. Return only the HTML content.",
   shorten: "Condense the article to roughly 50% of its original length while keeping the most important facts. Return only the HTML.",
+  paragraphs: "Break this text into well-structured short paragraphs suitable for mobile reading. Each paragraph should be 2-4 sentences max. Add <h2> subheadings between sections. Return only the HTML with <p> and <h2> tags.",
   headline: "Generate 3 SEO-optimized headline options for this article. Return them as a comma-separated list of plain text headlines. No HTML.",
   summary: "Write a concise 2-3 sentence summary/excerpt of this article (max 160 characters). Return only the plain text summary.",
   subheadings: "Analyze the article and insert relevant <h2> subheadings at appropriate break points. Return the full article HTML with subheadings added.",

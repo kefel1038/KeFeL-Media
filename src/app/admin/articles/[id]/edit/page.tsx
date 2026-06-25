@@ -51,6 +51,7 @@ export default async function EditArticlePage({ params }: Props) {
               : new Date().toISOString().slice(0, 16),
             readingTime: article.reading_time ?? 5,
             highlights: article.highlights ?? [],
+            articleType: article.article_type ?? "news",
           }}
       />
     </div>

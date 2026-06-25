@@ -12,13 +12,14 @@ interface AIEditorToolsProps {
   onUpdateTitle: (val: string) => void;
 }
 
-type ToolId = "grammar" | "rewrite" | "engage" | "shorten" | "headline" | "summary" | "subheadings" | "readingTime";
+type ToolId = "grammar" | "rewrite" | "engage" | "shorten" | "paragraphs" | "headline" | "summary" | "subheadings" | "readingTime";
 
 const tools: { id: ToolId; label: string; icon: React.ElementType; desc: string }[] = [
   { id: "grammar", label: "Improve Grammar", icon: Wand2, desc: "Fix spelling & grammar" },
   { id: "rewrite", label: "Rewrite Professionally", icon: Type, desc: "Professional tone" },
   { id: "engage", label: "Make More Engaging", icon: Sparkles, desc: "Boost reader interest" },
   { id: "shorten", label: "Shorten Article", icon: AlignLeft, desc: "Condense to key points" },
+  { id: "paragraphs", label: "Break Into Paragraphs", icon: Type, desc: "Short paragraphs for mobile" },
   { id: "headline", label: "Generate Headline", icon: Hash, desc: "SEO headline suggestions" },
   { id: "summary", label: "Generate Summary", icon: List, desc: "Create excerpt" },
   { id: "subheadings", label: "Add Subheadings", icon: List, desc: "Insert section breaks" },
@@ -30,6 +31,7 @@ const labels: Record<ToolId, string> = {
   rewrite: "Rewritten professionally ✓",
   engage: "Made more engaging ✓",
   shorten: "Article shortened ✓",
+  paragraphs: "Broken into paragraphs ✓",
   headline: "Headline generated ✓",
   summary: "Summary generated ✓",
   subheadings: "Subheadings added ✓",

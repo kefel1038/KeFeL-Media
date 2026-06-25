@@ -30,6 +30,7 @@ interface ArticleFormProps {
     publishedAt: string;
     readingTime: number;
     highlights?: string[];
+    articleType?: string;
   };
 }
 
@@ -77,6 +78,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
   const [highlightInput, setHighlightInput] = useState("");
   const [publishedAt, setPublishedAt] = useState(initial?.publishedAt ?? new Date().toISOString().slice(0, 16));
   const [readingTime, setReadingTime] = useState(initial?.readingTime ?? calculateReadingTime(initial?.content ?? ""));
+  const [articleType, setArticleType] = useState(initial?.articleType ?? "news");
   const [template, setTemplate] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -130,6 +132,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
       imageCredit,
       highlights,
       template,
+      articleType,
       tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
       featured,
       trending,
@@ -314,6 +317,16 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
                     {categories.map((c) => <option key={c.slug} value={c.slug}>{c.label}</option>)}
                   </select>
                 </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Article Type</label>
+                  <select value={articleType} onChange={(e) => setArticleType(e.target.value)}
+                    className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-3 py-2 text-xs focus:outline-none focus:border-brand">
+                    <option value="news">News</option>
+                    <option value="feature">Feature</option>
+                    <option value="opinion">Opinion</option>
+                    <option value="analysis">Analysis</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -334,6 +347,16 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
                 <select value={category} onChange={(e) => setCategory(e.target.value)}
                   className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand">
                   {categories.map((c) => <option key={c.slug} value={c.slug}>{c.label}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Article Type</label>
+                <select value={articleType} onChange={(e) => setArticleType(e.target.value)}
+                  className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand">
+                  <option value="news">News</option>
+                  <option value="feature">Feature</option>
+                  <option value="opinion">Opinion</option>
+                  <option value="analysis">Analysis</option>
                 </select>
               </div>
               <div>

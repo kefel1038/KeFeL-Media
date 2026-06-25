@@ -5,6 +5,8 @@ export interface Author {
   bio?: string;
 }
 
+export type ArticleType = "news" | "feature" | "opinion" | "analysis";
+
 export interface Article {
   id: string;
   slug: string;
@@ -27,6 +29,7 @@ export interface Article {
   views?: number;
   highlights?: string[];
   template?: string;
+  articleType?: ArticleType;
 }
 
 export interface Category {
