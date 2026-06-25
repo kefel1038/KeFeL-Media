@@ -39,6 +39,7 @@ export async function PUT(
         category: body.category,
         author: body.author,
         image: body.image,
+        status: body.status ?? "draft",
         published_at: body.publishedAt,
         reading_time: body.readingTime,
         featured: body.featured ?? false,

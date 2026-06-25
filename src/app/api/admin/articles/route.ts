@@ -30,6 +30,7 @@ export async function POST(request: Request) {
         category: body.category,
         author: body.author,
         image: body.image,
+        status: body.status ?? "draft",
         published_at: body.publishedAt ?? new Date().toISOString(),
         reading_time: body.readingTime ?? 5,
         featured: body.featured ?? false,

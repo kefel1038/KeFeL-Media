@@ -19,6 +19,7 @@ interface ArticleFormProps {
     tags: string;
     featured: boolean;
     trending: boolean;
+    status?: string;
     publishedAt: string;
     readingTime: number;
   };
@@ -48,7 +49,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
   const [excerpt, setExcerpt] = useState(initial?.excerpt ?? "");
   const [content, setContent] = useState(initial?.content ?? "");
   const [category, setCategory] = useState(initial?.category ?? "uganda");
-  const [status, setStatus] = useState<string>("draft");
+  const [status, setStatus] = useState<string>(initial?.status ?? "draft");
   const [authorName, setAuthorName] = useState(initial?.authorName ?? "KeFeL Media");
   const [authorRole, setAuthorRole] = useState(initial?.authorRole ?? "Staff Writer");
   const [image, setImage] = useState(initial?.image ?? "");

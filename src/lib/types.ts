@@ -22,6 +22,7 @@ export interface Article {
   readingTime: number;
   featured: boolean;
   trending: boolean;
+  status: string;
   tags: string[];
   views?: number;
 }

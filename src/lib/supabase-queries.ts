@@ -22,6 +22,7 @@ function fromDb(row: any): Article {
     readingTime: row.reading_time,
     featured: row.featured,
     trending: row.trending,
+    status: row.status ?? "draft",
     tags: row.tags ?? [],
     views: row.views ?? 0,
   };
@@ -35,6 +36,7 @@ async function fetchAllArticles(useCache = true): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .order("published_at", { ascending: false });
   if (error) throw error;
   const articles = (data ?? []).map(fromDb);
@@ -46,6 +48,7 @@ export async function getFeaturedArticle(): Promise<Article | undefined> {
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .eq("featured", true)
     .limit(1)
     .single();
@@ -57,6 +60,7 @@ export async function getTrendingArticles(limit = 3): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .eq("trending", true)
     .eq("featured", false)
     .order("views", { ascending: false })
@@ -69,6 +73,7 @@ export async function getLatestArticles(limit = 8): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .order("published_at", { ascending: false })
     .limit(limit);
   if (error) throw error;
@@ -82,6 +87,7 @@ export async function getArticlesByCategory(
   let query = supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .eq("category", category.toLowerCase())
     .order("published_at", { ascending: false });
   if (limit) query = query.limit(limit);
@@ -96,6 +102,7 @@ export async function getArticleBySlug(
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .eq("slug", slug)
     .limit(1)
     .single();
@@ -111,6 +118,7 @@ export async function getWeeklyHighlights(limit = 4): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .order("views", { ascending: false })
     .limit(limit);
   if (error) throw error;
@@ -124,6 +132,7 @@ export async function getRelatedArticles(
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .eq("category", article.category)
     .neq("id", article.id)
     .order("published_at", { ascending: false })
@@ -137,6 +146,7 @@ export async function searchArticles(query: string): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
     .select("*")
+    .eq("status", "published")
     .or(
       `title.ilike.${q},excerpt.ilike.${q},category.ilike.${q},tags.cs.{${query.toLowerCase()}}`
     )

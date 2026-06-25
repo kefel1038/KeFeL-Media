@@ -40,6 +40,7 @@ export default async function EditArticlePage({ params }: Props) {
           authorName: author.name ?? "",
           authorRole: author.role ?? "",
           image: article.image ?? "",
+          status: article.status ?? "draft",
           tags: (article.tags ?? []).join(", "),
           featured: article.featured,
           trending: article.trending,

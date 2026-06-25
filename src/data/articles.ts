@@ -30,6 +30,7 @@ export const articles: Article[] = [
     readingTime: 7,
     featured: true,
     trending: true,
+    status: "published",
     tags: ["technology", "innovation", "africa", "startups"],
     views: 12400,
   },
@@ -52,6 +53,7 @@ export const articles: Article[] = [
     readingTime: 5,
     featured: false,
     trending: true,
+    status: "published",
     tags: ["uganda", "digital", "economy"],
     views: 8900,
   },
@@ -73,6 +75,7 @@ export const articles: Article[] = [
     readingTime: 6,
     featured: false,
     trending: true,
+    status: "published",
     tags: ["business", "investment", "startups", "africa"],
     views: 7200,
   },
@@ -94,6 +97,7 @@ export const articles: Article[] = [
     readingTime: 5,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["energy", "africa", "sustainability"],
     views: 5100,
   },
@@ -115,6 +119,7 @@ export const articles: Article[] = [
     readingTime: 4,
     featured: false,
     trending: true,
+    status: "published",
     tags: ["farming", "kampala", "lifestyle"],
     views: 6300,
   },
@@ -136,6 +141,7 @@ export const articles: Article[] = [
     readingTime: 5,
     featured: false,
     trending: true,
+    status: "published",
     tags: ["culture", "food", "africa", "festival"],
     views: 9100,
   },
@@ -157,6 +163,7 @@ export const articles: Article[] = [
     readingTime: 6,
     featured: false,
     trending: true,
+    status: "published",
     tags: ["sports", "community", "africa"],
     views: 7800,
   },
@@ -178,6 +185,7 @@ export const articles: Article[] = [
     readingTime: 4,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["kampala", "smart-city", "technology"],
     views: 4200,
   },
@@ -199,6 +207,7 @@ export const articles: Article[] = [
     readingTime: 7,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["climate", "africa", "environment"],
     views: 5600,
   },
@@ -220,6 +229,7 @@ export const articles: Article[] = [
     readingTime: 5,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["africa", "diplomacy", "water"],
     views: 3900,
   },
@@ -241,6 +251,7 @@ export const articles: Article[] = [
     readingTime: 6,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["business", "trade", "africa", "afcfta"],
     views: 4700,
   },
@@ -262,6 +273,7 @@ export const articles: Article[] = [
     readingTime: 4,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["music", "entertainment", "africa", "culture"],
     views: 8200,
   },
@@ -283,6 +295,7 @@ export const articles: Article[] = [
     readingTime: 8,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["football", "afcon", "sports", "africa"],
     views: 11300,
   },
@@ -304,6 +317,7 @@ export const articles: Article[] = [
     readingTime: 9,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["cybersecurity", "technology", "finance"],
     views: 14200,
   },
@@ -325,6 +339,7 @@ export const articles: Article[] = [
     readingTime: 6,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["space", "technology", "africa"],
     views: 9800,
   },
@@ -346,6 +361,7 @@ export const articles: Article[] = [
     readingTime: 5,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["health", "rwanda", "africa"],
     views: 6100,
   },
@@ -367,6 +383,7 @@ export const articles: Article[] = [
     readingTime: 4,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["fashion", "nairobi", "culture"],
     views: 5400,
   },
@@ -388,6 +405,7 @@ export const articles: Article[] = [
     readingTime: 5,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["uganda", "sports", "athletics"],
     views: 7300,
   },
@@ -409,6 +427,7 @@ export const articles: Article[] = [
     readingTime: 8,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["opinion", "africa", "economy"],
     views: 10900,
   },
@@ -430,6 +449,7 @@ export const articles: Article[] = [
     readingTime: 5,
     featured: false,
     trending: false,
+    status: "published",
     tags: ["art", "kampala", "culture"],
     views: 3800,
   },
@@ -439,14 +459,15 @@ export async function getFeaturedArticle(): Promise<Article> {
   try {
     const result = await db.getFeaturedArticle();
     if (result) return result;
-  } catch {}
+  } catch (e) { console.error("getFeaturedArticle fell back to local data:", e); }
   return articles.find((a) => a.featured) ?? articles[0];
 }
 
 export async function getTrendingArticles(limit = 3): Promise<Article[]> {
   try {
     return await db.getTrendingArticles(limit);
-  } catch {
+  } catch (e) {
+    console.error("getTrendingArticles fell back to local data:", e);
     return articles.filter((a) => a.trending && !a.featured).slice(0, limit);
   }
 }
@@ -454,7 +475,8 @@ export async function getTrendingArticles(limit = 3): Promise<Article[]> {
 export async function getLatestArticles(limit = 8): Promise<Article[]> {
   try {
     return await db.getLatestArticles(limit);
-  } catch {
+  } catch (e) {
+    console.error("getLatestArticles fell back to local data:", e);
     return [...articles]
       .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
       .slice(0, limit);
@@ -464,7 +486,8 @@ export async function getLatestArticles(limit = 8): Promise<Article[]> {
 export async function getArticlesByCategory(category: string, limit?: number): Promise<Article[]> {
   try {
     return await db.getArticlesByCategory(category, limit);
-  } catch {
+  } catch (e) {
+    console.error("getArticlesByCategory fell back to local data:", e);
     const filtered = articles.filter(
       (a) => a.category.toLowerCase() === category.toLowerCase()
     );
@@ -475,7 +498,8 @@ export async function getArticlesByCategory(category: string, limit?: number): P
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
   try {
     return await db.getArticleBySlug(slug);
-  } catch {
+  } catch (e) {
+    console.error("getArticleBySlug fell back to local data:", e);
     return articles.find((a) => a.slug === slug);
   }
 }
@@ -483,7 +507,8 @@ export async function getArticleBySlug(slug: string): Promise<Article | undefine
 export async function getSidebarLatest(limit = 4): Promise<Article[]> {
   try {
     return await db.getSidebarLatest(limit);
-  } catch {
+  } catch (e) {
+    console.error("getSidebarLatest fell back to local data:", e);
     return [...articles]
       .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
       .slice(0, limit);
@@ -493,7 +518,8 @@ export async function getSidebarLatest(limit = 4): Promise<Article[]> {
 export async function getWeeklyHighlights(limit = 4): Promise<Article[]> {
   try {
     return await db.getWeeklyHighlights(limit);
-  } catch {
+  } catch (e) {
+    console.error("getWeeklyHighlights fell back to local data:", e);
     return [...articles].sort((a, b) => (b.views ?? 0) - (a.views ?? 0)).slice(0, limit);
   }
 }
@@ -501,7 +527,8 @@ export async function getWeeklyHighlights(limit = 4): Promise<Article[]> {
 export async function getRelatedArticles(article: Article, limit = 3): Promise<Article[]> {
   try {
     return await db.getRelatedArticles(article, limit);
-  } catch {
+  } catch (e) {
+    console.error("getRelatedArticles fell back to local data:", e);
     return articles
       .filter((a) => a.id !== article.id && a.category === article.category)
       .slice(0, limit);
@@ -511,7 +538,8 @@ export async function getRelatedArticles(article: Article, limit = 3): Promise<A
 export async function searchArticles(query: string): Promise<Article[]> {
   try {
     return await db.searchArticles(query);
-  } catch {
+  } catch (e) {
+    console.error("searchArticles fell back to local data:", e);
     const q = query.toLowerCase();
     return articles.filter(
       (a) =>
@@ -526,7 +554,8 @@ export async function searchArticles(query: string): Promise<Article[]> {
 export async function getAllArticles(): Promise<Article[]> {
   try {
     return await db.getAllArticles();
-  } catch {
+  } catch (e) {
+    console.error("getAllArticles fell back to local data:", e);
     return articles;
   }
 }
