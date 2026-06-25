@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Save } from "lucide-react";
+import { Save, Send, FileEdit, Eye } from "lucide-react";
 import { categories } from "@/data/categories";
 
 interface ArticleFormProps {
@@ -24,6 +24,12 @@ interface ArticleFormProps {
   };
 }
 
+const statuses = [
+  { value: "draft", label: "Draft", icon: FileEdit, color: "text-gray-500 bg-gray-100 dark:bg-zinc-800" },
+  { value: "pending", label: "Pending Review", icon: Eye, color: "text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20" },
+  { value: "published", label: "Published", icon: Send, color: "text-green-600 bg-green-50 dark:bg-green-900/20" },
+];
+
 function toSlug(text: string) {
   return text
     .toLowerCase()
@@ -42,22 +48,18 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
   const [excerpt, setExcerpt] = useState(initial?.excerpt ?? "");
   const [content, setContent] = useState(initial?.content ?? "");
   const [category, setCategory] = useState(initial?.category ?? "uganda");
-  const [authorName, setAuthorName] = useState(
-    initial?.authorName ?? "KeFeL Media"
-  );
-  const [authorRole, setAuthorRole] = useState(
-    initial?.authorRole ?? "Staff Writer"
-  );
+  const [status, setStatus] = useState<string>("draft");
+  const [authorName, setAuthorName] = useState(initial?.authorName ?? "KeFeL Media");
+  const [authorRole, setAuthorRole] = useState(initial?.authorRole ?? "Staff Writer");
   const [image, setImage] = useState(initial?.image ?? "");
   const [tags, setTags] = useState(initial?.tags ?? "");
   const [featured, setFeatured] = useState(initial?.featured ?? false);
   const [trending, setTrending] = useState(initial?.trending ?? false);
+  const [breaking, setBreaking] = useState(false);
   const [publishedAt, setPublishedAt] = useState(
     initial?.publishedAt ?? new Date().toISOString().slice(0, 16)
   );
-  const [readingTime, setReadingTime] = useState(
-    initial?.readingTime ?? 5
-  );
+  const [readingTime, setReadingTime] = useState(initial?.readingTime ?? 5);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -66,7 +68,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
     if (!isEdit) setSlug(toSlug(val));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, publishStatus: string) => {
     e.preventDefault();
     setSaving(true);
     setError("");
@@ -77,6 +79,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
       excerpt,
       content,
       category,
+      status: publishStatus,
       author: { name: authorName, avatar: "", role: authorRole },
       image,
       tags: tags
@@ -85,6 +88,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
         .filter(Boolean),
       featured,
       trending,
+      breaking,
       publishedAt: new Date(publishedAt).toISOString(),
       readingTime: Number(readingTime),
     };
@@ -113,8 +117,11 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
     }
   };
 
+  const currentStatus = statuses.find((s) => s.value === status) ?? statuses[0];
+  const StatusIcon = currentStatus.icon;
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form className="space-y-6">
       {error && (
         <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm px-4 py-3 rounded-xl">
           {error}
@@ -122,73 +129,88 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Main Content */}
         <div className="lg:col-span-2 space-y-5">
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
+          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="font-bold text-sm text-gray-900 dark:text-white">Article Content</h3>
+              <div className="flex items-center gap-1.5">
+                <StatusIcon size={14} className={currentStatus.color.split(" ")[0]} />
+                <span className="text-xs font-medium text-gray-500">{currentStatus.label}</span>
+              </div>
+            </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                Title
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                Headline
               </label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => handleTitleChange(e.target.value)}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+                placeholder="Enter article headline..."
                 required
               />
             </div>
-
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
                 Slug
               </label>
               <input
                 type="text"
                 value={slug}
                 onChange={(e) => setSlug(toSlug(e.target.value))}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand font-mono"
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand font-mono"
                 required
               />
             </div>
-
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
                 Excerpt / Subtitle
               </label>
               <textarea
                 value={excerpt}
                 onChange={(e) => setExcerpt(e.target.value)}
                 rows={3}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+                placeholder="Brief summary of the article..."
                 required
               />
             </div>
-
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
                 Article Body (HTML)
               </label>
               <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 rows={16}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand font-mono"
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand font-mono"
                 required
               />
               <p className="text-xs text-gray-500 mt-1">
-                Supports HTML tags: &lt;p&gt;, &lt;h2&gt;, &lt;blockquote&gt;, etc.
+                Supports HTML: &lt;p&gt;, &lt;h2&gt;, &lt;blockquote&gt;, &lt;img&gt;, etc.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="space-y-5">
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
-            <h3 className="font-bold text-sm text-gray-900 dark:text-white">
-              Publishing
-            </h3>
-
+          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
+            <h3 className="font-bold text-sm text-gray-900 dark:text-white">Publishing</h3>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                Status
+              </label>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+              >
+                {statuses.map((s) => (
+                  <option key={s.value} value={s.value}>{s.label}</option>
+                ))}
+              </select>
+            </div>
             <div>
               <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
                 Category
@@ -196,16 +218,13 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
               >
                 {categories.map((c) => (
-                  <option key={c.slug} value={c.slug}>
-                    {c.label}
-                  </option>
+                  <option key={c.slug} value={c.slug}>{c.label}</option>
                 ))}
               </select>
             </div>
-
             <div>
               <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
                 Publish Date
@@ -214,10 +233,9 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
                 type="datetime-local"
                 value={publishedAt}
                 onChange={(e) => setPublishedAt(e.target.value)}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
               />
             </div>
-
             <div>
               <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
                 Reading Time (minutes)
@@ -227,130 +245,84 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
                 value={readingTime}
                 onChange={(e) => setReadingTime(Number(e.target.value))}
                 min={1}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
-              />
-            </div>
-
-            <div className="flex items-center gap-3">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={featured}
-                  onChange={(e) => setFeatured(e.target.checked)}
-                  className="rounded border-gray-300 text-brand focus:ring-brand"
-                />
-                <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">
-                  Featured
-                </span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={trending}
-                  onChange={(e) => setTrending(e.target.checked)}
-                  className="rounded border-gray-300 text-brand focus:ring-brand"
-                />
-                <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">
-                  Trending
-                </span>
-              </label>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
-            <h3 className="font-bold text-sm text-gray-900 dark:text-white">
-              Author
-            </h3>
-            <div>
-              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
-                Name
-              </label>
-              <input
-                type="text"
-                value={authorName}
-                onChange={(e) => setAuthorName(e.target.value)}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
-                Role
-              </label>
-              <input
-                type="text"
-                value={authorRole}
-                onChange={(e) => setAuthorRole(e.target.value)}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
               />
             </div>
           </div>
 
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
-            <h3 className="font-bold text-sm text-gray-900 dark:text-white">
-              Media & Tags
-            </h3>
+          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
+            <h3 className="font-bold text-sm text-gray-900 dark:text-white">Author</h3>
             <div>
-              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
-                Cover Image URL
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Name</label>
+              <input type="text" value={authorName} onChange={(e) => setAuthorName(e.target.value)}
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand" required />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Role</label>
+              <input type="text" value={authorRole} onChange={(e) => setAuthorRole(e.target.value)}
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand" />
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
+            <h3 className="font-bold text-sm text-gray-900 dark:text-white">Options</h3>
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)}
+                  className="rounded border-gray-300 text-brand focus:ring-brand" />
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">Featured Article</span>
               </label>
-              <input
-                type="url"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked={trending} onChange={(e) => setTrending(e.target.checked)}
+                  className="rounded border-gray-300 text-brand focus:ring-brand" />
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">Trending</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked={breaking} onChange={(e) => setBreaking(e.target.checked)}
+                  className="rounded border-gray-300 text-brand focus:ring-brand" />
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">Breaking News</span>
+              </label>
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5 space-y-4">
+            <h3 className="font-bold text-sm text-gray-900 dark:text-white">Media &amp; Tags</h3>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Cover Image URL</label>
+              <input type="url" value={image} onChange={(e) => setImage(e.target.value)}
                 placeholder="https://images.unsplash.com/..."
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
-              />
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand" />
               {image && (
-                <div className="mt-2 w-full h-32 rounded-xl overflow-hidden bg-gray-100 dark:bg-zinc-800 relative">
-                  <img
-                    src={image}
-                    alt="Preview"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = "none";
-                      const fallback = target.nextElementSibling;
-                      if (fallback) (fallback as HTMLElement).style.display = "flex";
-                    }}
-                  />
-                  <div className="absolute inset-0 items-center justify-center text-gray-400 text-xs hidden">
-                    Image failed to load
-                  </div>
+                <div className="mt-2 w-full h-28 rounded-lg overflow-hidden bg-gray-100 dark:bg-zinc-800 relative">
+                  <img src={image} alt="Preview" className="w-full h-full object-cover"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 </div>
               )}
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
-                Tags (comma-separated)
-              </label>
-              <input
-                type="text"
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
+              <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Tags (comma-separated)</label>
+              <input type="text" value={tags} onChange={(e) => setTags(e.target.value)}
                 placeholder="technology, innovation, africa"
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
-              />
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand" />
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex items-center gap-3 justify-end">
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="px-5 py-2.5 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl transition-colors"
-        >
+        <button type="button" onClick={() => router.back()}
+          className="px-5 py-2.5 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg transition-colors">
           Cancel
         </button>
-        <button
-          type="submit"
-          disabled={saving}
-          className="bg-brand hover:bg-orange-600 disabled:opacity-50 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
-        >
-          <Save size={16} />
-          {saving ? "Saving..." : isEdit ? "Update Article" : "Publish Article"}
+        <button type="button" onClick={(e) => handleSubmit(e, "draft")} disabled={saving}
+          className="px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50">
+          <FileEdit size={14} />
+          {saving ? "Saving..." : "Save Draft"}
+        </button>
+        <button type="button" onClick={(e) => handleSubmit(e, status)} disabled={saving}
+          className="bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors flex items-center gap-2 disabled:opacity-50">
+          <Save size={14} />
+          {saving ? "Saving..." : isEdit ? "Update Article" : "Publish"}
         </button>
       </div>
     </form>
