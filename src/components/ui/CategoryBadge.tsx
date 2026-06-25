@@ -21,7 +21,7 @@ export default function CategoryBadge({
 
   return (
     <span
-      className={`inline-block rounded-full font-semibold text-white uppercase tracking-wider ${color} ${sizeClasses[size]} ${className}`}
+      className={`inline-block rounded font-bold text-white uppercase tracking-wider ${color} ${sizeClasses[size]} ${className}`}
     >
       {category}
     </span>

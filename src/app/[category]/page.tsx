@@ -46,12 +46,11 @@ export default async function CategoryPage({ params }: Props) {
   const [hero, ...rest] = articles;
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 py-8">
-      {/* Category Header */}
+    <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-6">
       <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-200 dark:border-zinc-700">
-        <div className={`w-3 h-8 rounded-full ${cat?.color ?? "bg-brand"}`} />
+        <div className={`w-3 h-8 rounded ${cat?.color ?? "bg-brand"}`} />
         <div>
-          <h1 className="text-3xl font-black text-gray-900 dark:text-white">
+          <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
             {cat?.label ?? "Latest News"}
           </h1>
           {cat?.description && (
@@ -60,23 +59,21 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Hero Article */}
       {hero && (
         <div className="mb-10">
           <ArticleCard article={hero} variant="hero" />
         </div>
       )}
 
-      <div className="border-t border-gray-200 dark:border-zinc-700 mb-8" />
+      <hr className="border-gray-200 dark:border-zinc-700 mb-8" />
 
-      {/* Latest + Sidebar */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
+        <div>
           {rest.length > 0 ? (
             <>
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-1 h-6 bg-gray-900 dark:bg-white rounded-full" />
-                <h2 className="text-xl font-black text-gray-900 dark:text-white">
+                <h2 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white">
                   Latest {cat?.label ?? "News"}
                 </h2>
               </div>
@@ -99,10 +96,8 @@ export default async function CategoryPage({ params }: Props) {
             )
           )}
         </div>
-        <div className="lg:col-span-1">
-          <div className="sticky top-[145px]">
-            <Sidebar />
-          </div>
+        <div>
+          <Sidebar />
         </div>
       </div>
     </div>
