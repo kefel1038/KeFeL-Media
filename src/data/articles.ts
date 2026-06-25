@@ -168,6 +168,39 @@ export const articles: Article[] = [
     views: 7800,
   },
   {
+    id: "26",
+    slug: "world-cup-2026-african-teams",
+    title: "World Cup 2026: African Teams Ready To Make History on Global Stage",
+    excerpt:
+      "Five African nations are set to compete in the expanded 48-team World Cup, with Morocco, Senegal, Nigeria, Ghana, and Egypt carrying the continent's hopes.",
+    content: `<p>The 2026 FIFA World Cup marks a historic moment for African football. For the first time, five African nations have qualified for an expanded 48-team tournament, reflecting the continent's growing influence in global football.</p>
+<p>Morocco, fresh from their historic semi-final run in 2022, lead the African charge. The Atlas Lions have retained much of their core squad and added exciting new talent from their domestic league, which has become one of Africa's strongest.</p>
+<p>"We proved in 2022 that African teams can compete with the best in the world," said Morocco coach Walid Regragui. "Now we want to show that it was not a one-off. African football is here to stay."</p>
+<h2>Senegal's Golden Generation</h2>
+<p>Senegal, the reigning Africa Cup of Nations champions, boast arguably their strongest squad ever. With Sadio Mané still leading the line and a new generation of talent emerging from their academy system, the Teranga Lions are targeting a quarter-final berth at minimum.</p>
+<p>Nigeria's Super Eagles have undergone a remarkable resurgence under their new coaching staff. The blend of European-based stars and home-grown talent has created a squad with depth and versatility that previous Nigerian teams lacked.</p>
+<h2>Ghana and Egypt Complete the Quintet</h2>
+<p>Ghana's Black Stars, making their fourth World Cup appearance, are banking on their famed youth development system. The 2025 U-20 Africa Cup of Nations winners have several players who could make the step up.</p>
+<p>Egypt, led by Mohamed Salah in what is likely his final World Cup, bring experience and tactical discipline. The Pharaohs' defensive record in qualifying — just two goals conceded in eight matches — makes them a dangerous proposition for any opponent.</p>
+<p>The expanded format offers African teams a greater chance of progression, with four teams qualifying from each eight-team group. African football officials believe at least two African nations could reach the round of 16, with a quarter-final appearance a realistic target.</p>`,
+    category: "sports",
+    author: {
+      name: "David Osei",
+      avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&q=80",
+      role: "Sports Editor",
+    },
+    image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200&q=80",
+    imageCaption: "African players celebrate during World Cup qualifying. Five nations will represent the continent in 2026.",
+    imageCredit: "Photo: FIFA / Getty Images",
+    publishedAt: "2026-06-25T06:00:00Z",
+    readingTime: 5,
+    featured: false,
+    trending: true,
+    status: "published",
+    tags: ["world-cup", "football", "africa", "morocco", "senegal", "nigeria", "ghana", "egypt"],
+    views: 15600,
+  },
+  {
     id: "8",
     slug: "kampala-smart-city-initiative",
     title: "Kampala Launches Ambitious Smart City Initiative",
