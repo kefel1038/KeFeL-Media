@@ -14,6 +14,10 @@ export interface Article {
   category: string;
   author: Author;
   image: string;
+  imageCaption?: string;
+  imageCredit?: string;
+  secondaryImage?: string;
+  secondaryImageCaption?: string;
   publishedAt: string;
   readingTime: number;
   featured: boolean;

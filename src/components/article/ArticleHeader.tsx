@@ -3,7 +3,6 @@ import { Clock, Calendar, Link2, Check } from "lucide-react";
 import { useState } from "react";
 import { Article } from "@/lib/types";
 import { formatDate, readingTimeLabel } from "@/lib/utils";
-import CategoryBadge from "@/components/ui/CategoryBadge";
 
 const FacebookIcon = () => (
   <svg width={14} height={14} viewBox="0 0 24 24" fill="currentColor">
@@ -37,18 +36,15 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
     const url = getArticleUrl();
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank", "width=600,height=400,noopener,noreferrer");
   };
-
   const handleXShare = () => {
     const url = getArticleUrl();
     const text = encodeURIComponent(`${article.title} — via @KefelMedia`);
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(url)}`, "_blank", "width=600,height=400,noopener,noreferrer");
   };
-
   const handleLinkedinShare = () => {
     const url = getArticleUrl();
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, "_blank", "width=600,height=500,noopener,noreferrer");
   };
-
   const handleCopyLink = async () => {
     const url = getArticleUrl();
     try {
@@ -75,36 +71,26 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
   ];
 
   return (
-    <header className="mb-8">
-      <div className="flex items-center gap-2 flex-wrap mb-4">
-        <CategoryBadge category={article.category} size="md" />
-        {article.tags.slice(0, 3).map((tag) => (
-          <span key={tag} className="text-xs bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-400 px-2 py-0.5 rounded">#{tag}</span>
-        ))}
-      </div>
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white leading-tight mb-4">{article.title}</h1>
-      <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6 border-l-4 border-brand pl-4">{article.excerpt}</p>
-      <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-gray-200 dark:border-zinc-700">
-        <div className="flex items-center gap-3">
-          {article.author.avatar ? (
-            <img src={article.author.avatar} alt={article.author.name} width={44} height={44}
-              className="rounded-full object-cover ring-2 ring-brand w-11 h-11" />
-          ) : (
-            <div className="w-11 h-11 rounded-full ring-2 ring-brand bg-brand flex items-center justify-center text-white text-sm font-bold shrink-0">
-              {article.author.name.charAt(0).toUpperCase()}
-            </div>
-          )}
-          <div>
-            <p className="font-bold text-gray-900 dark:text-white text-sm">{article.author.name}</p>
-            <p className="text-gray-500 text-xs">{article.author.role}</p>
+    <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-gray-200 dark:border-zinc-700">
+      <div className="flex items-center gap-3">
+        {article.author.avatar ? (
+          <img src={article.author.avatar} alt={article.author.name} width={44} height={44}
+            className="rounded-full object-cover ring-2 ring-brand w-11 h-11" />
+        ) : (
+          <div className="w-11 h-11 rounded-full ring-2 ring-brand bg-brand flex items-center justify-center text-white text-sm font-bold shrink-0">
+            {article.author.name.charAt(0).toUpperCase()}
           </div>
-        </div>
-        <div className="flex items-center gap-4 text-xs text-gray-500">
-          <span className="flex items-center gap-1.5"><Calendar size={13} />{formatDate(article.publishedAt)}</span>
-          <span className="flex items-center gap-1.5"><Clock size={13} />{readingTimeLabel(article.readingTime)}</span>
+        )}
+        <div>
+          <p className="font-bold text-gray-900 dark:text-white text-sm">{article.author.name}</p>
+          <p className="text-gray-500 text-xs">{article.author.role}</p>
         </div>
       </div>
-      <div className="flex items-center gap-2 mt-4">
+      <div className="flex items-center gap-4 text-xs text-gray-500">
+        <span className="flex items-center gap-1.5"><Calendar size={13} />{formatDate(article.publishedAt)}</span>
+        <span className="flex items-center gap-1.5"><Clock size={13} />{readingTimeLabel(article.readingTime)}</span>
+      </div>
+      <div className="flex items-center gap-2 w-full lg:w-auto">
         <span className="text-xs text-gray-500 font-bold mr-1">Share:</span>
         {shareButtons.map(({ Icon, label, onClick }) => (
           <button key={label} onClick={onClick} aria-label={`Share on ${label}`} title={label}
@@ -113,6 +99,6 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
           </button>
         ))}
       </div>
-    </header>
+    </div>
   );
 }

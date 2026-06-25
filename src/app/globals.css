@@ -14,8 +14,8 @@
   --font-serif: "Playfair Display", Georgia, serif;
   --font-headline: "Playfair Display", Georgia, serif;
 
-  --animate-marquee: marquee 30s linear infinite;
-  --animate-marquee2: marquee2 30s linear infinite;
+  --animate-marquee: marquee 45s linear infinite;
+  --animate-marquee2: marquee2 45s linear infinite;
   --animate-fade-in: fadeIn 0.5s ease-in-out;
   --animate-slide-up: slideUp 0.4s ease-out;
 

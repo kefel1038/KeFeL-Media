@@ -5,6 +5,9 @@ import ArticleHeader from "@/components/article/ArticleHeader";
 import ArticleBody from "@/components/article/ArticleBody";
 import RelatedStories from "@/components/article/RelatedStories";
 import Sidebar from "@/components/layout/Sidebar";
+import CategoryBadge from "@/components/ui/CategoryBadge";
+import { formatDate, readingTimeLabel } from "@/lib/utils";
+import { Calendar, Clock } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -63,29 +66,83 @@ export default async function ArticlePage({ params }: Props) {
     },
   };
 
+  const imageUrl = article.image;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="relative w-full h-[40vh] sm:h-[55vh] lg:h-[65vh] max-h-[700px] bg-gray-900 overflow-hidden">
-        <img
-          src={article.image}
-          alt={article.title}
-          className="absolute inset-0 w-full h-full object-cover opacity-85"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 dark:from-zinc-950 via-transparent to-black/20" />
-      </div>
 
-      <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 -mt-16 relative z-10">
+      <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-6">
+        {/* === Split-Screen Hero === */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10">
+          {/* Left: Content (7 cols) */}
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <div className="mb-4">
+              <CategoryBadge category={article.category} size="md" />
+            </div>
+            <h1 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight mb-4">
+              {article.title}
+            </h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-5 border-l-4 border-brand pl-4">
+              {article.excerpt}
+            </p>
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+              <div className="flex items-center gap-2">
+                {article.author.avatar ? (
+                  <img src={article.author.avatar} alt={article.author.name} width={28} height={28}
+                    className="rounded-full object-cover w-7 h-7" />
+                ) : (
+                  <div className="w-7 h-7 rounded-full bg-brand flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    {article.author.name.charAt(0).toUpperCase()}
+                  </div>
+                )}
+                <span className="font-semibold text-gray-900 dark:text-white">{article.author.name}</span>
+              </div>
+              <span className="hidden sm:inline text-gray-300">|</span>
+              <span className="flex items-center gap-1.5"><Calendar size={13} />{formatDate(article.publishedAt)}</span>
+              <span className="flex items-center gap-1.5"><Clock size={13} />{readingTimeLabel(article.readingTime)}</span>
+            </div>
+          </div>
+
+          {/* Right: Image (5 cols) */}
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <div className="relative overflow-hidden rounded-xl shadow-md aspect-video lg:aspect-[4/3] w-full bg-gray-200 dark:bg-zinc-800 animate-pulse">
+              <img
+                src={imageUrl}
+                alt={article.title}
+                className="w-full h-full object-cover absolute inset-0 hover:scale-[1.02] transition-transform duration-500 ease-in-out"
+              />
+              <span className="absolute top-3 left-3 backdrop-blur-md bg-black/60 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded select-none">
+                EXCLUSIVE
+              </span>
+            </div>
+            {(article.imageCaption || article.imageCredit) && (
+              <p className="text-right text-gray-500 dark:text-gray-400 text-xs italic mt-2">
+                {article.imageCaption}
+                {article.imageCaption && article.imageCredit && <span>, </span>}
+                {article.imageCredit && <span className="not-italic font-medium">{article.imageCredit}</span>}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* === Content + Sidebar === */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
           <article className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-6 md:p-10 mb-8">
-            <ArticleHeader article={article} />
-            <ArticleBody content={article.content} />
+            <ArticleBody
+              content={article.content}
+              secondaryImage={article.secondaryImage}
+              secondaryImageCaption={article.secondaryImageCaption}
+            />
+            <div className="mt-10">
+              <ArticleHeader article={article} />
+            </div>
             <RelatedStories article={article} />
           </article>
-          <aside className="pt-8">
+          <aside className="pt-2">
             <Sidebar />
           </aside>
         </div>
