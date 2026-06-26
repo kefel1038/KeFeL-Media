@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Save, FileEdit, Eye, Send, Plus, X, Sparkles, Search, BarChart3, Layout, ChevronDown, ChevronUp, Upload, Code, LayoutTemplate } from "lucide-react";
 import { categories } from "@/data/categories";
 import { calculateReadingTime } from "@/lib/utils";
+import slugify from "slugify";
 import ArticleTemplates from "./ArticleTemplates";
 import ArticleSEO from "./ArticleSEO";
 import AIEditorTools from "./AIEditorTools";
@@ -52,7 +53,7 @@ const tabs: { id: Tab; label: string; icon: React.ElementType }[] = [
 ];
 
 function toSlug(text: string) {
-  return text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim();
+  return slugify(text, { lower: true, strict: true });
 }
 
 export default function ArticleForm({ initial }: ArticleFormProps) {

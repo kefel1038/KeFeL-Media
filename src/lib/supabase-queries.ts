@@ -4,6 +4,32 @@ import type { Article, Category, Author } from "./types";
 const ARTICLES_CACHE = new Map<string, { data: Article[]; time: number }>();
 const CACHE_TTL = 30_000;
 
+const ARTICLE_COLUMNS = `
+  id,
+  slug,
+  title,
+  excerpt,
+  content,
+  category,
+  author,
+  image,
+  image_caption,
+  image_credit,
+  secondary_image,
+  secondary_image_caption,
+  highlights,
+  template,
+  article_type,
+  published_at,
+  updated_at,
+  reading_time,
+  featured,
+  trending,
+  status,
+  tags,
+  views
+`;
+
 function parseAuthor(raw: any): Author {
   if (typeof raw === "string") {
     try {
@@ -58,7 +84,7 @@ async function fetchAllArticles(useCache = true): Promise<Article[]> {
   }
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .order("published_at", { ascending: false });
   if (error) throw error;
@@ -70,7 +96,7 @@ async function fetchAllArticles(useCache = true): Promise<Article[]> {
 export async function getFeaturedArticle(): Promise<Article | undefined> {
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .eq("featured", true)
     .limit(1)
@@ -82,7 +108,7 @@ export async function getFeaturedArticle(): Promise<Article | undefined> {
 export async function getTrendingArticles(limit = 3): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .eq("trending", true)
     .eq("featured", false)
@@ -95,7 +121,7 @@ export async function getTrendingArticles(limit = 3): Promise<Article[]> {
 export async function getLatestArticles(limit = 8): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .order("published_at", { ascending: false })
     .limit(limit);
@@ -109,7 +135,7 @@ export async function getArticlesByCategory(
 ): Promise<Article[]> {
   let query = supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .eq("category", category.toLowerCase())
     .order("published_at", { ascending: false });
@@ -124,7 +150,7 @@ export async function getArticleBySlug(
 ): Promise<Article | undefined> {
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .eq("slug", slug)
     .limit(1)
@@ -140,7 +166,7 @@ export async function getSidebarLatest(limit = 4): Promise<Article[]> {
 export async function getWeeklyHighlights(limit = 4): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .order("views", { ascending: false })
     .limit(limit);
@@ -154,7 +180,7 @@ export async function getRelatedArticles(
 ): Promise<Article[]> {
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .eq("category", article.category)
     .neq("id", article.id)
@@ -168,7 +194,7 @@ export async function searchArticles(query: string): Promise<Article[]> {
   const q = `%${query.toLowerCase()}%`;
   const { data, error } = await supabase
     .from("articles")
-    .select("*")
+    .select(ARTICLE_COLUMNS)
     .eq("status", "published")
     .or(
       `title.ilike.${q},excerpt.ilike.${q},category.ilike.${q}`
@@ -182,7 +208,7 @@ export async function getArticlesByAuthor(authorName: string, limit = 10): Promi
   try {
     const { data, error } = await supabase
       .from("articles")
-      .select("*")
+      .select(ARTICLE_COLUMNS)
       .eq("status", "published")
       .order("published_at", { ascending: false });
     if (error) throw error;
@@ -205,7 +231,7 @@ export async function getAllArticles(): Promise<Article[]> {
 export async function getCategories(): Promise<Category[]> {
   const { data, error } = await supabase
     .from("categories")
-    .select("*")
+    .select("slug,label,color,description")
     .order("id");
   if (error) throw error;
   return (data ?? []).map((row: any) => ({

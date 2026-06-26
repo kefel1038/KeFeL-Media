@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Home, ArrowLeft, Newspaper } from "lucide-react";
+import { Home, Newspaper } from "lucide-react";
+import BackButton from "@/components/ui/BackButton";
 
 export default function NotFound() {
   return (
@@ -25,12 +26,7 @@ export default function NotFound() {
           >
             <Home size={16} /> Go Home
           </Link>
-          <button
-            onClick={() => window.history.back()}
-            className="flex items-center gap-2 border border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-gray-300 font-semibold px-5 py-2.5 rounded-xl hover:border-brand hover:text-brand transition-colors"
-          >
-            <ArrowLeft size={16} /> Go Back
-          </button>
+          <BackButton />
         </div>
       </div>
     </div>
