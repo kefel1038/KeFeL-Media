@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getArticleBySlug, getRelatedArticles, getArticlesByAuthor } from "@/data/articles";
+
+export const revalidate = 60;
 import ArticleBody from "@/components/article/ArticleBody";
 import ArticleHighlights from "@/components/article/ArticleHighlights";
 import ArticleMetadata from "@/components/article/ArticleMetadata";

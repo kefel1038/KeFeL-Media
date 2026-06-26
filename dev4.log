@@ -1,0 +1,16 @@
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3461
+- Network:       http://192.168.127.1:3461
+- Environments: .env.local
+✓ Ready in 2.4s
+
+ GET /article/ugandas-digital-economy-new-growth-phase 200 in 7.3s (next.js: 1017ms, proxy.ts: 231ms, application-code: 6.1s)
+ GET /article/world-cup-2026-african-teams 500 in 1414ms (next.js: 34ms, proxy.ts: 8ms, application-code: 1372ms)
+ GET /article/african-innovation-transforming-digital-future 200 in 2.2s (next.js: 30ms, proxy.ts: 20ms, application-code: 2.1s)
+ GET /article/african-teams-shine-as-nine-nations-represent-the-continent-at-fifa-world-cup-2026 200 in 2.1s (next.js: 57ms, proxy.ts: 6ms, application-code: 2.1s)
+ GET /article/world-cup-2026-african-teams 500 in 1227ms (next.js: 39ms, proxy.ts: 7ms, application-code: 1180ms)
+✓ Compiled in 791ms
+✓ Compiled in 185ms
+✓ Compiled in 154ms
+✓ Compiled in 4.7s
+✓ Compiled in 1229ms

@@ -1,0 +1,19 @@
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3458
+- Network:       http://192.168.127.1:3458
+- Environments: .env.local
+✓ Ready in 1283ms
+
+ GET / 500 in 5.5s (next.js: 266ms, proxy.ts: 482ms, application-code: 4.7s)
+ GET / 500 in 956ms (next.js: 9ms, proxy.ts: 8ms, application-code: 939ms)
+ GET /article/ugandas-digital-economy-new-growth-phase 500 in 4.6s (next.js: 979ms, proxy.ts: 7ms, application-code: 3.6s)
+✓ Compiled in 223ms
+ GET / 500 in 1800ms (next.js: 272ms, proxy.ts: 132ms, application-code: 1396ms)
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3458
+- Network:       http://192.168.127.1:3458
+- Environments: .env.local
+✓ Ready in 4.0s
+
+○ Compiling / ...
+ GET / 200 in 9.9s (next.js: 5.3s, proxy.ts: 571ms, application-code: 4.0s)

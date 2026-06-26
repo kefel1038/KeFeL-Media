@@ -277,8 +277,8 @@ export const articles: Article[] = [
   },
   {
     id: "26",
-    slug: "world-cup-2026-african-teams",
-    title: "World Cup 2026: African Teams Shine as Nine Nations Represent the Continent",
+    slug: "african-teams-shine-as-nine-nations-represent-the-continent-at-fifa-world-cup-2026",
+    title: "African Teams Shine as Nine Nations Represent the Continent at FIFA World Cup 2026",
     excerpt:
       "Africa is set to make history at the FIFA World Cup 2026 as nine nations prepare to represent the continent on football's biggest stage. The expanded tournament has created a new opportunity for African teams to compete, showcase talent, and challenge the world's best football nations.",
     content: `<p>Africa is set to make history at the FIFA World Cup 2026 as nine nations prepare to represent the continent on football's biggest stage. The expanded tournament has created a new opportunity for African teams to compete, showcase talent, and challenge the world's best football nations.</p>
