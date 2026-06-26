@@ -7,6 +7,8 @@ import NewsletterSection from "@/components/ui/NewsletterSection";
 import { categories } from "@/data/categories";
 import Link from "next/link";
 
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "KeFeL Media — Informing, Inspiring, Connecting Africa and the World",
   description: "Breaking news, analysis and stories from Uganda, Africa and the world. KeFeL Media is Africa's premier digital journalism platform.",
