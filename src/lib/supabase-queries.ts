@@ -151,7 +151,7 @@ export async function searchArticles(query: string): Promise<Article[]> {
     .select("*")
     .eq("status", "published")
     .or(
-      `title.ilike.${q},excerpt.ilike.${q},category.ilike.${q},tags.cs.{${query.toLowerCase()}}`
+      `title.ilike.${q},excerpt.ilike.${q},category.ilike.${q}`
     )
     .order("published_at", { ascending: false });
   if (error) throw error;
