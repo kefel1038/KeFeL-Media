@@ -1,21 +1,18 @@
 import { NextResponse } from "next/server";
+import { requireAuth } from "@/lib/auth";
 import { supabaseAdmin } from "@/lib/supabase";
-import type { Role } from "@/lib/permissions";
-
-const ADMIN_COOKIE = "kfl_admin_session";
 
 export async function GET(request: Request) {
-  try {
-    const cookieHeader = request.headers.get("cookie") ?? "";
-    const match = cookieHeader.match(new RegExp(`${ADMIN_COOKIE}=([^;]+)`));
-    const role = (match?.[1] ?? "super_admin") as Role;
+  const auth = await requireAuth(request);
+  if (auth instanceof NextResponse) return auth;
 
+  try {
     let profile = null;
     try {
       const { data } = await supabaseAdmin
         .from("profiles")
         .select("*")
-        .eq("role", role)
+        .eq("role", auth.role)
         .limit(1)
         .single();
       if (data) profile = data;
@@ -25,7 +22,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       success: true,
-      user: profile ?? { role, display_name: "Admin User", username: "admin" },
+      user: profile ?? { role: auth.role, display_name: "Admin User", username: "admin" },
     });
   } catch (err: any) {
     return NextResponse.json(

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { requireAuth } from "@/lib/auth";
 
 type ToolId = "grammar" | "rewrite" | "engage" | "shorten" | "paragraphs" | "headline" | "summary" | "subheadings" | "readingTime";
 
@@ -15,6 +16,9 @@ const SYSTEM_PROMPTS: Record<ToolId, string> = {
 };
 
 export async function POST(request: Request) {
+  const auth = await requireAuth(request);
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const { toolId, content, excerpt, title } = await request.json();
 

@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Save, FileEdit, Eye, Send, Plus, X, Sparkles, Search, BarChart3, Layout, ChevronDown, ChevronUp, Upload } from "lucide-react";
+import { Save, FileEdit, Eye, Send, Plus, X, Sparkles, Search, BarChart3, Layout, ChevronDown, ChevronUp, Upload, Code, LayoutTemplate } from "lucide-react";
 import { categories } from "@/data/categories";
 import { calculateReadingTime } from "@/lib/utils";
 import ArticleTemplates from "./ArticleTemplates";
 import ArticleSEO from "./ArticleSEO";
 import AIEditorTools from "./AIEditorTools";
 import QualityScore from "./QualityScore";
+import BlockEditor from "@/components/editor/BlockEditor";
 
 interface ArticleFormProps {
   initial?: {
@@ -83,6 +84,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [tplOpen, setTplOpen] = useState(false);
+  const [useBlockEditor, setUseBlockEditor] = useState(false);
 
   const handleTitleChange = (val: string) => {
     setTitle(val);
@@ -266,12 +268,26 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
                 <p className="text-[10px] text-gray-400 mt-1">{excerpt.length}/160 characters · Lead should answer the 5 Ws</p>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">Article Body (HTML)</label>
-                <textarea value={content} onChange={(e) => { setContent(e.target.value); setReadingTime(calculateReadingTime(e.target.value)); }} rows={20}
-                  className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand font-mono leading-relaxed"
-                  required />
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400">Article Body</label>
+                  <button
+                    type="button"
+                    onClick={() => setUseBlockEditor(!useBlockEditor)}
+                    className="flex items-center gap-1 text-[10px] font-semibold text-gray-500 hover:text-brand transition-colors"
+                  >
+                    {useBlockEditor ? <Code size={12} /> : <LayoutTemplate size={12} />}
+                    {useBlockEditor ? "Raw HTML" : "Block Editor"}
+                  </button>
+                </div>
+                {useBlockEditor ? (
+                  <BlockEditor value={content} onChange={(html) => { setContent(html); setReadingTime(calculateReadingTime(html)); }} />
+                ) : (
+                  <textarea value={content} onChange={(e) => { setContent(e.target.value); setReadingTime(calculateReadingTime(e.target.value)); }} rows={20}
+                    className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand font-mono leading-relaxed"
+                    required />
+                )}
                 <div className="flex items-center justify-between mt-1">
-                  <p className="text-[10px] text-gray-400">Supports HTML: &lt;p&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;blockquote&gt;, &lt;img&gt;, &lt;ul&gt;, &lt;li&gt;</p>
+                  <p className="text-[10px] text-gray-400">Supports: paragraph, heading, quote, image, bullets, highlight box</p>
                   <p className="text-[10px] text-gray-400">{readingTime} min read</p>
                 </div>
               </div>

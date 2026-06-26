@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { LogIn } from "lucide-react";
+import TurnstileWidget from "@/components/ui/TurnstileWidget";
 
 function Form() {
   const router = useRouter();
@@ -11,6 +12,7 @@ function Form() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ function Form() {
       const res = await fetch("/api/admin/auth", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, turnstileToken }),
       });
       const data = await res.json();
       if (data.success) {
@@ -59,6 +61,7 @@ function Form() {
           className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
           placeholder="admin"
           required
+          autoComplete="username"
         />
       </div>
 
@@ -73,8 +76,11 @@ function Form() {
           className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white px-4 py-2.5 text-sm focus:outline-none focus:border-brand"
           placeholder="••••••••"
           required
+          autoComplete="current-password"
         />
       </div>
+
+      <TurnstileWidget onVerify={setTurnstileToken} />
 
       <button
         type="submit"

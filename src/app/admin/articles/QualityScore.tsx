@@ -25,13 +25,19 @@ export default function QualityScore({ title, excerpt, content, tags }: QualityS
   const hasQuotes = /<blockquote/.test(content);
   const tagCount = tags.split(",").filter(Boolean).length;
 
+  const hasCapitalizedStart = /^[A-Z]/.test(content.replace(/<[^>]*>/g, "").trim());
+  const hasProperEnding = /[.!?]\s*$/.test(content.replace(/<[^>]*>/g, "").trim());
+  const quotePairs = (content.match(/["""]/g) || []).length;
+  const hasBalancedQuotes = quotePairs % 2 === 0;
+  const grammarScore = hasCapitalizedStart && hasProperEnding && hasBalancedQuotes ? 92 : 75;
+
   const scores: Score[] = [
     {
       label: "Grammar",
       icon: FileText,
-      value: "N/A",
-      pct: 90,
-      color: "bg-green-500",
+      value: `${grammarScore}%`,
+      pct: grammarScore,
+      color: grammarScore >= 85 ? "bg-green-500" : "bg-yellow-500",
     },
     {
       label: "Readability",

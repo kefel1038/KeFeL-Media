@@ -1,34 +1,56 @@
+import { sanitizeHtml } from "@/lib/sanitize";
+
 interface ArticleBodyProps {
   content: string;
   secondaryImage?: string;
   secondaryImageCaption?: string;
 }
 
+function formatParagraphs(html: string): string {
+  const hasBlockElements = /<h[1-6]>|<blockquote>|<div|<figure>|<ul>|<ol>|<table>|<pre>/i.test(html);
+  if (hasBlockElements) return html;
+
+  return html
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .map((block) => {
+      const trimmed = block.trim();
+      if (/^<[a-z]+[\s>]/i.test(trimmed)) return trimmed;
+      return `<p>${trimmed}</p>`;
+    })
+    .join("\n");
+}
+
 export default function ArticleBody({ content, secondaryImage, secondaryImageCaption }: ArticleBodyProps) {
-  // Transform highlight-box divs into styled components
-  const processed = content.replace(
+  const formatted = formatParagraphs(content);
+
+  const processed = formatted.replace(
     /<div class="highlight-box">([\s\S]*?)<\/div>/g,
     (_, inner) => `<div class="kfl-highlight-box">${inner}</div>`,
   );
 
+  const safeHtml = sanitizeHtml(processed);
+
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="article-content">
       <div
         className="
           prose prose-lg dark:prose-invert max-w-none
           prose-headings:font-black prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-headline
-          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:border-l-4 prose-h2:border-brand prose-h2:pl-4
-          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-gray-800 dark:prose-h3:text-gray-200
-          prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-5 prose-p:text-[17px] md:prose-p:text-lg
-          prose-a:text-brand prose-a:no-underline hover:prose-a:underline
+          prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h2:border-l-4 prose-h2:border-brand prose-h2:pl-4 prose-h2:leading-tight
+          prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-gray-800 dark:prose-h3:text-gray-200 prose-h3:leading-snug
+          prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-[1.8] prose-p:mb-6 prose-p:text-[17px] md:prose-p:text-[18px] prose-p:tracking-normal
+          prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-a:font-medium
           prose-strong:text-gray-900 dark:prose-strong:text-white prose-strong:font-bold
-          prose-blockquote:border-l-brand prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400 prose-blockquote:text-lg prose-blockquote:italic prose-blockquote:my-8 prose-blockquote:pl-6 prose-blockquote:py-2 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-zinc-800/50 prose-blockquote:rounded-r-lg
-          prose-img:rounded-xl prose-img:shadow-md
-          prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-li:my-1
+          prose-blockquote:border-l-brand prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400 prose-blockquote:text-lg prose-blockquote:italic prose-blockquote:my-8 prose-blockquote:pl-6 prose-blockquote:py-3 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-zinc-800/50 prose-blockquote:rounded-r-lg
+          prose-img:rounded-xl prose-img:shadow-md prose-img:my-8
+          prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-li:my-1.5 prose-li:leading-relaxed
           prose-code:text-brand prose-code:bg-gray-100 dark:prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+          prose-hr:border-gray-200 dark:prose-hr:border-zinc-700 prose-hr:my-10
           first:prose-p:text-xl first:prose-p:text-gray-800 dark:first:prose-p:text-gray-200 first:prose-p:font-medium first:prose-p:leading-relaxed
         "
-        dangerouslySetInnerHTML={{ __html: processed }}
+        dangerouslySetInnerHTML={{ __html: safeHtml }}
       />
       {secondaryImage && (
         <figure className="w-full md:w-80 float-right md:ml-6 md:mb-4 space-y-1 hidden md:block mt-6 md:mt-0">

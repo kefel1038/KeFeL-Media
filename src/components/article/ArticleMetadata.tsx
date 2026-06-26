@@ -1,34 +1,32 @@
-import { Calendar, Clock, Eye, User } from "lucide-react";
+import { Calendar, Clock, Eye } from "lucide-react";
 import { Article } from "@/lib/types";
-import { formatDate, readingTimeLabel } from "@/lib/utils";
+import { formatDate, readingTimeLabel, stripHtml } from "@/lib/utils";
+import CategoryBadge from "@/components/ui/CategoryBadge";
 
 interface ArticleMetadataProps {
   article: Article;
+  showCategory?: boolean;
 }
 
-export default function ArticleMetadata({ article }: ArticleMetadataProps) {
+export default function ArticleMetadata({ article, showCategory = true }: ArticleMetadataProps) {
+  const wordCount = stripHtml(article.content || "").split(/\s+/).filter(Boolean).length;
+  const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
   return (
-    <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-6">
-      <span className="inline-flex items-center gap-1.5 bg-brand/10 text-brand font-semibold px-2.5 py-1 rounded-full capitalize text-[11px]">
-        {article.category}
-      </span>
-      <span className="flex items-center gap-1.5">
-        <User size={12} />
-        {article.author.name}
-      </span>
-      <span>·</span>
+    <div className="flex flex-wrap items-center gap-2.5 text-xs text-gray-500 dark:text-gray-400">
+      {showCategory && <CategoryBadge category={article.category} size="sm" />}
       <span className="flex items-center gap-1.5">
         <Calendar size={12} />
         {formatDate(article.publishedAt)}
       </span>
-      <span>·</span>
-      <span className="flex items-center gap-1.5">
+      <span className="hidden sm:inline text-gray-300 dark:text-zinc-600">·</span>
+      <span className="hidden sm:flex items-center gap-1.5">
         <Clock size={12} />
-        {readingTimeLabel(article.readingTime)}
+        {readingTimeLabel(readingTime)}
       </span>
       {(article.views ?? 0) > 0 && (
         <>
-          <span>·</span>
+          <span className="text-gray-300 dark:text-zinc-600">·</span>
           <span className="flex items-center gap-1.5">
             <Eye size={12} />
             {(article.views ?? 0).toLocaleString()} views

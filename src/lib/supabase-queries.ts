@@ -1,8 +1,26 @@
 import { supabase, supabaseAdmin } from "./supabase";
-import type { Article, Category } from "./types";
+import type { Article, Category, Author } from "./types";
 
 const ARTICLES_CACHE = new Map<string, { data: Article[]; time: number }>();
 const CACHE_TTL = 30_000;
+
+function parseAuthor(raw: any): Author {
+  if (typeof raw === "string") {
+    try {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object" && typeof parsed.name === "string") {
+        return { name: parsed.name, avatar: parsed.avatar ?? "", role: parsed.role ?? "" };
+      }
+    } catch {
+      // fallthrough
+    }
+    return { name: raw, avatar: "", role: "" };
+  }
+  if (raw && typeof raw === "object") {
+    return { name: raw.name ?? "KeFeL Media", avatar: raw.avatar ?? "", role: raw.role ?? "" };
+  }
+  return { name: "KeFeL Media", avatar: "", role: "" };
+}
 
 function fromDb(row: any): Article {
   return {
@@ -12,7 +30,7 @@ function fromDb(row: any): Article {
     excerpt: row.excerpt,
     content: row.content,
     category: row.category,
-    author: typeof row.author === "string" ? JSON.parse(row.author) : row.author,
+    author: parseAuthor(row.author),
     image: row.image,
     imageCaption: row.image_caption ?? undefined,
     imageCredit: row.image_credit ?? undefined,
@@ -22,12 +40,14 @@ function fromDb(row: any): Article {
     template: row.template ?? "",
     articleType: row.article_type ?? "news",
     publishedAt: row.published_at,
+    updatedAt: row.updated_at ?? undefined,
     readingTime: row.reading_time,
     featured: row.featured,
     trending: row.trending,
     status: row.status ?? "draft",
     tags: row.tags ?? [],
     views: row.views ?? 0,
+    altText: row.alt_text ?? undefined,
   };
 }
 
@@ -156,6 +176,26 @@ export async function searchArticles(query: string): Promise<Article[]> {
     .order("published_at", { ascending: false });
   if (error) throw error;
   return (data ?? []).map(fromDb);
+}
+
+export async function getArticlesByAuthor(authorName: string, limit = 10): Promise<Article[]> {
+  try {
+    const { data, error } = await supabase
+      .from("articles")
+      .select("*")
+      .eq("status", "published")
+      .order("published_at", { ascending: false });
+    if (error) throw error;
+    const all = (data ?? []).map(fromDb);
+    return all
+      .filter((a) => a.author.name.toLowerCase() === authorName.toLowerCase())
+      .slice(0, limit);
+  } catch {
+    const all = await fetchAllArticles(false);
+    return all
+      .filter((a) => a.author.name.toLowerCase() === authorName.toLowerCase())
+      .slice(0, limit);
+  }
 }
 
 export async function getAllArticles(): Promise<Article[]> {

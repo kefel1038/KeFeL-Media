@@ -21,6 +21,7 @@ export interface Article {
   secondaryImage?: string;
   secondaryImageCaption?: string;
   publishedAt: string;
+  updatedAt?: string;
   readingTime: number;
   featured: boolean;
   trending: boolean;
@@ -30,6 +31,7 @@ export interface Article {
   highlights?: string[];
   template?: string;
   articleType?: ArticleType;
+  altText?: string;
 }
 
 export interface Category {

@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { requireAuth } from "@/lib/auth";
 
 export async function DELETE(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  const auth = await requireAuth(request);
+  if (auth instanceof NextResponse) return auth;
+
   const { id } = await params;
   try {
     const { error } = await supabaseAdmin.from("subscribers").delete().eq("id", id);

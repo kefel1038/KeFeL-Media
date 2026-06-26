@@ -930,6 +930,16 @@ export async function searchArticles(query: string): Promise<Article[]> {
   }
 }
 
+export async function getArticlesByAuthor(authorName: string, limit = 10): Promise<Article[]> {
+  try {
+    return await db.getArticlesByAuthor(authorName, limit);
+  } catch {
+    return articles
+      .filter((a) => a.author.name.toLowerCase() === authorName.toLowerCase() && a.status === "published")
+      .slice(0, limit);
+  }
+}
+
 export async function getAllArticles(): Promise<Article[]> {
   try {
     return await db.getAllArticles();

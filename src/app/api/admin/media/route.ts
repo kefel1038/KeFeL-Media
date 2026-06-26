@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import { uploadFile, listMedia, deleteFile } from "@/lib/storage";
+import { requireAuth } from "@/lib/auth";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const auth = await requireAuth(request);
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const files = await listMedia();
     return NextResponse.json({ success: true, files });
@@ -14,6 +18,9 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const auth = await requireAuth(request);
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
@@ -37,6 +44,9 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const auth = await requireAuth(request);
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const { path } = await request.json();
     if (!path) {

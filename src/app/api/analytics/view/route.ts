@@ -1,7 +1,13 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { rateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const rl = rateLimit(request, "general");
+  if (!rl.allowed) {
+    return NextResponse.json({ success: false, error: "Too many requests" }, { status: 429 });
+  }
+
   try {
     const { slug } = await request.json();
     if (!slug) {

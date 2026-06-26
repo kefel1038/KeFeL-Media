@@ -2,8 +2,20 @@ import { NextResponse } from "next/server";
 import { articles } from "@/data/articles";
 import { categories } from "@/data/categories";
 import { supabaseAdmin } from "@/lib/supabase";
+import { requireAuth } from "@/lib/auth";
 
-export async function POST() {
+export async function POST(request: Request) {
+  const auth = await requireAuth(request, "super_admin");
+  if (auth instanceof NextResponse) return auth;
+
+  // Only allow in development
+  if (process.env.NODE_ENV !== "development") {
+    return NextResponse.json(
+      { success: false, error: "Seed is only available in development" },
+      { status: 403 },
+    );
+  }
+
   try {
     await supabaseAdmin.from("articles").delete().neq("id", 0);
     await supabaseAdmin.from("categories").delete().neq("id", 0);
