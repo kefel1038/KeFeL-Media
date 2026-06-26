@@ -876,11 +876,12 @@ export async function getArticlesByCategory(category: string, limit?: number): P
 
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
   try {
-    return await db.getArticleBySlug(slug);
+    const result = await db.getArticleBySlug(slug);
+    if (result) return result;
   } catch (e) {
     console.error("getArticleBySlug fell back to local data:", e);
-    return articles.find((a) => a.slug === slug);
   }
+  return articles.find((a) => a.slug === slug);
 }
 
 export async function getSidebarLatest(limit = 4): Promise<Article[]> {

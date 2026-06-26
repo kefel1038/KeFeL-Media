@@ -11,6 +11,22 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.supabase.co",
       },
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "scontent.fdoh11-1.fna.fbcdn.net",
+      },
+      {
+        protocol: "https",
+        hostname: "scontent.fdoh11-2.fna.fbcdn.net",
+      },
+      {
+        protocol: "https",
+        hostname: "scontent.fbcdn.net",
+      },
     ],
   },
   async headers() {

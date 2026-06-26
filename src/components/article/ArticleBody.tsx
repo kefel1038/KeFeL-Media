@@ -6,26 +6,37 @@ interface ArticleBodyProps {
   secondaryImageCaption?: string;
 }
 
-function formatParagraphs(html: string): string {
-  const hasBlockElements = /<h[1-6]>|<blockquote>|<div|<figure>|<ul>|<ol>|<table>|<pre>/i.test(html);
-  if (hasBlockElements) return html;
+function isHtml(text: string): boolean {
+  return /<h[1-6]>|<blockquote>|<div|<figure>|<ul>|<ol>|<table>|<pre>|<p[\s>]/i.test(text);
+}
 
-  return html
+function parseParagraphs(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) return "";
+
+  // Already HTML with block elements — return as-is
+  if (isHtml(trimmed)) return trimmed;
+
+  // Plain text: split on double+ newlines into semantic paragraphs
+  const blocks = trimmed
     .split(/\n\s*\n/)
-    .map((block) => block.trim())
-    .filter(Boolean)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  if (blocks.length === 0) return "";
+
+  return blocks
     .map((block) => {
-      const trimmed = block.trim();
-      if (/^<[a-z]+[\s>]/i.test(trimmed)) return trimmed;
-      return `<p>${trimmed}</p>`;
+      if (/^<[a-z]+[\s>]/i.test(block)) return block;
+      return `<p>${block}</p>`;
     })
     .join("\n");
 }
 
 export default function ArticleBody({ content, secondaryImage, secondaryImageCaption }: ArticleBodyProps) {
-  const formatted = formatParagraphs(content);
+  const html = parseParagraphs(content);
 
-  const processed = formatted.replace(
+  const processed = html.replace(
     /<div class="highlight-box">([\s\S]*?)<\/div>/g,
     (_, inner) => `<div class="kfl-highlight-box">${inner}</div>`,
   );
@@ -36,7 +47,7 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
     <div className="article-content">
       <div
         className="
-          prose prose-lg dark:prose-invert max-w-none
+          prose prose-lg dark:prose-invert max-w-none whitespace-pre-line
           prose-headings:font-black prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-headline
           prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h2:border-l-4 prose-h2:border-brand prose-h2:pl-4 prose-h2:leading-tight
           prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-gray-800 dark:prose-h3:text-gray-200 prose-h3:leading-snug
