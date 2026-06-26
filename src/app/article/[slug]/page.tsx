@@ -8,6 +8,7 @@ import ArticleMetadata from "@/components/article/ArticleMetadata";
 import SocialMediaCopy from "@/components/article/SocialMediaCopy";
 import RelatedStories from "@/components/article/RelatedStories";
 import Sidebar from "@/components/layout/Sidebar";
+import PageViewTracker from "@/components/analytics/PageViewTracker";
 import CategoryBadge from "@/components/ui/CategoryBadge";
 import { formatDate, readingTimeLabel, generateMetaDescription } from "@/lib/utils";
 import { Calendar, Clock, Share2 } from "lucide-react";
@@ -66,6 +67,7 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
+      <PageViewTracker slug={slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-6">

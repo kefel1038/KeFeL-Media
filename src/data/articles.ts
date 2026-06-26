@@ -7,13 +7,27 @@ export const articles: Article[] = [
     slug: "african-innovation-transforming-digital-future",
     title: "African Innovation Is Transforming The Future Of Digital Technology",
     excerpt:
-      "Discover the startups, entrepreneurs and groundbreaking innovations that are shaping Africa's next generation digital economy and positioning the continent as a global tech powerhouse.",
-    content: `<p>Across the African continent, a quiet revolution is underway. From the high-rises of Nairobi's Silicon Savannah to the startup hubs of Lagos and Cape Town, a new generation of African innovators is rewriting the rules of what technology can achieve in the Global South.</p>
-    <p>The numbers tell a compelling story. African tech startups raised over $5 billion in venture funding in 2024 alone, a figure that would have seemed impossible just a decade ago. Companies like Flutterwave, Andela, and Jumia have demonstrated that African-built solutions can compete — and win — on the global stage.</p>
-    <p>"We are not waiting for the world to bring us technology. We are building it ourselves, for ourselves and for the world," says Dr. Amara Nwosu, CEO of Lagos-based fintech pioneer PayAfrica.</p>
-    <h2>Mobile-First Transformation</h2>
-    <p>Africa's mobile-first infrastructure has become its greatest advantage. With over 600 million smartphone users and the world's fastest-growing internet penetration rates, the continent has leapfrogged legacy systems that bog down more developed economies.</p>
-    <p>Uganda's own tech scene has seen remarkable growth. Kampala-based startups are solving uniquely African challenges — from agricultural technology that helps smallholder farmers predict crop yields using satellite data, to health-tech platforms connecting rural communities with specialist doctors via telemedicine.</p>`,
+      "African startups raised over $5 billion in 2024. A new generation of innovators is reshaping the continent's digital economy and positioning Africa as a global tech powerhouse.",
+    content: `<p>Across the African continent, a quiet revolution is underway. From the high-rises of Nairobi's Silicon Savannah to the startup hubs of Lagos and Cape Town, African innovators are rewriting the rules of technology.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>African tech startups raised over $5 billion in venture funding in 2024</li>
+<li>Mobile-first infrastructure gives Africa a leapfrog advantage</li>
+<li>Uganda's tech scene shows remarkable growth in agri-tech and health-tech</li>
+<li>Companies like Flutterwave and Andela compete globally</li>
+</ul>
+</div>
+<h2>A Historic Surge in Venture Funding</h2>
+<p>The numbers tell a compelling story. African tech startups raised over $5 billion in venture funding in 2024 alone — a figure that would have seemed impossible just a decade ago.</p>
+<p>Companies like Flutterwave, Andela, and Jumia have demonstrated that African-built solutions can compete on the global stage. They are not just catching up — they are leading in areas like mobile payments and health technology.</p>
+<blockquote>"We are not waiting for the world to bring us technology. We are building it ourselves, for ourselves and for the world." — Dr. Amara Nwosu, CEO of PayAfrica</blockquote>
+<h2>Mobile-First Transformation</h2>
+<p>Africa's mobile-first infrastructure has become its greatest advantage. With over 600 million smartphone users and the world's fastest-growing internet penetration rates, the continent has leapfrogged legacy systems that bog down more developed economies.</p>
+<p>This mobile-first approach has enabled innovations that skip traditional stages of technological development. Banking, healthcare, and education are being reimagined through the lens of smartphone accessibility.</p>
+<h2>Uganda's Emerging Tech Scene</h2>
+<p>Uganda's own tech scene has seen remarkable growth. Kampala-based startups are solving uniquely African challenges — from agricultural technology that helps smallholder farmers predict crop yields using satellite data, to health-tech platforms connecting rural communities with specialist doctors via telemedicine.</p>
+<p>The government's support for innovation hubs and incubators has created a thriving ecosystem where young Ugandan developers are building world-class solutions.</p>`,
     category: "technology",
     author: {
       name: "Amara Okonkwo",
@@ -40,8 +54,23 @@ export const articles: Article[] = [
     title: "Uganda's Digital Economy Enters Bold New Growth Phase",
     excerpt:
       "Government-backed digital initiatives and private sector investment are propelling Uganda into an era of unprecedented connectivity and economic transformation.",
-    content: `<p>Uganda's digital economy is experiencing its most dynamic period of growth as a combination of policy reform, infrastructure investment and private sector momentum converge to create new opportunities across every sector.</p>
-    <p>The government's National Digital Transformation Strategy has unlocked over $200 million in infrastructure spending, with fibre optic cables reaching previously underserved rural areas and 5G pilots underway in Kampala and Entebbe.</p>`,
+    content: `<p>Uganda's digital economy is experiencing its most dynamic period of growth. A combination of policy reform, infrastructure investment, and private sector momentum is creating new opportunities across every sector.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>National Digital Transformation Strategy unlocked over $200 million in spending</li>
+<li>Fibre optic cables reaching previously underserved rural areas</li>
+<li>5G pilots underway in Kampala and Entebbe</li>
+<li>Private sector investment accelerating digital adoption</li>
+</ul>
+</div>
+<h2>National Strategy Driving Change</h2>
+<p>The government's National Digital Transformation Strategy has unlocked over $200 million in infrastructure spending. Fibre optic cables are reaching previously underserved rural areas, connecting communities that were once cut off from the digital economy.</p>
+<p>5G pilots are already underway in Kampala and Entebbe, positioning Uganda as one of East Africa's leaders in next-generation connectivity.</p>
+<h2>Impact on Everyday Ugandans</h2>
+<p>For ordinary Ugandans, this digital transformation means better access to services. Farmers can check market prices in real time. Students can access online learning resources. Small business owners can reach customers beyond their immediate neighbourhoods.</p>
+<blockquote>"Digital inclusion is not a luxury — it is a necessity for economic growth in the 21st century." — Ministry of ICT Official</blockquote>
+<p>The private sector has responded with enthusiasm. Mobile network operators are investing heavily in network expansion, while tech startups are building the applications and platforms that will define Uganda's digital future.</p>`,
     category: "uganda",
     author: {
       name: "Grace Nakato",
@@ -63,7 +92,22 @@ export const articles: Article[] = [
     title: "African Startups Attract Record-Breaking Global Investment",
     excerpt:
       "International venture capital firms are pouring billions into African tech companies, marking a historic shift in global investment patterns.",
-    content: `<p>The world's leading venture capital firms have awakened to Africa's potential. In the first quarter of 2026, African startups collectively raised $1.8 billion — the highest quarterly total in the continent's history.</p>`,
+    content: `<p>The world's leading venture capital firms have awakened to Africa's potential. In the first quarter of 2026, African startups collectively raised $1.8 billion — the highest quarterly total in the continent's history.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>African startups raised $1.8 billion in Q1 2026 — a quarterly record</li>
+<li>Fintech continues to dominate, capturing 45% of all funding</li>
+<li>West Africa leads with 38% of total investment</li>
+<li>Global VC firms are opening regional offices across the continent</li>
+</ul>
+</div>
+<h2>Where the Money Is Going</h2>
+<p>Fintech remains the dominant sector, capturing 45% of all funding. Health-tech and agri-tech are emerging as significant growth areas, attracting investors who see both social impact and strong returns.</p>
+<p>West Africa leads the continent, accounting for 38% of total investment, followed by East Africa with 28% and North Africa with 20%.</p>
+<blockquote>"Africa is no longer an emerging market — it is a present opportunity. The returns we are seeing from our portfolio companies here are outperforming every other region." — Global Venture Capital Partner</blockquote>
+<h2>Global Investors Commit to Africa</h2>
+<p>Major global VC firms have opened regional offices in Nairobi, Lagos, and Cape Town. This physical presence signals a long-term commitment that goes beyond portfolio investment. These firms are also investing in local talent, funding accelerator programmes, and building the ecosystem infrastructure that will sustain growth.</p>`,
     category: "business",
     author: {
       name: "Kwame Asante",
@@ -85,7 +129,23 @@ export const articles: Article[] = [
     title: "New Energy Technologies Are Changing African Communities Forever",
     excerpt:
       "Solar microgrids and clean energy solutions are bringing reliable power to millions of Africans who have never had access to the national grid.",
-    content: `<p>In villages across sub-Saharan Africa, a quiet but profound revolution is underway. Solar microgrids, wind energy installations, and off-grid power solutions are delivering clean, reliable electricity to communities that have long been overlooked by national power infrastructure.</p>`,
+    content: `<p>In villages across sub-Saharan Africa, a quiet but profound revolution is underway. Solar microgrids, wind energy installations, and off-grid power solutions are delivering clean, reliable electricity to communities that have long been overlooked by national power infrastructure.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Solar microgrids delivering power to remote communities across Africa</li>
+<li>Off-grid solutions bypassing traditional grid infrastructure</li>
+<li>Clean energy creating new economic opportunities in rural areas</li>
+<li>International funding accelerating renewable energy adoption</li>
+</ul>
+</div>
+<h2>Powering Communities, Powering Dreams</h2>
+<p>For communities that have never been connected to the national grid, solar microgrids are not just a convenience — they are a transformation. Children can study after dark. Clinics can refrigerate vaccines. Small businesses can operate beyond daylight hours.</p>
+<p>The impact on education alone has been remarkable. In communities that received solar installations, school attendance rates have increased by an average of 35%, as children can now complete homework and study in the evenings.</p>
+<h2>The Economics of Clean Energy</h2>
+<p>The cost of solar technology has fallen dramatically, making off-grid solutions increasingly affordable. Pay-as-you-go models, enabled by mobile money, allow households to access clean energy without large upfront costs.</p>
+<blockquote>"We are not just bringing light — we are bringing opportunity. When a community gets reliable power, everything changes." — Energy Access Initiative Director</blockquote>
+<p>International climate finance is accelerating these developments. The Green Climate Fund and other multilateral institutions have committed significant resources to African renewable energy projects.</p>`,
     category: "africa",
     author: {
       name: "Fatima Al-Hassan",
@@ -106,8 +166,24 @@ export const articles: Article[] = [
     slug: "urban-farming-downtown-lofts",
     title: "Urban Farming Takes Off in Downtown Kampala's High-Rise Lofts",
     excerpt:
-      "Innovative vertical farming techniques are transforming empty rooftops and abandoned spaces into productive urban food gardens.",
-    content: `<p>Kampala's skyline is changing. Not with new office towers or luxury apartments, but with something far more revolutionary — food. A growing movement of urban farmers is converting rooftops, balconies and unused indoor spaces into productive agricultural zones.</p>`,
+      "Innovative vertical farming techniques are transforming empty rooftops and abandoned spaces into productive urban food gardens across Kampala.",
+    content: `<p>Kampala's skyline is changing. Not with new office towers or luxury apartments, but with something far more revolutionary — food. A growing movement of urban farmers is converting rooftops, balconies and unused indoor spaces into productive agricultural zones.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Vertical farming transforming Kampala's rooftops into food gardens</li>
+<li>Urban farmers growing fresh produce within city limits</li>
+<li>Hydroponic systems requiring no soil, using 90% less water</li>
+<li>Movement expanding to other Ugandan cities</li>
+</ul>
+</div>
+<h2>Farming Goes Vertical</h2>
+<p>Vertical farming techniques have made it possible to grow significant amounts of food in small spaces. Hydroponic systems — which use nutrient-rich water instead of soil — require 90% less water than traditional agriculture and can produce crops year-round.</p>
+<p>These systems are particularly valuable in a city like Kampala, where rapid urbanisation has reduced available agricultural land.</p>
+<h2>From Hobby to Business</h2>
+<p>What began as a hobby for a few enthusiastic individuals has grown into a movement. Urban farming cooperatives are now supplying fresh vegetables to local restaurants and markets.</p>
+<blockquote>"I grow more food on my rooftop than I could on a quarter-acre of land. And it is fresher, cleaner, and more profitable." — Kampala Urban Farmer</blockquote>
+<p>The Kampala City Council has taken notice, offering incentives for building owners who install rooftop gardens. The initiative is part of a broader strategy to improve food security and reduce the city's carbon footprint.</p>`,
     category: "uganda",
     author: {
       name: "Moses Okello",
@@ -129,7 +205,23 @@ export const articles: Article[] = [
     title: "Global Food Festival Celebrates Africa's Diverse Culinary Heritage",
     excerpt:
       "A vibrant international food festival showcasing African cuisines from 54 nations is uniting communities and promoting cultural exchange.",
-    content: `<p>From the injera flatbreads of Ethiopia to the jollof rice of West Africa, from the tagines of Morocco to the nyama choma of East Africa — the Global African Food Festival is a celebration of the continent's extraordinary culinary diversity.</p>`,
+    content: `<p>From the injera flatbreads of Ethiopia to the jollof rice of West Africa, from the tagines of Morocco to the nyama choma of East Africa — the Global African Food Festival is a celebration of the continent's extraordinary culinary diversity.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Over 200 exhibitors from 54 African nations participating</li>
+<li>Cooking demonstrations by world-renowned African chefs</li>
+<li>Workshops on traditional food preparation techniques</li>
+<li>50,000 visitors expected over the five-day event</li>
+</ul>
+</div>
+<h2>A Feast for the Senses</h2>
+<p>The festival, now in its third year, has grown from a small community gathering to one of Africa's most anticipated cultural events. Over 200 exhibitors are participating, representing every African nation.</p>
+<p>Visitors can sample dishes they have never tasted before, learn about ingredients they have never encountered, and hear the stories behind recipes that have been passed down through generations.</p>
+<h2>More Than Food</h2>
+<p>The festival is about more than eating. It is a platform for cultural exchange, economic opportunity, and the preservation of culinary heritage.</p>
+<blockquote>"Food is the quickest way to understand a culture. Through these dishes, we are telling the story of who we are as Africans." — Festival Organiser</blockquote>
+<p>Cooking demonstrations by world-renowned African chefs are among the festival's most popular attractions. These sessions showcase both traditional techniques and modern innovations, highlighting the dynamic nature of African cuisine.</p>`,
     category: "entertainment",
     author: {
       name: "Zara Mensah",
@@ -150,8 +242,24 @@ export const articles: Article[] = [
     slug: "connecting-communities-through-sports",
     title: "How Sports Is Building Bridges Across Africa's Diverse Communities",
     excerpt:
-      "Community sports programs are proving to be powerful tools for social cohesion, youth development, and cross-cultural understanding.",
-    content: `<p>In a continent of 54 nations and over 2,000 languages, sport has emerged as a universal language that transcends boundaries and builds bridges between communities.</p>`,
+      "Community sports programs across Africa are proving to be powerful tools for social cohesion, youth development, and cross-cultural understanding.",
+    content: `<p>In a continent of 54 nations and over 2,000 languages, sport has emerged as a universal language that transcends boundaries and builds bridges between communities.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Community sports programmes active in 30+ African countries</li>
+<li>Youth participation linked to improved educational outcomes</li>
+<li>Programmes promoting gender equality through sports</li>
+<li>Cross-community tournaments reducing ethnic tensions</li>
+</ul>
+</div>
+<h2>Sport as a Tool for Unity</h2>
+<p>Across Africa, community sports programmes are proving that the playing field can be a powerful platform for social change. In countries with histories of ethnic division, mixed-community football leagues are bringing together young people from different backgrounds.</p>
+<p>"When you are on the pitch, it does not matter which community you come from. What matters is how you play," says a coach from a peace-building sports programme in Kenya.</p>
+<h2>Youth Development Through Sports</h2>
+<p>Beyond unity, these programmes are driving tangible development outcomes. Young people who participate in organised sports show higher school attendance rates, better health outcomes, and improved leadership skills.</p>
+<blockquote>"Sport teaches discipline, teamwork, and resilience. These are skills that young people carry with them for life." — Youth Sports Programme Director</blockquote>
+<p>Girls' participation in sports has been a particular focus, with programmes designed to challenge gender stereotypes and create opportunities for young women. The results have been encouraging, with female participation rates increasing significantly across the continent.</p>`,
     category: "sports",
     author: {
       name: "David Osei",
@@ -234,7 +342,24 @@ export const articles: Article[] = [
     title: "Kampala Launches Ambitious Smart City Initiative",
     excerpt:
       "The Ugandan capital is rolling out smart traffic management, digital governance, and IoT infrastructure in a landmark urban modernisation plan.",
-    content: `<p>Kampala Metropolitan Authority has unveiled its most ambitious urban development plan in decades, a comprehensive smart city blueprint that will transform the capital into one of Africa's most technologically advanced cities.</p>`,
+    content: `<p>Kampala Metropolitan Authority has unveiled its most ambitious urban development plan in decades. The comprehensive smart city blueprint will transform the capital into one of Africa's most technologically advanced cities.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Smart traffic management system to reduce congestion by 30%</li>
+<li>Digital governance platform for citizen services</li>
+<li>IoT sensors for waste management and utility monitoring</li>
+<li>Public Wi-Fi networks in major city centres</li>
+</ul>
+</div>
+<h2>A Blueprint for the Future</h2>
+<p>The smart city initiative encompasses multiple interconnected projects. At its core is a central data platform that will integrate information from traffic sensors, utility meters, waste management systems, and public services.</p>
+<p>"Kampala has grown rapidly, and our infrastructure has struggled to keep pace. This initiative is about using technology to make the city work better for everyone," said a city official.</p>
+<h2>Smart Traffic Management</h2>
+<p>One of the most anticipated components is the smart traffic management system. Real-time data from sensors and cameras will optimise traffic light patterns, reduce congestion, and provide commuters with accurate travel time information.</p>
+<p>The system is expected to reduce average commute times by 30%, a significant improvement in a city known for its traffic challenges.</p>
+<blockquote>"Technology will not eliminate Kampala's traffic overnight, but it will make it manageable. That changes everything for the millions of people who move through this city every day." — Urban Planning Expert</blockquote>
+<p>Digital governance platforms will allow citizens to access government services online, from business registration to tax payments, reducing the need for in-person visits to government offices.</p>`,
     category: "uganda",
     author: {
       name: "Grace Nakato",
@@ -256,7 +381,24 @@ export const articles: Article[] = [
     title: "Africa Climate Summit 2026: Leaders Commit to Bold Green Targets",
     excerpt:
       "African heads of state have made unprecedented climate pledges at the continent's most significant environmental summit in a generation.",
-    content: `<p>In a landmark gathering of African heads of state, environment ministers and climate scientists, the Africa Climate Summit 2026 produced a historic set of commitments that observers are calling the most significant environmental accord ever agreed on the continent.</p>`,
+    content: `<p>In a landmark gathering of African heads of state, environment ministers and climate scientists, the Africa Climate Summit 2026 produced a historic set of commitments that observers are calling the most significant environmental accord ever agreed on the continent.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>40% reduction in carbon emissions by 2035 across signatory nations</li>
+<li>$50 billion annual green fund established for renewable projects</li>
+<li>Continental carbon trading framework approved</li>
+<li>Mangrove restoration target of 1 million hectares by 2030</li>
+</ul>
+</div>
+<h2>Unprecedented Commitments</h2>
+<p>The centrepiece of the summit is a binding commitment to reduce carbon emissions by 40% by 2035. While ambitious, leaders argue that Africa — despite contributing less than 4% of global emissions — has the most to lose from climate change.</p>
+<p>"We did not create this crisis, but we will be part of the solution," the summit's final declaration reads. "Africa's green future is not a choice — it is a necessity."</p>
+<h2>Funding the Green Transition</h2>
+<p>A $50 billion annual green fund has been established to finance renewable energy projects across the continent. The fund will be capitalised through a combination of national contributions, international climate finance, and private sector investment.</p>
+<p>The summit also approved a continental carbon trading framework, allowing African nations to participate in global carbon markets more effectively.</p>
+<blockquote>"This is not just an environmental agreement — it is an economic transformation plan. The green economy will create millions of jobs across Africa." — Summit Spokesperson</blockquote>
+<p>Environmental groups have welcomed the commitments but cautioned that implementation will be the true test. "The targets are admirable. Now the hard work of delivery begins," said a representative of the African Climate Alliance.</p>`,
     category: "africa",
     author: {
       name: "Fatima Al-Hassan",
@@ -278,7 +420,23 @@ export const articles: Article[] = [
     title: "Nile Basin Nations Sign Historic Water-Sharing Agreement",
     excerpt:
       "Ten countries sharing the Nile River have reached a breakthrough agreement on water allocation, ending decades of diplomatic tensions.",
-    content: `<p>After more than thirty years of negotiations, the ten nations sharing the Nile River basin have signed a landmark water-sharing framework that experts say could serve as a model for international resource diplomacy worldwide.</p>`,
+    content: `<p>After more than thirty years of negotiations, the ten nations sharing the Nile River basin have signed a landmark water-sharing framework. Experts say the agreement could serve as a model for international resource diplomacy worldwide.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Ten nations signed the historic water-sharing framework</li>
+<li>Agreement ends decades of diplomatic tensions over Nile waters</li>
+<li>Equitable allocation formula based on scientific data</li>
+<li>Joint monitoring mechanism established for compliance</li>
+</ul>
+</div>
+<h2>A Breakthrough After Three Decades</h2>
+<p>The Nile Basin agreement has been described as one of the most significant diplomatic achievements in modern African history. For over thirty years, upstream and downstream nations were locked in disputes over access to the river's waters.</p>
+<p>The breakthrough came when all parties agreed to base the allocation formula on scientific data rather than colonial-era treaties. This shift allowed for a framework that recognises the legitimate needs of all basin countries.</p>
+<h2>What the Agreement Means</h2>
+<p>Under the new framework, water allocation will be determined by a combination of factors including population, existing usage, and environmental requirements. A joint monitoring mechanism will ensure compliance and resolve disputes.</p>
+<blockquote>"This agreement proves that African nations can solve even the most complex challenges through dialogue and mutual respect. The Nile belongs to all of us." — Nile Basin Initiative Representative</blockquote>
+<p>The agreement is expected to unlock significant development projects, including irrigation schemes, hydroelectric power plants, and water supply systems that had been stalled by the diplomatic impasse.</p>`,
     category: "africa",
     author: {
       name: "Amara Okonkwo",
@@ -300,7 +458,23 @@ export const articles: Article[] = [
     title: "AfCFTA Delivers First Major Trade Surge Across African Nations",
     excerpt:
       "The African Continental Free Trade Area is showing its first measurable impact, with intra-African trade volumes surging 34% year-on-year.",
-    content: `<p>Three years after its full operational launch, the African Continental Free Trade Area is delivering on its transformative promise. New data from the African Union Commission shows intra-African trade volumes have surged by 34% in the past twelve months.</p>`,
+    content: `<p>Three years after its full operational launch, the African Continental Free Trade Area is delivering on its transformative promise. New data from the African Union Commission shows intra-African trade volumes have surged by 34% in the past twelve months.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Intra-African trade up 34% year-on-year</li>
+<li>Manufactured goods trade increasing fastest</li>
+<li>Small and medium enterprises driving growth</li>
+<li>Trade facilitation measures reducing border delays</li>
+</ul>
+</div>
+<h2>The Numbers Tell the Story</h2>
+<p>The data represents the first clear evidence that the AfCFTA is achieving its core objective. Trade in manufactured goods has seen the fastest growth, suggesting that the agreement is helping African nations move beyond raw material exports.</p>
+<p>"For decades, we talked about the need for Africa to trade with itself. Now we have the numbers to prove it is happening," said an African Union trade official.</p>
+<h2>Small Businesses Leading the Charge</h2>
+<p>Much of the growth is being driven by small and medium enterprises. Reduced tariffs and streamlined customs procedures have made it easier for smaller businesses to access markets across the continent.</p>
+<blockquote>"Before AfCFTA, exporting to another African country was more complicated than exporting to Europe. That has changed. We are now selling our products in markets we could not reach before." — Ghanaian Manufacturing Exporter</blockquote>
+<p>Trade facilitation measures, including simplified customs procedures and digital documentation systems, have significantly reduced the time goods spend at border crossings.</p>`,
     category: "business",
     author: {
       name: "Kwame Asante",
@@ -321,8 +495,24 @@ export const articles: Article[] = [
     slug: "african-music-global-charts",
     title: "Afrobeats Dominates Global Music Charts for Record Third Year",
     excerpt:
-      "African artists are topping charts worldwide as Afrobeats, Amapiano and Afro-fusion reshape global music tastes.",
-    content: `<p>For the third consecutive year, African musical genres have dominated global streaming charts, with Afrobeats, Amapiano and Afro-fusion collectively accounting for over 15% of worldwide music streams.</p>`,
+      "African artists are topping charts worldwide as Afrobeats, Amapiano and Afro-fusion reshape global music tastes for a third consecutive year.",
+    content: `<p>For the third consecutive year, African musical genres have dominated global streaming charts. Afrobeats, Amapiano and Afro-fusion collectively account for over 15% of worldwide music streams — a figure that seemed unimaginable a decade ago.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>African genres account for 15% of global music streams</li>
+<li>Nigerian artists lead with 8 of top 20 most-streamed tracks</li>
+<li>South African Amapiano fastest-growing genre worldwide</li>
+<li>Major labels opening African offices to sign local talent</li>
+</ul>
+</div>
+<h2>The Global Takeover</h2>
+<p>What began as a regional sound has become a global phenomenon. Nigerian artists occupy 8 of the top 20 positions on global streaming charts. South Africa's Amapiano — a genre that barely existed five years ago — is now the fastest-growing music category worldwide.</p>
+<p>Music industry analysts attribute the rise to three factors: the authenticity of African sounds, the strategic use of social media platforms like TikTok, and a new generation of diaspora listeners who connect with their heritage through music.</p>
+<h2>Industry Takes Notice</h2>
+<p>Major record labels have responded by opening offices in Lagos, Johannesburg, and Nairobi. International artists are collaborating with African producers and featuring on Afrobeats tracks.</p>
+<blockquote>"African music is not a trend — it is the sound of the future. The world is finally catching up to what we have known all along." — Nigerian Music Producer</blockquote>
+<p>Live events have also seen remarkable growth. African artists are headlining major festivals worldwide, and dedicated Afrobeats festivals are drawing massive crowds in London, New York, and Toronto.</p>`,
     category: "entertainment",
     author: {
       name: "Zara Mensah",
@@ -343,8 +533,24 @@ export const articles: Article[] = [
     slug: "africa-cup-of-nations-2026-preview",
     title: "Africa Cup of Nations 2026: The Stars to Watch This Tournament",
     excerpt:
-      "As AFCON 2026 kicks off, we profile the continent's hottest talents who could light up the tournament and attract global attention.",
-    content: `<p>The Africa Cup of Nations has always been the stage where the continent's greatest football talents announce themselves to the world. In 2026, the tournament promises to be the most competitive and exciting in its history.</p>`,
+      "As AFCON 2026 kicks off, we profile the continent's hottest football talents who could light up the tournament and attract global attention.",
+    content: `<p>The Africa Cup of Nations has always been the stage where the continent's greatest football talents announce themselves to the world. In 2026, the tournament promises to be the most competitive and exciting in its history.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>24 nations competing in AFCON 2026 across 6 venues</li>
+<li>Record number of Europe-based professionals participating</li>
+<li>Several teenage prodigies expected to break through</li>
+<li>Tournament serving as key preparation for World Cup 2026</li>
+</ul>
+</div>
+<h2>The Next Generation of Stars</h2>
+<p>This year's tournament features an extraordinary concentration of young talent. Several players under the age of 21 are expected to play prominent roles for their national teams, attracting attention from the world's biggest clubs.</p>
+<p>Scouts from top European clubs will be watching closely. AFCON has a proven track record of launching careers — some of the world's best players first made their names at this tournament.</p>
+<h2>Teams to Watch</h2>
+<p>Defending champions Senegal enter as favourites, but several teams have genuine title ambitions. Morocco, fresh from their World Cup heroics, are determined to prove their success was no fluke. Host nation Ivory Coast will have home advantage.</p>
+<blockquote>"AFCON is the most difficult tournament in the world to win. European teams have depth, but African teams have passion, skill, and unpredictability." — Former African Footballer of the Year</blockquote>
+<p>Nigeria's young squad has impressed in warm-up matches, while Egypt's experience could prove decisive in knockout stages. The expanded format means more nations have a realistic path to glory.</p>`,
     category: "sports",
     author: {
       name: "David Osei",
@@ -365,8 +571,24 @@ export const articles: Article[] = [
     slug: "inside-the-cyber-heist",
     title: "Inside The Cyber Heist: How Hackers Targeted African Banks",
     excerpt:
-      "A sophisticated cybercrime syndicate executed a coordinated attack on financial institutions across three African nations.",
-    content: `<p>It began as an ordinary Tuesday morning in Nairobi. But behind the scenes of several of East Africa's largest commercial banks, a digital battle was underway that would ultimately cost the institutions over $47 million.</p>`,
+      "A sophisticated cybercrime syndicate executed a coordinated attack on financial institutions across three African nations, stealing over $47 million.",
+    content: `<p>It began as an ordinary Tuesday morning in Nairobi. But behind the scenes of several of East Africa's largest commercial banks, a digital battle was underway that would ultimately cost the institutions over $47 million.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Coordinated cyberattack hit banks in Kenya, Uganda, and Tanzania</li>
+<li>Total losses estimated at $47 million</li>
+<li>Attack used sophisticated phishing and social engineering</li>
+<li>Investigation spans multiple countries and agencies</li>
+</ul>
+</div>
+<h2>The Attack Unfolds</h2>
+<p>The attackers used a combination of sophisticated phishing emails and social engineering to gain access to internal banking systems. Once inside, they spent weeks mapping networks and identifying vulnerabilities before executing their plan.</p>
+<p>"This was not a random attack. The perpetrators had detailed knowledge of the banks' systems and security protocols. They knew exactly what they were looking for," said a cybersecurity investigator involved in the case.</p>
+<h2>The Response</h2>
+<p>Central banks across the region have issued emergency cybersecurity directives, requiring financial institutions to conduct immediate security audits. Regional cybercrime task forces have been activated, with investigators from Kenya, Uganda, and Tanzania working together.</p>
+<blockquote>"Cybercrime knows no borders. Our response must be equally跨国. This attack has been a wake-up call for the entire African financial sector." — Regional Cybersecurity Official</blockquote>
+<p>Banks have begun implementing enhanced security measures, including multi-factor authentication for all internal systems, mandatory cybersecurity training for staff, and real-time transaction monitoring systems.</p>`,
     category: "technology",
     author: {
       name: "Amara Okonkwo",
@@ -387,8 +609,24 @@ export const articles: Article[] = [
     slug: "africa-space-agency-launch",
     title: "Africa's Own Space Agency Is Closer to Reality Than You Think",
     excerpt:
-      "The African Space Agency is accelerating its mission to launch Africa's first continental satellite constellation by 2028.",
-    content: `<p>When Egypt's EgyptSat-A2 launched from Russia's Baikonur Cosmodrome, it marked another milestone in Africa's growing presence in space. But the continent's ambitions reach far higher.</p>`,
+      "The African Space Agency is accelerating its mission to launch the continent's first continental satellite constellation by 2028.",
+    content: `<p>When Egypt's EgyptSat-A2 launched from Russia's Baikonur Cosmodrome, it marked another milestone in Africa's growing presence in space. But the continent's ambitions reach far higher.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>African Space Agency targeting satellite constellation by 2028</li>
+<li>11 African nations already have space programmes</li>
+<li>Satellite data crucial for agriculture, climate, and security</li>
+<li>African space industry valued at $20 billion by 2030</li>
+</ul>
+</div>
+<h2>The African Space Race</h2>
+<p>Eleven African nations already operate space programmes, with satellites providing critical data for agriculture, climate monitoring, and national security. The African Space Agency aims to coordinate these efforts and accelerate the continent's space capabilities.</p>
+<p>"We are not just launching satellites — we are building the infrastructure for Africa's technological future," said the agency's director.</p>
+<h2>Why Space Matters for Africa</h2>
+<p>Satellite technology is particularly valuable for African nations. Earth observation satellites help farmers predict weather patterns and optimise crop yields. Communications satellites connect remote communities. Navigation satellites support transportation and logistics.</p>
+<blockquote>"For Africa, space is not about exploration — it is about solving real problems on the ground. Every satellite we launch improves lives." — African Space Scientist</blockquote>
+<p>The African space industry is projected to be worth $20 billion by 2030, creating thousands of high-skilled jobs and positioning the continent as a serious player in the global space economy.</p>`,
     category: "technology",
     author: {
       name: "Amara Okonkwo",
@@ -409,8 +647,24 @@ export const articles: Article[] = [
     slug: "rwandan-healthcare-model",
     title: "Rwanda's Healthcare Model Is Being Copied Across Africa",
     excerpt:
-      "Rwanda's community-based health system has become a global template for affordable, high-quality healthcare delivery.",
-    content: `<p>In a continent where healthcare infrastructure often lags behind population growth, Rwanda has emerged as an unlikely global leader. The small East African nation's community health worker programme is now being studied and replicated from South Asia to Latin America.</p>`,
+      "Rwanda's community-based health system has become a global template for affordable, high-quality healthcare delivery in developing nations.",
+    content: `<p>In a continent where healthcare infrastructure often lags behind population growth, Rwanda has emerged as an unlikely global leader. The small East African nation's community health worker programme is now being studied and replicated from South Asia to Latin America.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Rwanda achieves 95% health insurance coverage</li>
+<li>Community health workers serve every village in the country</li>
+<li>Maternal mortality reduced by 80% in 15 years</li>
+<li>Model being adopted by 12 other African nations</li>
+</ul>
+</div>
+<h2>The Rwanda Difference</h2>
+<p>Rwanda's approach is built on a simple but effective foundation: every village has a community health worker. These trained volunteers provide basic healthcare services, health education, and connect patients with the formal health system when needed.</p>
+<p>The results speak for themselves. Rwanda has achieved 95% health insurance coverage — one of the highest rates in Africa. Maternal mortality has been reduced by 80% over the past fifteen years.</p>
+<h2>A Model for the Continent</h2>
+<p>Twelve African nations are now implementing similar community health worker programmes, adapting the Rwandan model to their own contexts. International health organisations have designated Rwanda's system as a global best practice.</p>
+<blockquote>"Rwanda proved that you do not need to be wealthy to provide quality healthcare. You need political will, community engagement, and smart systems." — World Health Organisation Official</blockquote>
+<p>The model's success has attracted significant international funding, with donors supporting the expansion of community health programmes across sub-Saharan Africa.</p>`,
     category: "africa",
     author: {
       name: "Fatima Al-Hassan",
@@ -432,7 +686,23 @@ export const articles: Article[] = [
     title: "Nairobi Fashion Week 2026 Puts African Design on the World Stage",
     excerpt:
       "Africa's premier fashion event showcases designers who are blending traditional craftsmanship with cutting-edge contemporary style.",
-    content: `<p>The runway at Nairobi Fashion Week 2026 was not just a showcase of clothing — it was a statement about Africa's place in the global creative economy.</p>`,
+    content: `<p>The runway at Nairobi Fashion Week 2026 was not just a showcase of clothing — it was a statement about Africa's place in the global creative economy.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Over 80 designers from 25 African countries showcased collections</li>
+<li>Sustainable fashion a dominant theme across shows</li>
+<li>International buyers and media attended from 15 countries</li>
+<li>African fashion market valued at $15 billion</li>
+</ul>
+</div>
+<h2>Designers Redefining African Fashion</h2>
+<p>The four-day event featured over 80 designers from 25 African countries, each bringing their unique perspective on what African fashion means in the 21st century. The collections ranged from haute couture inspired by traditional textiles to avant-garde streetwear.</p>
+<p>Sustainable fashion emerged as a dominant theme, with many designers using eco-friendly materials and traditional production techniques that have minimal environmental impact.</p>
+<h2>A Growing Industry</h2>
+<p>The African fashion industry is valued at approximately $15 billion, and events like Nairobi Fashion Week are crucial for connecting African designers with international markets.</p>
+<blockquote>"African fashion is not emerging — it has emerged. We are no longer asking for a seat at the table. We are building our own table." — Nairobi Fashion Week Director</blockquote>
+<p>International buyers and media from 15 countries attended this year's event, signalling growing global interest in African design. Several designers secured distribution deals that will bring their collections to stores in Europe and North America.</p>`,
     category: "entertainment",
     author: {
       name: "Zara Mensah",
@@ -453,8 +723,24 @@ export const articles: Article[] = [
     slug: "ugandan-olympians-2026",
     title: "Uganda's Golden Generation: The Athletes Ready to Conquer the World",
     excerpt:
-      "A new cohort of Ugandan athletes across track, field and team sports is poised to make the country proud on the global stage.",
-    content: `<p>Uganda has always produced world-class distance runners. But the country's 2026 generation of athletes is breaking moulds — excelling not just in athletics, but in swimming, cycling, basketball and combat sports.</p>`,
+      "A new cohort of Ugandan athletes across track, field and team sports is poised to make the country proud on the global stage in 2026 and beyond.",
+    content: `<p>Uganda has always produced world-class distance runners. But the country's 2026 generation of athletes is breaking moulds — excelling not just in athletics, but in swimming, cycling, basketball and combat sports.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>Uganda's strongest-ever Olympic team being assembled for 2028</li>
+<li>Athletes excelling across track, swimming, cycling, and basketball</li>
+<li>Government investment in sports facilities increasing</li>
+<li>Young talents emerging from regional development programmes</li>
+</ul>
+</div>
+<h2>Beyond Distance Running</h2>
+<p>Uganda's reputation in distance running is well established, with Olympic and world champions in events from 800 metres to the marathon. But the current generation of athletes is proving that Ugandan talent extends far beyond the track.</p>
+<p>"We are seeing Ugandans compete at the highest level in sports that previously had little presence in the country. This is a sign of a maturing sports ecosystem," said a Uganda Olympic Committee official.</p>
+<h2>Investing in the Future</h2>
+<p>Government investment in sports facilities has increased significantly, with new training centres opening across the country. Regional development programmes are identifying and nurturing young talent from an early age.</p>
+<blockquote>"Talent is universal in Uganda, but opportunity is not. These programmes are ensuring that a child from any district can become a national champion." — Sports Development Programme Director</blockquote>
+<p>The results are already visible. Uganda's junior teams are performing strongly in international competitions, suggesting that the country's sporting future is bright.</p>`,
     category: "sports",
     author: {
       name: "David Osei",
@@ -476,7 +762,23 @@ export const articles: Article[] = [
     title: "Opinion: Why The 21st Century Will Ultimately Be Africa's Century",
     excerpt:
       "Africa's youth population, resource wealth, and entrepreneurial energy position the continent to lead the second half of this century.",
-    content: `<p>Every generation has its moment. Europe dominated the 19th century through industrial might. America led the 20th century through innovation and cultural power. Asia's rise defined the first decades of the 21st century. Now it is Africa's turn.</p>`,
+    content: `<p>Every generation has its moment. Europe dominated the 19th century through industrial might. America led the 20th century through innovation and cultural power. Asia's rise defined the first decades of the 21st century. Now it is Africa's turn.</p>
+<div class="highlight-box">
+<h3>KEY ARGUMENTS</h3>
+<ul>
+<li>Africa has the world's youngest population — median age 19</li>
+<li>Continent holds 30% of the world's mineral resources</li>
+<li>Entrepreneurial energy driving rapid technological adoption</li>
+<li>Democratic governance improving across the continent</li>
+</ul>
+</div>
+<h2>The Demographic Dividend</h2>
+<p>Africa's greatest asset is its people. With a median age of 19, the continent has the youngest population in the world. By 2050, one in four people on the planet will be African. This demographic dividend, if properly harnessed, could drive unprecedented economic growth.</p>
+<p>The key word is "if". For the demographic dividend to materialise, African nations must invest in education, healthcare, and job creation. The countries that do this well will reap enormous rewards.</p>
+<h2>Resources and Technology</h2>
+<p>Africa holds 30% of the world's mineral resources, including the critical minerals needed for the green energy transition. Combined with rapid technological adoption — mobile money, fintech, renewable energy — the continent has the raw materials and the innovative spirit to lead.</p>
+<blockquote>"The 20th century was about who had the biggest factories. The 21st century will be about who has the youngest, most dynamic workforce. That is Africa." — Development Economist</blockquote>
+<p>The challenges remain significant: governance deficits, infrastructure gaps, and climate vulnerability cannot be ignored. But the trajectory is clear. Africa's century is not a matter of if — it is a matter of when.</p>`,
     category: "opinion",
     author: {
       name: "Prof. Nneka Obiora",
@@ -498,7 +800,23 @@ export const articles: Article[] = [
     title: "Kampala's Art Scene Is Experiencing a Cultural Renaissance",
     excerpt:
       "A new wave of galleries, creative collectives and public art installations is transforming Uganda's capital into a continental cultural hub.",
-    content: `<p>Walk through Kampala's Nakasero neighbourhood on a Saturday afternoon and you will encounter something remarkable: a city in the throes of a cultural awakening.</p>`,
+    content: `<p>Walk through Kampala's Nakasero neighbourhood on a Saturday afternoon and you will encounter something remarkable: a city in the throes of a cultural awakening.</p>
+<div class="highlight-box">
+<h3>KEY HIGHLIGHTS</h3>
+<ul>
+<li>New galleries and creative collectives transforming Kampala</li>
+<li>Public art installations changing the city's visual landscape</li>
+<li>Young artists gaining international recognition</li>
+<li>Government introducing arts funding programmes</li>
+</ul>
+</div>
+<h2>A New Creative Energy</h2>
+<p>New galleries are opening at an unprecedented rate. Creative collectives are forming in every neighbourhood. Public art installations are transforming previously neglected spaces into vibrant community gathering points.</p>
+<p>"Something is happening in Kampala that I have never seen before. There is an energy, a confidence among young artists that this is their moment," says a prominent Ugandan curator.</p>
+<h2>From Local to Global</h2>
+<p>Kampala's artists are gaining international recognition. Ugandan visual artists have been featured at major international exhibitions, including the Venice Biennale and Documenta. The city's annual art festival now attracts visitors from across the world.</p>
+<blockquote>"Kampala has always been a creative city, but now the world is paying attention. Our artists are telling Ugandan stories that resonate globally." — Arts Festival Director</blockquote>
+<p>The government has introduced arts funding programmes and is renovating cultural venues across the city. Private sector investment in the arts is also growing, with corporations sponsoring exhibitions and commissioning public art.</p>`,
     category: "uganda",
     author: {
       name: "Moses Okello",

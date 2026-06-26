@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 const ADMIN_COOKIE = "kfl_admin_session";
 const SESSION_VALUE = "authenticated";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Only guard /admin routes (not /admin/login itself)
