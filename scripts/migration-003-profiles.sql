@@ -31,6 +31,7 @@ ON CONFLICT (username) DO NOTHING;
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 
 -- Allow service role full access (for admin API calls)
+DROP POLICY IF EXISTS "Service role has full access" ON profiles;
 CREATE POLICY "Service role has full access"
 ON profiles FOR ALL
 TO authenticated

@@ -39,10 +39,12 @@ ON CONFLICT DO NOTHING;
 ALTER TABLE subscribers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE newsletter_campaigns ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Service role has full access to subscribers" ON subscribers;
 CREATE POLICY "Service role has full access to subscribers"
 ON subscribers FOR ALL TO authenticated
 USING (true) WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Service role has full access to campaigns" ON newsletter_campaigns;
 CREATE POLICY "Service role has full access to campaigns"
 ON newsletter_campaigns FOR ALL TO authenticated
 USING (true) WITH CHECK (true);
