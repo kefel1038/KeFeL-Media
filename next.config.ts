@@ -31,6 +31,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.sqoop.co.ug",
       },
+      {
+        protocol: "https",
+        hostname: "observer.ug",
+      },
     ],
   },
   async headers() {
@@ -44,7 +48,7 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src 'self' data: blob: https://*.unsplash.com https://*.supabase.co https://images.unsplash.com https://*.twimg.com https://pbs.twimg.com https://*.fbcdn.net https://static.wixstatic.com https://www.sqoop.co.ug",
+              "img-src 'self' data: blob: https://*.unsplash.com https://*.supabase.co https://images.unsplash.com https://*.twimg.com https://pbs.twimg.com https://*.fbcdn.net https://static.wixstatic.com https://www.sqoop.co.ug https://observer.ug",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://*.supabase.co https://api.openai.com https://challenges.cloudflare.com https://*.twimg.com https://*.fbcdn.net",
               "frame-src https://challenges.cloudflare.com",
