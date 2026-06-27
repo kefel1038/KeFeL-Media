@@ -47,7 +47,7 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
     <div className="article-content">
       <div
         className="
-          prose prose-lg dark:prose-invert max-w-none whitespace-pre-line
+          prose prose-lg dark:prose-invert max-w-none
           prose-headings:font-black prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-headline
           prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h2:border-l-4 prose-h2:border-brand prose-h2:pl-4 prose-h2:leading-tight
           prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-gray-800 dark:prose-h3:text-gray-200 prose-h3:leading-snug
