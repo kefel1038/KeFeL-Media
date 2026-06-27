@@ -216,11 +216,11 @@ export default async function ArticlePage({ params }: Props) {
               <div className="relative w-full aspect-video min-h-[250px] sm:min-h-[350px] md:max-h-[450px] overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 border border-gray-200/50 dark:border-gray-800/50 mb-8">
                 <img
                   src={
-                    article.image.startsWith("http")
+                    typeof article.image === "string" && article.image.startsWith("http")
                       ? article.image
-                      : `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media/${article.image}`
+                      : `${process.env.NEXT_PUBLIC_SUPABASE_URL || ""}/storage/v1/object/public/media/${article.image || ""}`
                   }
-                  alt={article.altText || article.title || ""}
+                  alt={article.title || "Article Image"}
                   className="absolute inset-0 w-full h-full object-cover object-center block"
                   loading="eager"
                   onError={(e) => {
