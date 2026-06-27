@@ -212,25 +212,16 @@ export default async function ArticlePage({ params }: Props) {
             </div>
 
             {/* Featured image */}
-            <figure className="mb-8 md:mb-10 -mx-4 sm:-mx-6 lg:mx-0">
-              <div className="article-image-wrapper aspect-video md:aspect-[21/9] w-full overflow-hidden rounded-xl">
+            {article.image && (
+              <figure className="relative w-full aspect-video md:max-h-[450px] overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 border border-gray-200/50 dark:border-gray-800/50 mb-8">
                 <img
-                  src={article.image || ""}
+                  src={article.image}
                   alt={article.altText || article.title || ""}
-                  className="w-full h-full object-cover object-center"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                   loading="eager"
                 />
-              </div>
-              {(article.imageCaption || article.imageCredit) && (
-                <figcaption className="text-right text-xs md:text-sm text-gray-500 dark:text-gray-400 italic mt-2 px-4 sm:px-6 lg:px-0">
-                    {article.imageCaption || ""}
-                    {article.imageCaption && article.imageCredit && <span>, </span>}
-                    {article.imageCredit && (
-                    <span className="not-italic font-medium">{article.imageCredit}</span>
-                  )}
-                </figcaption>
-              )}
-            </figure>
+              </figure>
+            )}
 
             {/* Article body */}
             <div className="mx-auto" style={{ maxWidth: "720px" }}>
