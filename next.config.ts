@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "*.twimg.com",
+      },
+      {
+        protocol: "https",
         hostname: "scontent.fdoh11-1.fna.fbcdn.net",
       },
       {
@@ -40,9 +44,9 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src 'self' data: blob: https://*.unsplash.com https://*.supabase.co https://images.unsplash.com",
+              "img-src 'self' data: blob: https://*.unsplash.com https://*.supabase.co https://images.unsplash.com https://*.twimg.com https://pbs.twimg.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "connect-src 'self' https://*.supabase.co https://api.openai.com https://challenges.cloudflare.com",
+              "connect-src 'self' https://*.supabase.co https://api.openai.com https://challenges.cloudflare.com https://*.twimg.com",
               "frame-src https://challenges.cloudflare.com",
               "base-uri 'self'",
               "form-action 'self'",
