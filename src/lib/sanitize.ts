@@ -1,37 +1,30 @@
-let _sanitize: ((html: string) => string) | null = null;
+import sanitize from "sanitize-html";
 
 export function sanitizeHtml(html: string): string {
-  if (typeof window === "undefined") {
-    // Server-side: use isomorphic-dompurify
-    if (!_sanitize) {
-      const DOMPurify = require("isomorphic-dompurify");
-      _sanitize = (h: string) =>
-        DOMPurify.sanitize(h, {
-          ALLOWED_TAGS: [
-            "p", "h2", "h3", "h4", "blockquote", "img", "ul", "ol", "li",
-            "strong", "em", "a", "br", "div", "span", "figure", "figcaption",
-          ],
-          ALLOWED_ATTR: [
-            "href", "target", "rel", "src", "alt", "class", "width", "height",
-          ],
-        });
-    }
-    return _sanitize(html);
-  }
-
-  // Client-side: use DOMPurify from isomorphic-dompurify
-  if (!_sanitize) {
-    const DOMPurify = require("isomorphic-dompurify");
-    _sanitize = (h: string) =>
-      DOMPurify.sanitize(h, {
-        ALLOWED_TAGS: [
-          "p", "h2", "h3", "h4", "blockquote", "img", "ul", "ol", "li",
-          "strong", "em", "a", "br", "div", "span", "figure", "figcaption",
-        ],
-        ALLOWED_ATTR: [
-          "href", "target", "rel", "src", "alt", "class", "width", "height",
-        ],
-      });
-  }
-  return _sanitize(html);
+  return sanitize(html, {
+    allowedTags: [
+      "p", "h2", "h3", "h4", "h5", "h6", "blockquote", "img", "ul", "ol", "li",
+      "strong", "em", "a", "br", "div", "span", "figure", "figcaption",
+      "pre", "code", "hr", "table", "thead", "tbody", "tr", "th", "td",
+    ],
+    allowedAttributes: {
+      a: ["href", "target", "rel"],
+      img: ["src", "alt", "class", "width", "height"],
+      div: ["class"],
+      span: ["class"],
+      figure: ["class"],
+      "*": ["class"],
+    },
+    allowedSchemes: ["http", "https", "mailto"],
+    transformTags: {
+      a: (tagName, attribs) => ({
+        tagName,
+        attribs: {
+          ...attribs,
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+      }),
+    },
+  });
 }
