@@ -223,9 +223,6 @@ export default async function ArticlePage({ params }: Props) {
                   alt={article.title || "Article Image"}
                   className="absolute inset-0 w-full h-full object-cover object-center block"
                   loading="eager"
-                  onError={(e) => {
-                    e.currentTarget.parentElement?.classList.add("hidden");
-                  }}
                 />
               </div>
             )}
