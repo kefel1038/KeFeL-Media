@@ -23,38 +23,43 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getArticleBySlug(slug);
+  let article;
+  try {
+    article = await getArticleBySlug(slug);
+  } catch (error) {
+    console.error("generateMetadata error:", error);
+  }
   if (!article) return { title: "Article Not Found" };
 
-  const description = generateMetaDescription(article.excerpt || article.content);
+  const description = generateMetaDescription(article.excerpt || article.content || "");
   const keywords = (article.tags ?? []).join(", ");
 
   return {
-    title: article.title,
+    title: article.title || "",
     description,
     keywords,
     openGraph: {
-      title: article.title,
+      title: article.title || "",
       description,
       url: `https://kefelmedia.com/article/${article.slug}`,
       siteName: "KeFeL Media",
       images: [{
-        url: article.image,
+        url: article.image || "",
         width: 1200,
         height: 630,
-        alt: article.altText || article.title,
+        alt: article.altText || article.title || "",
       }],
       type: "article",
-      publishedTime: article.publishedAt,
-      modifiedTime: article.updatedAt,
-      authors: [article.author.name],
-      tags: article.tags,
+      publishedTime: article.publishedAt || "",
+      modifiedTime: article.updatedAt || undefined,
+      authors: article.author?.name ? [article.author.name] : ["KeFeL Media"],
+      tags: article.tags || [],
     },
     twitter: {
       card: "summary_large_image",
-      title: article.title,
+      title: article.title || "",
       description,
-      images: [article.image],
+      images: [article.image || ""],
     },
     alternates: {
       canonical: `https://kefelmedia.com/article/${article.slug}`,
@@ -64,27 +69,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
-  const article = await getArticleBySlug(slug);
+  let article: NonNullable<Awaited<ReturnType<typeof getArticleBySlug>>> | undefined;
+  try {
+    article = await getArticleBySlug(slug);
+  } catch (error) {
+    console.error("ARTICLE PAGE ERROR — getArticleBySlug:", error);
+    throw error;
+  }
   if (!article) notFound();
 
-  const related = await getRelatedArticles(article, 3);
-  const authorArticles = await getArticlesByAuthor(article.author.name, 4);
+  const authorName = article.author?.name || "KeFeL Media";
+  const related = await getRelatedArticles(article, 3).catch(() => []);
+  const authorArticles = await getArticlesByAuthor(authorName, 4).catch(() => []);
 
-  const wordCount = stripHtml(article.content).split(/\s+/).filter(Boolean).length;
+  const wordCount = stripHtml(article.content || "").split(/\s+/).filter(Boolean).length;
   const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    headline: article.title,
-    description: generateMetaDescription(article.excerpt || article.content),
-    image: article.image,
-    datePublished: article.publishedAt,
-    dateModified: article.updatedAt || article.publishedAt,
+    headline: article?.title || "",
+    description: generateMetaDescription(article.excerpt || article.content || ""),
+    image: article.image || "",
+    datePublished: article.publishedAt || "",
+    dateModified: article.updatedAt || article.publishedAt || "",
     author: {
       "@type": "Person",
-      name: article.author.name,
-      url: `https://kefelmedia.com/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}`,
+      name: article.author?.name || "KeFeL Media",
+      url: article.author?.name
+        ? `https://kefelmedia.com/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}`
+        : "https://kefelmedia.com",
     },
     publisher: {
       "@type": "Organization",
@@ -93,7 +107,7 @@ export default async function ArticlePage({ params }: Props) {
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://kefelmedia.com/article/${article.slug}` },
     wordCount,
-    articleSection: article.category,
+    articleSection: article.category || "",
     keywords: (article.tags ?? []).join(", "),
   };
 
@@ -110,7 +124,7 @@ export default async function ArticlePage({ params }: Props) {
         <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
           <span className="flex items-center gap-1.5">
             <Calendar size={13} />
-            {formatDate(article.publishedAt)}
+            {article.publishedAt ? formatDate(article.publishedAt) : ""}
           </span>
           <span className="flex items-center gap-1.5">
             <Clock size={13} />
@@ -131,11 +145,11 @@ export default async function ArticlePage({ params }: Props) {
         <nav className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mb-6 md:mb-8">
           <Link href="/" className="hover:text-brand transition-colors">Home</Link>
           <ChevronRight size={10} />
-          <Link href={`/${article.category}`} className="hover:text-brand transition-colors capitalize">
-            {article.category}
+          <Link href={`/${article.category || ""}`} className="hover:text-brand transition-colors capitalize">
+            {article.category || ""}
           </Link>
           <ChevronRight size={10} />
-          <span className="text-gray-400 dark:text-gray-500 truncate max-w-[200px]">{article.title}</span>
+          <span className="text-gray-400 dark:text-gray-500 truncate max-w-[200px]">{article.title || "Untitled Story"}</span>
         </nav>
 
         {/* Main grid: Article + Sidebar */}
@@ -145,44 +159,44 @@ export default async function ArticlePage({ params }: Props) {
             {/* Category + headline row */}
             <header className="mb-6 md:mb-8">
               <div className="mb-3 md:mb-4">
-                <CategoryBadge category={article.category} size="lg" />
+                <CategoryBadge category={article.category || ""} size="lg" />
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-4 md:mb-5 font-headline">
-                {article.title}
+                {article.title || "Untitled Story"}
               </h1>
               <p className="article-lead !border-l-0 !pl-0 !text-lg md:!text-xl !text-gray-600 dark:!text-gray-400 !font-normal !mb-0">
-                {article.excerpt}
+                {article.excerpt || ""}
               </p>
             </header>
 
             {/* Author bar + metadata */}
             <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-6 md:mb-8 border-y border-gray-200 dark:border-zinc-800">
               <Link
-                href={`/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}`}
+                href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
                 className="flex items-center gap-3 group"
               >
-                {article.author.avatar ? (
+                {article.author?.avatar ? (
                   <img
                     src={article.author.avatar}
-                    alt={article.author.name}
+                    alt={article.author.name || "Author"}
                     className="w-11 h-11 md:w-12 md:h-12 rounded-full object-cover ring-2 ring-brand/30 group-hover:ring-brand transition-all"
                   />
                 ) : (
                   <div className="w-11 h-11 md:w-12 md:h-12 rounded-full ring-2 ring-brand/30 group-hover:ring-brand transition-all bg-brand flex items-center justify-center text-white font-bold text-sm md:text-base">
-                    {article.author.name.charAt(0).toUpperCase()}
+                    {(article.author?.name || "K").charAt(0).toUpperCase()}
                   </div>
                 )}
                 <div>
                   <p className="font-bold text-gray-900 dark:text-white text-sm md:text-base group-hover:text-brand transition-colors">
-                    {article.author.name}
+                    {article.author?.name || "KeFeL Media"}
                   </p>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs">{article.author.role}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs">{article.author?.role || ""}</p>
                 </div>
               </Link>
               <div className="flex items-center gap-4 text-xs md:text-sm text-gray-500 dark:text-gray-400">
                 <span className="flex items-center gap-1.5">
                   <Calendar size={14} />
-                  <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time>
+                  <time dateTime={article.publishedAt || ""}>{article.publishedAt ? formatDate(article.publishedAt) : ""}</time>
                 </span>
                 <span className="hidden sm:flex items-center gap-1.5">
                   <Clock size={14} />
@@ -201,17 +215,17 @@ export default async function ArticlePage({ params }: Props) {
             <figure className="mb-8 md:mb-10 -mx-4 sm:-mx-6 lg:mx-0">
               <div className="article-image-wrapper aspect-video md:aspect-[21/9] w-full">
                 <img
-                  src={article.image}
-                  alt={article.altText || article.title}
+                  src={article.image || ""}
+                  alt={article.altText || article.title || ""}
                   className="w-full h-full object-cover"
                   loading="eager"
                 />
               </div>
               {(article.imageCaption || article.imageCredit) && (
                 <figcaption className="text-right text-xs md:text-sm text-gray-500 dark:text-gray-400 italic mt-2 px-4 sm:px-6 lg:px-0">
-                  {article.imageCaption}
-                  {article.imageCaption && article.imageCredit && <span>, </span>}
-                  {article.imageCredit && (
+                    {article.imageCaption || ""}
+                    {article.imageCaption && article.imageCredit && <span>, </span>}
+                    {article.imageCredit && (
                     <span className="not-italic font-medium">{article.imageCredit}</span>
                   )}
                 </figcaption>
@@ -234,35 +248,35 @@ export default async function ArticlePage({ params }: Props) {
             <div className="mx-auto" style={{ maxWidth: "720px" }}>
               <div className="mt-10 md:mt-12 p-5 md:p-6 bg-gray-50 dark:bg-zinc-800/40 rounded-xl border border-gray-200 dark:border-zinc-700">
                 <div className="flex items-start gap-4">
-                  {article.author.avatar ? (
+                  {article.author?.avatar ? (
                     <img
                       src={article.author.avatar}
-                      alt={article.author.name}
+                      alt={article.author.name || "Author"}
                       className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover ring-2 ring-brand/30"
                     />
                   ) : (
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full ring-2 ring-brand/30 bg-brand flex items-center justify-center text-white font-bold text-lg md:text-xl">
-                      {article.author.name.charAt(0).toUpperCase()}
+                      {(article.author?.name || "K").charAt(0).toUpperCase()}
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
                     <Link
-                      href={`/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}`}
+                      href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
                       className="font-bold text-gray-900 dark:text-white hover:text-brand transition-colors"
                     >
-                      {article.author.name}
+                      {article.author?.name || "KeFeL Media"}
                     </Link>
-                    <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-0.5">{article.author.role}</p>
-                    {article.author.bio && (
+                    <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-0.5">{article.author?.role || ""}</p>
+                    {article.author?.bio && (
                       <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">{article.author.bio}</p>
                     )}
                     {authorArticles.length > 1 && (
                       <Link
-                        href={`/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}`}
+                        href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand hover:underline mt-2"
                       >
                         <User size={12} />
-                        More from {article.author.name}
+                        More from {article.author?.name || "KeFeL Media"}
                       </Link>
                     )}
                   </div>
