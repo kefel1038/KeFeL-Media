@@ -213,11 +213,11 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Featured image */}
             <figure className="mb-8 md:mb-10 -mx-4 sm:-mx-6 lg:mx-0">
-              <div className="article-image-wrapper aspect-video md:aspect-[21/9] w-full">
+              <div className="article-image-wrapper aspect-video md:aspect-[21/9] w-full overflow-hidden rounded-xl">
                 <img
                   src={article.image || ""}
                   alt={article.altText || article.title || ""}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   loading="eager"
                 />
               </div>
