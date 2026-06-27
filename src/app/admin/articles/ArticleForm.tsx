@@ -196,7 +196,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
             <FileEdit size={14} />
             {saving ? "Saving..." : "Save Draft"}
           </button>
-          <button type="button" onClick={(e) => handleSubmit(e, status)} disabled={saving}
+          <button type="button" onClick={(e) => handleSubmit(e, "published")} disabled={saving}
             className="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-2 rounded-lg text-sm transition-colors flex items-center gap-2 disabled:opacity-50">
             <Save size={14} />
             {saving ? "Saving..." : isEdit ? "Update" : "Publish"}
@@ -606,7 +606,7 @@ export default function ArticleForm({ initial }: ArticleFormProps) {
             <FileEdit size={14} />
             {saving ? "Saving..." : "Save Draft"}
           </button>
-          <button type="button" onClick={(e) => handleSubmit(e, status)} disabled={saving}
+          <button type="button" onClick={(e) => handleSubmit(e, "published")} disabled={saving}
             className="bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors flex items-center gap-2 disabled:opacity-50">
             <Save size={14} />
             {saving ? "Saving..." : isEdit ? "Update Article" : "Publish"}

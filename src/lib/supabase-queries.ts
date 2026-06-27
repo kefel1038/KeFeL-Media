@@ -151,7 +151,6 @@ export async function getArticleBySlug(
   const { data, error } = await supabase
     .from("articles")
     .select(ARTICLE_COLUMNS)
-    .eq("status", "published")
     .eq("slug", slug)
     .limit(1)
     .single();
