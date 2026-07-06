@@ -47,11 +47,11 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
     <div className="article-content article-text-reset">
       <div
         className="
-          prose prose-lg dark:prose-invert max-w-none
+          prose prose-lg max-w-none
           prose-headings:font-black prose-headings:font-headline
-          prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h2:border-l-4 prose-h2:border-brand prose-h2:pl-4 prose-h2:leading-tight
-          prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:leading-snug
-          prose-p:leading-[1.7] prose-p:mb-6 prose-p:text-[17px] md:prose-p:text-[18px] prose-p:tracking-normal
+          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-5 prose-h2:border-l-4 prose-h2:border-brand prose-h2:pl-4 prose-h2:leading-tight
+          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:leading-snug
+          prose-p:leading-[1.7] prose-p:mb-6 prose-p:text-[17px] prose-p:tracking-normal
           prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-a:font-medium
           prose-strong:font-bold
           prose-blockquote:border-l-brand prose-blockquote:text-lg prose-blockquote:italic prose-blockquote:my-8 prose-blockquote:pl-6 prose-blockquote:py-3 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-zinc-800/50 prose-blockquote:rounded-r-lg
@@ -59,7 +59,6 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
           prose-li:my-1.5 prose-li:leading-relaxed
           prose-code:text-brand prose-code:bg-gray-100 dark:prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
           prose-hr:my-10
-          first:prose-p:text-xl first:prose-p:font-medium first:prose-p:leading-relaxed
         "
         dangerouslySetInnerHTML={{ __html: safeHtml }}
       />
