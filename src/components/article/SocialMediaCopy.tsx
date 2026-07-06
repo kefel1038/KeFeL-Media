@@ -39,8 +39,8 @@ export default function SocialMediaCopy({ article }: SocialMediaCopyProps) {
   };
 
   return (
-    <div className="mt-10 pt-8 border-t border-gray-200 dark:border-zinc-700">
-      <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-4">Share This Story</h3>
+    <div className="mt-10 pt-8 border-t border-border">
+      <h3 className="text-sm font-bold text-fg-heading mb-4">Share This Story</h3>
       <div className="flex gap-1.5 mb-4">
         {platforms.map((p) => (
           <button
@@ -49,7 +49,7 @@ export default function SocialMediaCopy({ article }: SocialMediaCopyProps) {
             className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors ${
               active === p.key
                 ? "bg-brand text-white"
-                : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-zinc-700"
+                : "bg-gray-100 dark:bg-zinc-800 text-fg-muted hover:bg-gray-200 dark:hover:bg-zinc-700"
             }`}
           >
             <p.icon size={13} />
@@ -58,10 +58,10 @@ export default function SocialMediaCopy({ article }: SocialMediaCopyProps) {
         ))}
       </div>
       <div className="relative bg-gray-50 dark:bg-zinc-800/50 rounded-lg border border-gray-200 dark:border-zinc-700 p-4">
-        <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap pr-8">{getContent(active)}</p>
+        <p className="text-sm text-fg whitespace-pre-wrap pr-8">{getContent(active)}</p>
         <button
           onClick={() => handleCopy(getContent(active))}
-          className="absolute top-3 right-3 p-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-400 hover:text-brand transition-colors"
+          className="absolute top-3 right-3 p-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-border text-fg-light hover:text-brand transition-colors"
           title="Copy"
         >
           {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}

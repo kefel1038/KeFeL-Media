@@ -40,13 +40,13 @@ export default function ArticleCard({
               </span>
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white leading-tight group-hover:text-brand transition-colors mb-3 line-clamp-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-fg-heading leading-tight group-hover:text-brand transition-colors mb-3 line-clamp-3">
             {article.title}
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-3 line-clamp-3">
+          <p className="text-fg-muted text-base leading-relaxed mb-3 line-clamp-3">
             {article.excerpt}
           </p>
-          <div className="flex items-center gap-3 text-sm text-gray-400">
+          <div className="flex items-center gap-3 text-sm text-fg-subtle">
             <div className="flex items-center gap-1.5">
               {article.author.avatar && (
                 <Image
@@ -57,7 +57,7 @@ export default function ArticleCard({
                   className="rounded-full object-cover"
                 />
               )}
-              <span className="font-medium text-gray-600 dark:text-gray-300">
+              <span className="font-medium text-fg-muted">
                 {article.author.name}
               </span>
             </div>
@@ -87,13 +87,13 @@ export default function ArticleCard({
           </div>
           <div className="flex-1 min-w-0">
             <CategoryBadge category={article.category} size="xs" />
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
+            <h3 className="text-lg font-bold text-fg-heading leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
               {article.title}
             </h3>
-            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mt-1 line-clamp-2">
+            <p className="text-fg-subtle text-sm leading-relaxed mt-1 line-clamp-2">
               {article.excerpt}
             </p>
-            <div className="flex items-center gap-1 mt-2 text-gray-400 text-xs">
+            <div className="flex items-center gap-1 mt-2 text-fg-light text-xs">
               <Clock size={11} />
               <span>{readingTimeLabel(article.readingTime)}</span>
             </div>
@@ -124,13 +124,13 @@ export default function ArticleCard({
               </span>
             </div>
           </div>
-          <h3 className="text-xl font-black text-gray-900 dark:text-white leading-snug group-hover:text-brand transition-colors line-clamp-2 mb-1.5">
+          <h3 className="text-xl font-black text-fg-heading leading-snug group-hover:text-brand transition-colors line-clamp-2 mb-1.5">
             {article.title}
           </h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed line-clamp-2 mb-2">
+          <p className="text-fg-subtle text-sm leading-relaxed line-clamp-2 mb-2">
             {article.excerpt}
           </p>
-          <div className="flex items-center gap-1 text-gray-400 text-xs">
+          <div className="flex items-center gap-1 text-fg-light text-xs">
             <Clock size={11} />
             <span>{formatRelativeTime(article.publishedAt)}</span>
           </div>
@@ -156,10 +156,10 @@ export default function ArticleCard({
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-brand transition-colors leading-snug">
+            <h3 className="text-sm font-semibold text-fg-heading line-clamp-2 group-hover:text-brand transition-colors leading-snug">
               {article.title}
             </h3>
-            <p className="text-[10px] text-gray-400 mt-1">
+            <p className="text-[10px] text-fg-light mt-1">
               {formatRelativeTime(article.publishedAt)}
             </p>
           </div>
@@ -185,13 +185,13 @@ export default function ArticleCard({
         </div>
         <div className="flex-1 min-w-0">
           <CategoryBadge category={article.category} size="xs" />
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
+          <h3 className="text-xl font-bold text-fg-heading leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
             {article.title}
           </h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 line-clamp-2">
+          <p className="text-fg-subtle text-sm mt-1 line-clamp-2">
             {article.excerpt}
           </p>
-          <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-400">
+          <div className="flex items-center gap-3 mt-1.5 text-xs text-fg-light">
             <span>{article.author.name}</span>
             <span>•</span>
             <span className="flex items-center gap-1">

@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#F9F9F9] dark:bg-[#1A1A1A] text-[#111111] dark:text-[#E4E4E7] transition-colors duration-300 antialiased min-h-screen flex flex-col`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#F9F9F9] dark:bg-[#1A1A1A] text-fg transition-colors duration-300 antialiased min-h-screen flex flex-col`}>
         <Script
           id="theme-script"
           strategy="beforeInteractive"

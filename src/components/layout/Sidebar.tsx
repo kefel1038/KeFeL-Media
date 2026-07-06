@@ -11,9 +11,9 @@ export default async function Sidebar() {
 
   return (
     <aside className="space-y-6 md:sticky md:top-24 self-start">
-      <div className="bg-white dark:bg-zinc-900 rounded border border-gray-200 dark:border-zinc-800 overflow-hidden">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-zinc-800">
-          <h2 className="text-base font-black font-sans text-gray-900 dark:text-white flex items-center gap-2 uppercase tracking-wider">
+      <div className="bg-bg-card rounded border border-border overflow-hidden">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+          <h2 className="text-base font-black font-sans text-fg-heading flex items-center gap-2 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-brand" />
             Latest News
           </h2>
@@ -31,10 +31,10 @@ export default async function Sidebar() {
                 </div>
               </div>
               <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
-                <h3 className="font-sans text-sm font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-brand transition-colors leading-tight">
+                <h3 className="font-sans text-sm font-bold text-fg-heading line-clamp-2 group-hover:text-brand transition-colors leading-tight">
                   {article.title}
                 </h3>
-                <div className="flex items-center gap-1 mt-1.5 text-gray-400 dark:text-zinc-500 text-[11px] font-sans">
+                <div className="flex items-center gap-1 mt-1.5 text-fg-light text-[11px] font-sans">
                   <Clock size={11} />
                   <span>{formatRelativeTime(article.publishedAt)}</span>
                 </div>
@@ -44,9 +44,9 @@ export default async function Sidebar() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-zinc-900 rounded border border-gray-200 dark:border-zinc-800 overflow-hidden">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-zinc-800">
-          <h2 className="text-base font-black font-sans text-gray-900 dark:text-white flex items-center gap-2 uppercase tracking-wider">
+      <div className="bg-bg-card rounded border border-border overflow-hidden">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+          <h2 className="text-base font-black font-sans text-fg-heading flex items-center gap-2 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             Weekly Highlights
           </h2>
@@ -62,7 +62,7 @@ export default async function Sidebar() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-2 left-2"><CategoryBadge category={article.category} size="xs" /></div>
               </div>
-              <h3 className="font-sans text-xs font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-brand transition-colors leading-tight">
+              <h3 className="font-sans text-xs font-bold text-fg-heading line-clamp-2 group-hover:text-brand transition-colors leading-tight">
                 {article.title}
               </h3>
             </Link>
@@ -73,10 +73,10 @@ export default async function Sidebar() {
             <Link key={article.id} href={`/article/${article.slug}`} className="flex items-start gap-2 py-3 group hover:-translate-y-0.5 transition-all duration-300">
               <span className="text-brand font-black text-lg leading-none mt-0.5">•</span>
               <div className="flex-1 min-w-0">
-                <h3 className="font-sans text-sm font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-brand transition-colors leading-snug">
+                <h3 className="font-sans text-sm font-bold text-fg-heading line-clamp-2 group-hover:text-brand transition-colors leading-snug">
                   {article.title}
                 </h3>
-                <div className="flex items-center gap-1 mt-1 text-gray-400 dark:text-zinc-500 text-xs font-sans">
+                <div className="flex items-center gap-1 mt-1 text-fg-light text-xs font-sans">
                   <Clock size={10} />
                   <span>{formatRelativeTime(article.publishedAt)}</span>
                 </div>
@@ -87,10 +87,10 @@ export default async function Sidebar() {
       </div>
 
       <div className="bg-gradient-to-br from-brand/10 to-red-50 dark:from-brand/20 dark:to-zinc-800 rounded border border-brand/20 p-6 text-center">
-        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-bold mb-2 font-sans">Advertisement</p>
+        <p className="text-xs text-fg-subtle uppercase tracking-wider font-bold mb-2 font-sans">Advertisement</p>
         <div className="bg-white/60 dark:bg-white/5 rounded p-6">
           <p className="text-brand font-black text-lg font-headline">Advertise with KeFeL Media</p>
-          <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 font-sans">Reach millions of African readers</p>
+          <p className="text-fg-muted text-sm mt-1 font-sans">Reach millions of African readers</p>
           <Link href="/advertise" className="inline-block mt-3 bg-brand text-white text-xs font-bold px-5 py-2.5 rounded hover:bg-brand-dark transition-colors font-sans uppercase tracking-wider">
             Get In Touch
           </Link>
