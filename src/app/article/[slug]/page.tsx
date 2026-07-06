@@ -152,10 +152,10 @@ export default async function ArticlePage({ params }: Props) {
           <span className="text-gray-400 dark:text-gray-500 truncate max-w-[200px]">{article.title || "Untitled Story"}</span>
         </nav>
 
-        {/* Main grid: Article + Sidebar */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-12">
-          {/* Article column */}
-          <article>
+        {/* Main grid: 12-col — article 8col + sidebar 4col */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Article column — 8 of 12 */}
+          <article className="lg:col-span-8">
             {/* Category + headline row */}
             <header className="mb-6 md:mb-8">
               <div className="mb-3 md:mb-4">
@@ -293,8 +293,8 @@ export default async function ArticlePage({ params }: Props) {
             <RelatedStories article={article} related={related} />
           </article>
 
-          {/* Sidebar */}
-          <aside className="hidden lg:block pt-2">
+          {/* Sidebar — 4 of 12 */}
+          <aside className="hidden lg:block lg:col-span-4">
             <div className="sticky top-24">
               <Sidebar />
             </div>

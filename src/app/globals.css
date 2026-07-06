@@ -89,7 +89,7 @@ img, video, svg { transition: none; }
 .article-lead {
   font-size: 1.2rem;
   line-height: 1.7;
-  color: #111111;
+  color: #1A1A1A;
   font-weight: 500;
   border-left: 4px solid #D32F2F;
   padding-left: 1.25rem;
@@ -98,6 +98,285 @@ img, video, svg { transition: none; }
 .dark .article-lead {
   color: #E4E4E7;
 }
+
+/* =============================================
+   ARTICLE BODY WRAPPER — DEFINITIVE TEXT FIX
+   Uses maximum specificity to guarantee #1A1A1A
+   in light mode regardless of CMS-injected styles.
+   This beats class-based and variable-based rules.
+   ============================================= */
+
+/* Serif font + deep charcoal for ALL text nodes in light mode */
+.article-body-wrapper,
+.article-body-wrapper p,
+.article-body-wrapper span,
+.article-body-wrapper li,
+.article-body-wrapper td,
+.article-body-wrapper th,
+.article-body-wrapper figcaption,
+.article-body-wrapper blockquote {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
+  color: #1A1A1A !important;
+  line-height: 1.8 !important;
+}
+
+/* Headings stay sans-serif for editorial contrast */
+.article-body-wrapper h1,
+.article-body-wrapper h2,
+.article-body-wrapper h3,
+.article-body-wrapper h4,
+.article-body-wrapper h5,
+.article-body-wrapper h6 {
+  font-family: "Playfair Display", Georgia, serif !important;
+  color: #0D0D0D !important;
+  line-height: 1.3 !important;
+}
+
+/* Links: brand red */
+.article-body-wrapper a {
+  color: #D32F2F !important;
+  text-decoration: none !important;
+}
+.article-body-wrapper a:hover {
+  text-decoration: underline !important;
+}
+
+/* Strong/Bold */
+.article-body-wrapper strong,
+.article-body-wrapper b {
+  color: #0D0D0D !important;
+  font-weight: 700 !important;
+}
+
+/* Code */
+.article-body-wrapper code,
+.article-body-wrapper pre {
+  font-family: "Fira Code", "Cascadia Code", Consolas, monospace !important;
+  color: #D32F2F !important;
+  background-color: #f5f5f5 !important;
+  border-radius: 4px !important;
+}
+
+/* Blockquote */
+.article-body-wrapper blockquote {
+  border-left: 4px solid #D32F2F !important;
+  padding-left: 1.5rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  background: #fafafa !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-style: italic !important;
+  color: #2d2d2d !important;
+}
+
+/* Paragraph spacing */
+.article-body-wrapper p {
+  margin-bottom: 1.6rem !important;
+  font-size: 1.125rem !important;
+}
+@media (min-width: 768px) {
+  .article-body-wrapper p {
+    font-size: 1.175rem !important;
+  }
+}
+@media (max-width: 640px) {
+  .article-body-wrapper p {
+    font-size: 1.0625rem !important;
+    line-height: 1.75 !important;
+  }
+}
+
+/* ── DARK MODE OVERRIDES ── */
+.dark .article-body-wrapper,
+.dark .article-body-wrapper p,
+.dark .article-body-wrapper span,
+.dark .article-body-wrapper li,
+.dark .article-body-wrapper td,
+.dark .article-body-wrapper th,
+.dark .article-body-wrapper figcaption {
+  color: #E4E4E7 !important;
+}
+.dark .article-body-wrapper h1,
+.dark .article-body-wrapper h2,
+.dark .article-body-wrapper h3,
+.dark .article-body-wrapper h4,
+.dark .article-body-wrapper h5,
+.dark .article-body-wrapper h6 {
+  color: #F4F4F5 !important;
+}
+.dark .article-body-wrapper strong,
+.dark .article-body-wrapper b {
+  color: #ffffff !important;
+}
+.dark .article-body-wrapper blockquote {
+  background: rgba(255,255,255,0.04) !important;
+  color: #d4d4d8 !important;
+}
+.dark .article-body-wrapper code,
+.dark .article-body-wrapper pre {
+  background-color: #27272a !important;
+  color: #f87171 !important;
+}
+
+/* Article highlight box */
+.kfl-highlight-box {
+  background-color: color-mix(in srgb, #D32F2F 6%, transparent);
+  border: 1px solid color-mix(in srgb, #D32F2F 20%, transparent);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+}
+.kfl-highlight-box h3 {
+  font-family: var(--font-headline);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #D32F2F !important;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+  border: none;
+}
+.kfl-highlight-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.kfl-highlight-box li {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #1A1A1A;
+  padding: 0.35rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+.dark .kfl-highlight-box li {
+  color: #E4E4E7;
+}
+.kfl-highlight-box li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #D32F2F;
+  font-weight: 700;
+}
+.dark .kfl-highlight-box {
+  background-color: color-mix(in srgb, #D32F2F 10%, transparent);
+  border-color: color-mix(in srgb, #D32F2F 30%, transparent);
+}
+
+/* Author profile */
+.author-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+.dark .author-card {
+  background-color: rgba(255,255,255,0.04);
+  border-color: #27272a;
+}
+
+/* Mobile sticky share bar */
+.mobile-share-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.625rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dark .mobile-share-bar {
+  background: #18181b;
+  border-top-color: #27272a;
+}
+@media (min-width: 768px) {
+  .mobile-share-bar { display: none; }
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #D32F2F;
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+/* Category badge */
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, #D32F2F 12%, transparent);
+  color: #D32F2F;
+}
+
+/* Quote block */
+.article-quote {
+  margin: 2rem 0;
+  position: relative;
+}
+.article-quote blockquote {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  font-weight: 500;
+  font-style: italic;
+  color: #1f2937;
+  padding-left: 2.5rem;
+  border-left: 4px solid #D32F2F;
+}
+.dark .article-quote blockquote {
+  color: #e5e7eb;
+}
+.article-quote .quote-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 3rem;
+  line-height: 1;
+  color: color-mix(in srgb, #D32F2F 20%, transparent);
+  font-family: Georgia, serif;
+}
+
+/* Prose CSS variables */
+.prose {
+  --tw-prose-body: #1A1A1A;
+  --tw-prose-headings: #0D0D0D;
+  --tw-prose-lead: #1A1A1A;
+  --tw-prose-links: #D32F2F;
+  --tw-prose-bold: #0D0D0D;
+  --tw-prose-bullets: #D32F2F;
+  --tw-prose-quote-borders: #D32F2F;
+  --tw-prose-code: #D32F2F;
+}
+.dark .prose {
+  --tw-prose-body: #E4E4E7;
+  --tw-prose-headings: #F4F4F5;
+  --tw-prose-lead: #d4d4d8;
+  --tw-prose-links: #D32F2F;
+  --tw-prose-bold: #fafafa;
+  --tw-prose-bullets: #D32F2F;
+  --tw-prose-quotes: #E4E4E7;
+  --tw-prose-quote-borders: #D32F2F;
+  --tw-prose-code: #D32F2F;
+}
+
 
 /* Article highlight box */
 .kfl-highlight-box {
