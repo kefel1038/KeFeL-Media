@@ -146,6 +146,25 @@ img, video, svg { transition: none; }
   border-color: color-mix(in srgb, #D32F2F 30%, transparent);
 }
 
+/* Article text reset — nuclear option to guarantee readable text in both modes */
+.article-text-reset,
+.article-text-reset * {
+  color: #111111 !important;
+}
+.dark .article-text-reset,
+.dark .article-text-reset * {
+  color: #E4E4E7 !important;
+}
+/* Exceptions: links keep brand color, code keeps brand color */
+.article-text-reset a,
+.dark .article-text-reset a {
+  color: #D32F2F !important;
+}
+.article-text-reset code,
+.dark .article-text-reset code {
+  color: #D32F2F !important;
+}
+
 /* Article content typography */
 .article-content {
   font-family: var(--font-body);
@@ -154,19 +173,45 @@ img, video, svg { transition: none; }
   margin-bottom: 1.5rem;
   line-height: 1.7;
   font-size: 1.125rem;
-  color: #111111;
+  color: #111111 !important;
 }
 .dark .article-content p {
-  color: #E4E4E7;
+  color: #E4E4E7 !important;
 }
 .article-content p:first-of-type {
   font-size: 1.25rem;
   line-height: 1.7;
-  color: #111111;
+  color: #111111 !important;
   font-weight: 450;
 }
 .dark .article-content p:first-of-type {
-  color: #E4E4E7;
+  color: #E4E4E7 !important;
+}
+.article-content h1, .article-content h2, .article-content h3,
+.article-content h4, .article-content h5, .article-content h6 {
+  color: #0a0a0a !important;
+}
+.dark .article-content h1, .dark .article-content h2, .dark .article-content h3,
+.dark .article-content h4, .dark .article-content h5, .dark .article-content h6 {
+  color: #fafafa !important;
+}
+.article-content li {
+  color: #111111 !important;
+}
+.dark .article-content li {
+  color: #E4E4E7 !important;
+}
+.article-content strong {
+  color: #0a0a0a !important;
+}
+.dark .article-content strong {
+  color: #ffffff !important;
+}
+.article-content blockquote {
+  color: #1f2937 !important;
+}
+.dark .article-content blockquote {
+  color: #E4E4E7 !important;
 }
 
 /* Article sections */
@@ -321,38 +366,62 @@ img, video, svg { transition: none; }
   }
 }
 
-/* Light mode overrides for prose — forces sharp, readable dark text */
+/* Direct prose text color overrides — bypasses CSS variable resolution issues in Tailwind v4 */
+/* Light mode: force near-black text on all prose children */
+.prose p,
+.prose li,
+.prose td,
+.prose th,
+.prose figcaption {
+  color: #111111 !important;
+}
+.prose h1, .prose h2, .prose h3,
+.prose h4, .prose h5, .prose h6 {
+  color: #0a0a0a !important;
+}
+.prose strong {
+  color: #0a0a0a !important;
+}
+.prose blockquote {
+  color: #1f2937 !important;
+}
+/* Dark mode: force light text */
+.dark .prose p,
+.dark .prose li,
+.dark .prose td,
+.dark .prose th,
+.dark .prose figcaption {
+  color: #E4E4E7 !important;
+}
+.dark .prose h1, .dark .prose h2, .dark .prose h3,
+.dark .prose h4, .dark .prose h5, .dark .prose h6 {
+  color: #fafafa !important;
+}
+.dark .prose strong {
+  color: #ffffff !important;
+}
+.dark .prose blockquote {
+  color: #d4d4d8 !important;
+}
+/* Prose CSS variables (kept for completeness) */
 .prose {
   --tw-prose-body: #111111;
   --tw-prose-headings: #0a0a0a;
   --tw-prose-lead: #1a1a1a;
   --tw-prose-links: #D32F2F;
   --tw-prose-bold: #0a0a0a;
-  --tw-prose-counters: #444444;
   --tw-prose-bullets: #D32F2F;
-  --tw-prose-hr: #e5e7eb;
-  --tw-prose-quotes: #1f2937;
   --tw-prose-quote-borders: #D32F2F;
-  --tw-prose-captions: #555555;
   --tw-prose-code: #D32F2F;
-  --tw-prose-th-borders: #d1d5db;
-  --tw-prose-td-borders: #e5e7eb;
 }
-
-/* Dark mode overrides for prose */
 .dark .prose {
   --tw-prose-body: #E4E4E7;
   --tw-prose-headings: #fafafa;
   --tw-prose-lead: #d4d4d8;
   --tw-prose-links: #D32F2F;
   --tw-prose-bold: #fafafa;
-  --tw-prose-counters: #a1a1aa;
   --tw-prose-bullets: #D32F2F;
-  --tw-prose-hr: #3f3f46;
   --tw-prose-quotes: #E4E4E7;
   --tw-prose-quote-borders: #D32F2F;
-  --tw-prose-captions: #a1a1aa;
   --tw-prose-code: #D32F2F;
-  --tw-prose-th-borders: #52525b;
-  --tw-prose-td-borders: #3f3f46;
 }

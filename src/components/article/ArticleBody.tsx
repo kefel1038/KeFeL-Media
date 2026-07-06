@@ -44,7 +44,7 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
   const safeHtml = sanitizeHtml(processed);
 
   return (
-    <div className="article-content">
+    <div className="article-content article-text-reset">
       <div
         className="
           prose prose-lg dark:prose-invert max-w-none
