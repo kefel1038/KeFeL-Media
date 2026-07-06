@@ -36,6 +36,23 @@
   }
 }
 
+/* ── Semantic design tokens ── */
+:root {
+  --background: #F9F9F9;
+  --foreground: #111827;
+  --article-body: #27272a;
+  --muted-text: #52525b;
+  --brand-primary: #D32F2F;
+}
+
+.dark {
+  --background: #1A1A1A;
+  --foreground: #f4f4f5;
+  --article-body: #e4e4e7;
+  --muted-text: #a1a1aa;
+  --brand-primary: #D32F2F;
+}
+
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -43,6 +60,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: var(--font-body);
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: color 0.2s ease, background-color 0.2s ease;
   }
   ::selection { background-color: color-mix(in srgb, #D32F2F 20%, transparent); color: #D32F2F; }
   ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -95,9 +115,8 @@ img, video, svg { transition: none; }
 
 /* ============================================
    URBAN RICH TEXT — scoped color enforcement
-   !important on color/opacity ONLY to defeat
-   CMS-injected classes (class on div/figure).
-   Prose plugin handles layout, spacing, etc.
+   Uses semantic CSS custom properties so that
+   !important color lock stays theme-aware.
    ============================================ */
 
 .urban-rich-text,
@@ -108,39 +127,38 @@ img, video, svg { transition: none; }
 .urban-rich-text th,
 .urban-rich-text figcaption,
 .urban-rich-text blockquote {
-  color: #27272a !important;
+  color: var(--article-body) !important;
   opacity: 1 !important;
-}
-.dark .urban-rich-text,
-.dark .urban-rich-text p,
-.dark .urban-rich-text span,
-.dark .urban-rich-text li,
-.dark .urban-rich-text td,
-.dark .urban-rich-text th,
-.dark .urban-rich-text figcaption,
-.dark .urban-rich-text blockquote {
-  color: #e4e4e7 !important;
+  line-height: 1.75;
 }
 
 .urban-rich-text h1,
 .urban-rich-text h2,
 .urban-rich-text h3,
-.urban-rich-text h4,
+.urban-rich-text h4 {
+  color: var(--foreground) !important;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
 .urban-rich-text h5,
 .urban-rich-text h6 {
-  color: #18181b !important;
-}
-.dark .urban-rich-text h1,
-.dark .urban-rich-text h2,
-.dark .urban-rich-text h3,
-.dark .urban-rich-text h4,
-.dark .urban-rich-text h5,
-.dark .urban-rich-text h6 {
-  color: #f4f4f5 !important;
+  color: var(--foreground) !important;
 }
 
 .urban-rich-text a {
-  color: #D32F2F !important;
+  color: var(--brand-primary) !important;
+  text-decoration: underline;
+}
+
+.urban-rich-text ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+}
+
+.urban-rich-text ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
 }
 
 /* Article highlight box */
@@ -170,13 +188,10 @@ img, video, svg { transition: none; }
 .kfl-highlight-box li {
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: #27272a;
+  color: var(--article-body);
   padding: 0.35rem 0;
   padding-left: 1.5rem;
   position: relative;
-}
-.dark .kfl-highlight-box li {
-  color: #e4e4e7;
 }
 .kfl-highlight-box li::before {
   content: "✓";
@@ -279,42 +294,4 @@ img, video, svg { transition: none; }
   font-family: Georgia, serif;
 }
 
-/* =======================================================
-   CRITICAL OVERRIDE FOR LIGHT MODE READABILITY
-   Forces near-black text color when the html/body is in 
-   light mode, overriding any rogue text-white variables.
-   ======================================================= */
 
-main, 
-article, 
-.prose,
-[class*="article"] {
-  color: #1a1a1a !important;
-}
-
-main h1,
-article h1,
-main p,
-article p,
-main span,
-article span {
-  color: #1a1a1a !important;
-  opacity: 1 !important;
-}
-
-html.dark main,
-html.dark article,
-html.dark .prose,
-.dark main,
-.dark article,
-.dark p,
-.dark h1,
-.dark span {
-  color: #e4e4e7 !important;
-  opacity: 1 !important;
-}
-
-.bg-red-600 *, 
-[class*="bg-red"] * {
-  color: #ffffff !important;
-}
