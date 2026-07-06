@@ -164,7 +164,7 @@ export default async function ArticlePage({ params }: Props) {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-4 md:mb-5 font-headline">
                 {article.title || "Untitled Story"}
               </h1>
-              <p className="article-lead !border-l-0 !pl-0 !text-lg md:!text-xl !text-gray-600 dark:!text-gray-400 !font-normal !mb-0">
+              <p className="article-lead !border-l-0 !pl-0 !text-lg md:!text-xl !text-[#333333] dark:!text-[#b0b0b8] !font-normal !mb-0">
                 {article.excerpt || ""}
               </p>
             </header>
