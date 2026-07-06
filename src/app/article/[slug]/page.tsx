@@ -121,7 +121,7 @@ export default async function ArticlePage({ params }: Props) {
 
       {/* Mobile sticky share bar */}
       <div className="mobile-share-bar md:hidden shadow-lg">
-        <div className="flex items-center gap-3 text-xs text-fg-subtle">
+        <div className="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
           <span className="flex items-center gap-1.5">
             <Calendar size={13} />
             {article.publishedAt ? formatDate(article.publishedAt) : ""}
@@ -142,14 +142,14 @@ export default async function ArticlePage({ params }: Props) {
 
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-fg-subtle mb-6 md:mb-8">
+        <nav className="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-6 md:mb-8">
           <Link href="/" className="hover:text-brand transition-colors">Home</Link>
           <ChevronRight size={10} />
           <Link href={`/${article.category || ""}`} className="hover:text-brand transition-colors capitalize">
             {article.category || ""}
           </Link>
           <ChevronRight size={10} />
-          <span className="text-fg-light truncate max-w-[200px]">{article.title || "Untitled Story"}</span>
+          <span className="text-zinc-400 dark:text-zinc-500 truncate max-w-[200px]">{article.title || "Untitled Story"}</span>
         </nav>
 
         {/* Main grid: 12-col — article 8col + sidebar 4col */}
@@ -161,16 +161,16 @@ export default async function ArticlePage({ params }: Props) {
               <div className="mb-3 md:mb-4">
                 <CategoryBadge category={article.category || ""} size="lg" />
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-fg-heading leading-[1.1] mb-4 md:mb-5 font-headline">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.1] mb-4 md:mb-5 font-headline">
                 {article.title || "Untitled Story"}
               </h1>
-              <p className="article-lead !border-l-0 !pl-0 !text-lg md:!text-xl !text-fg-muted !font-normal !mb-0">
+              <p className="article-lead !border-l-0 !pl-0 !text-lg md:!text-xl !text-zinc-600 dark:!text-zinc-400 !font-normal !mb-0">
                 {article.excerpt || ""}
               </p>
             </header>
 
             {/* Author bar + metadata */}
-            <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-6 md:mb-8 border-y border-border">
+            <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-6 md:mb-8 border-y border-zinc-200 dark:border-zinc-800">
               <Link
                 href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
                 className="flex items-center gap-3 group"
@@ -187,13 +187,13 @@ export default async function ArticlePage({ params }: Props) {
                   </div>
                 )}
                 <div>
-                  <p className="font-bold text-fg-heading text-sm md:text-base group-hover:text-brand transition-colors">
+                  <p className="font-bold text-zinc-900 dark:text-zinc-100 text-sm md:text-base group-hover:text-brand transition-colors">
                     {article.author?.name || "KeFeL Media"}
                   </p>
-                  <p className="text-fg-subtle text-xs">{article.author?.role || ""}</p>
+                  <p className="text-zinc-500 dark:text-zinc-400 text-xs">{article.author?.role || ""}</p>
                 </div>
               </Link>
-              <div className="flex items-center gap-4 text-xs md:text-sm text-fg-subtle">
+              <div className="flex items-center gap-4 text-xs md:text-sm text-zinc-500 dark:text-zinc-400">
                 <span className="flex items-center gap-1.5">
                   <Calendar size={14} />
                   <time dateTime={article.publishedAt || ""}>{article.publishedAt ? formatDate(article.publishedAt) : ""}</time>
@@ -213,7 +213,7 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Featured image */}
             {article.image && (
-              <div className="relative w-full aspect-video min-h-[250px] sm:min-h-[350px] md:max-h-[450px] overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 border border-border/50 mb-8">
+              <div className="relative w-full aspect-video min-h-[250px] sm:min-h-[350px] md:max-h-[450px] overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 border border-zinc-200/50 dark:border-zinc-800/50 mb-8">
                 <img
                   src={
                     typeof article.image === "string" && article.image.startsWith("http")
@@ -241,7 +241,7 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Author profile card */}
             <div className="mx-auto" style={{ maxWidth: "720px" }}>
-              <div className="mt-10 md:mt-12 p-5 md:p-6 bg-gray-50 dark:bg-zinc-800/40 rounded-xl border border-border">
+              <div className="mt-10 md:mt-12 p-5 md:p-6 bg-gray-50 dark:bg-zinc-800/40 rounded-xl border border-zinc-200 dark:border-zinc-800">
                 <div className="flex items-start gap-4">
                   {article.author?.avatar ? (
                     <img
@@ -257,13 +257,13 @@ export default async function ArticlePage({ params }: Props) {
                   <div className="flex-1 min-w-0">
                     <Link
                       href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
-                      className="font-bold text-fg-heading hover:text-brand transition-colors"
+                      className="font-bold text-zinc-900 dark:text-zinc-100 hover:text-brand transition-colors"
                     >
                       {article.author?.name || "KeFeL Media"}
                     </Link>
-                    <p className="text-xs md:text-sm text-fg-subtle mt-0.5">{article.author?.role || ""}</p>
+                    <p className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">{article.author?.role || ""}</p>
                     {article.author?.bio && (
-                      <p className="text-sm text-fg-muted mt-2 leading-relaxed">{article.author.bio}</p>
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">{article.author.bio}</p>
                     )}
                     {authorArticles.length > 1 && (
                       <Link
@@ -283,7 +283,7 @@ export default async function ArticlePage({ params }: Props) {
 
               {/* Updated date */}
               {article.updatedAt && article.updatedAt !== article.publishedAt && (
-                <p className="text-xs text-fg-light mt-6 text-center">
+                <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-6 text-center">
                   Updated: {formatDate(article.updatedAt)}
                 </p>
               )}

@@ -15,7 +15,7 @@ export default function ArticleHighlights({ items }: ArticleHighlightsProps) {
       </h3>
       <ul className="space-y-2.5">
         {items.map((item, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-sm md:text-[15px] text-fg-muted leading-relaxed">
+          <li key={i} className="flex items-start gap-2.5 text-sm md:text-[15px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
             <span className="text-brand mt-0.5 flex-shrink-0 font-bold">✓</span>
             <span>{item}</span>
           </li>

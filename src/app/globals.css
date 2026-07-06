@@ -8,23 +8,6 @@
   --color-accent: #1565C0;
   --color-accent-light: #1976D2;
 
-  /* Semantic theme tokens — auto-switch with .dark */
-  --color-fg: #111111;
-  --color-fg-strong: #000000;
-  --color-fg-heading: #0D0D0D;
-  --color-fg-muted: #4B5563;
-  --color-fg-subtle: #6B7280;
-  --color-fg-light: #9CA3AF;
-  --color-bg: #F9F9F9;
-  --color-bg-card: #FFFFFF;
-  --color-border: #E5E7EB;
-  --color-border-light: #F3F4F6;
-
-  /* Legacy ink tokens */
-  --color-ink: #111111;
-  --color-ink-soft: #333333;
-  --color-ink-muted: #666666;
-
   --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
   --font-headline: "Playfair Display", Georgia, serif;
@@ -51,20 +34,6 @@
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-}
-
-/* ── Semantic theme overrides ── */
-.dark {
-  --color-fg: #E4E4E7;
-  --color-fg-strong: #FFFFFF;
-  --color-fg-heading: #F4F4F5;
-  --color-fg-muted: #A1A1AA;
-  --color-fg-subtle: #71717A;
-  --color-fg-light: #52525B;
-  --color-bg: #1A1A1A;
-  --color-bg-card: #18181B;
-  --color-border: #27272A;
-  --color-border-light: #3F3F46;
 }
 
 @layer base {
@@ -118,7 +87,6 @@ img, video, svg { transition: none; }
 .article-lead {
   font-size: 1.2rem;
   line-height: 1.7;
-  color: var(--color-fg);
   font-weight: 500;
   border-left: 4px solid #D32F2F;
   padding-left: 1.25rem;
@@ -129,7 +97,7 @@ img, video, svg { transition: none; }
    URBAN RICH TEXT — scoped color enforcement
    !important on color/opacity ONLY to defeat
    CMS-injected classes (class on div/figure).
-   Lets prose plugin handle layout, spacing, etc.
+   Prose plugin handles layout, spacing, etc.
    ============================================ */
 
 .urban-rich-text,
@@ -140,8 +108,18 @@ img, video, svg { transition: none; }
 .urban-rich-text th,
 .urban-rich-text figcaption,
 .urban-rich-text blockquote {
-  color: var(--color-fg) !important;
+  color: #27272a !important;
   opacity: 1 !important;
+}
+.dark .urban-rich-text,
+.dark .urban-rich-text p,
+.dark .urban-rich-text span,
+.dark .urban-rich-text li,
+.dark .urban-rich-text td,
+.dark .urban-rich-text th,
+.dark .urban-rich-text figcaption,
+.dark .urban-rich-text blockquote {
+  color: #e4e4e7 !important;
 }
 
 .urban-rich-text h1,
@@ -150,7 +128,15 @@ img, video, svg { transition: none; }
 .urban-rich-text h4,
 .urban-rich-text h5,
 .urban-rich-text h6 {
-  color: var(--color-fg-heading) !important;
+  color: #18181b !important;
+}
+.dark .urban-rich-text h1,
+.dark .urban-rich-text h2,
+.dark .urban-rich-text h3,
+.dark .urban-rich-text h4,
+.dark .urban-rich-text h5,
+.dark .urban-rich-text h6 {
+  color: #f4f4f5 !important;
 }
 
 .urban-rich-text a {
@@ -184,10 +170,13 @@ img, video, svg { transition: none; }
 .kfl-highlight-box li {
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: var(--color-fg);
+  color: #27272a;
   padding: 0.35rem 0;
   padding-left: 1.5rem;
   position: relative;
+}
+.dark .kfl-highlight-box li {
+  color: #e4e4e7;
 }
 .kfl-highlight-box li::before {
   content: "✓";
@@ -290,20 +279,5 @@ img, video, svg { transition: none; }
   font-family: Georgia, serif;
 }
 
-/* Single prose variable block — maps to semantic tokens that auto-switch with .dark */
-.prose {
-  --tw-prose-body: var(--color-fg);
-  --tw-prose-headings: var(--color-fg-heading);
-  --tw-prose-lead: var(--color-fg-muted);
-  --tw-prose-links: #D32F2F;
-  --tw-prose-bold: var(--color-fg-strong);
-  --tw-prose-bullets: #D32F2F;
-  --tw-prose-quotes: var(--color-fg);
-  --tw-prose-quote-borders: #D32F2F;
-  --tw-prose-code: #D32F2F;
-  --tw-prose-captions: var(--color-fg-subtle);
-  --tw-prose-hr: var(--color-border);
-  --tw-prose-th-borders: var(--color-border);
-  --tw-prose-td-borders: var(--color-border-light);
-}
+
 

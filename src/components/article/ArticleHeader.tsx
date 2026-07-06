@@ -71,7 +71,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
   ];
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-border">
+    <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-zinc-200 dark:border-zinc-800">
       <div className="flex items-center gap-3">
         {article.author.avatar ? (
           <img src={article.author.avatar} alt={article.author.name} width={44} height={44}
@@ -82,19 +82,19 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
           </div>
         )}
         <div>
-          <p className="font-bold text-fg-heading text-sm">{article.author.name}</p>
-          <p className="text-fg-subtle text-xs">{article.author.role}</p>
+          <p className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">{article.author.name}</p>
+          <p className="text-zinc-500 dark:text-zinc-400 text-xs">{article.author.role}</p>
         </div>
       </div>
-      <div className="flex items-center gap-4 text-xs text-fg-subtle">
+      <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
         <span className="flex items-center gap-1.5"><Calendar size={13} />{formatDate(article.publishedAt)}</span>
         <span className="flex items-center gap-1.5"><Clock size={13} />{readingTimeLabel(article.readingTime)}</span>
       </div>
       <div className="flex items-center gap-2 w-full lg:w-auto">
-        <span className="text-xs text-fg-subtle font-bold mr-1">Share:</span>
+        <span className="text-xs text-zinc-500 dark:text-zinc-400 font-bold mr-1">Share:</span>
         {shareButtons.map(({ Icon, label, onClick }) => (
           <button key={label} onClick={onClick} aria-label={`Share on ${label}`} title={label}
-            className="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 flex items-center justify-center text-fg-muted hover:text-white hover:bg-brand transition-all">
+            className="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-white hover:bg-brand transition-all">
             <Icon size={14} />
           </button>
         ))}

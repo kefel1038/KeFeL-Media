@@ -13,20 +13,20 @@ export default function ArticleMetadata({ article, showCategory = true }: Articl
   const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
   return (
-    <div className="flex flex-wrap items-center gap-2.5 text-xs text-fg-subtle">
+    <div className="flex flex-wrap items-center gap-2.5 text-xs text-zinc-500 dark:text-zinc-400">
       {showCategory && <CategoryBadge category={article.category} size="sm" />}
       <span className="flex items-center gap-1.5">
         <Calendar size={12} />
         {formatDate(article.publishedAt)}
       </span>
-      <span className="hidden sm:inline text-fg-light">·</span>
+      <span className="hidden sm:inline text-zinc-400 dark:text-zinc-500">·</span>
       <span className="hidden sm:flex items-center gap-1.5">
         <Clock size={12} />
         {readingTimeLabel(readingTime)}
       </span>
       {(article.views ?? 0) > 0 && (
         <>
-          <span className="text-fg-light">·</span>
+          <span className="text-zinc-400 dark:text-zinc-500">·</span>
           <span className="flex items-center gap-1.5">
             <Eye size={12} />
             {(article.views ?? 0).toLocaleString()} views
