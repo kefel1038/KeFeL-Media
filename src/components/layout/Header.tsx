@@ -35,7 +35,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      <nav className="bg-[#111111] border-b border-white/10">
+      <nav className="bg-black dark:bg-[#121212] border-b border-white/10 transition-colors duration-300">
         <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-14">
           <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="KeFeL Media Home">
             <div className="w-7 h-7 bg-brand rounded flex items-center justify-center">
@@ -75,13 +75,13 @@ export default function Header() {
         </div>
 
         {searchOpen && (
-          <div className="border-t border-white/10 bg-[#111111] px-4 py-3">
+          <div className="border-t border-white/10 bg-black dark:bg-[#121212] px-4 py-3 transition-colors duration-300">
             <SearchBar onClose={() => setSearchOpen(false)} />
           </div>
         )}
 
         {mobileOpen && (
-          <div className="xl:hidden border-t border-white/10 bg-[#111111] px-4 py-3 grid grid-cols-2 gap-1">
+          <div className="xl:hidden border-t border-white/10 bg-black dark:bg-[#121212] px-4 py-3 grid grid-cols-2 gap-1 transition-colors duration-300">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
                 className="text-gray-300 hover:text-white text-sm font-medium px-3 py-2 rounded hover:bg-white/10 transition-colors">
@@ -92,16 +92,16 @@ export default function Header() {
         )}
       </nav>
 
-      <div className="bg-[#0a0a0a] border-b border-brand/30 h-9 overflow-hidden">
-        <div className="flex items-center h-full">
-          <div className="flex-shrink-0 bg-brand h-full flex items-center px-3 z-10 relative">
+      <div className="bg-[#0a0a0a] border-b border-brand/30 overflow-hidden">
+        <div className="flex items-center">
+          <div className="flex-shrink-0 bg-brand py-2 px-4 z-10 relative">
             <span className="text-white text-[11px] font-black tracking-wider uppercase whitespace-nowrap">Breaking News</span>
           </div>
-          <div className="flex-1 overflow-hidden relative h-full">
-            <div className="flex gap-0 h-full items-center">
-              <div className="flex gap-10 animate-marquee hover:[animation-play-state:paused] whitespace-nowrap items-center h-full" aria-live="polite">
+          <div className="flex-1 overflow-hidden relative py-2">
+            <div className="flex gap-0 items-center">
+              <div className="flex gap-10 animate-marquee hover:[animation-play-state:paused] whitespace-nowrap items-center" aria-live="polite">
                 {[...breakingHeadlines, ...breakingHeadlines].map((headline, i) => (
-                  <span key={i} className="text-gray-300 text-[13px] font-medium flex-shrink-0 inline-flex items-center gap-3 h-full">
+                  <span key={i} className="text-gray-300 text-[13px] font-normal flex-shrink-0 inline-flex items-center gap-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand/70 flex-shrink-0" />
                     {headline}
                   </span>

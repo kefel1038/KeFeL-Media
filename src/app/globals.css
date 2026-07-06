@@ -89,14 +89,14 @@ img, video, svg { transition: none; }
 .article-lead {
   font-size: 1.2rem;
   line-height: 1.7;
-  color: #1f2937;
+  color: #111111;
   font-weight: 500;
   border-left: 4px solid #D32F2F;
   padding-left: 1.25rem;
   margin-bottom: 2rem;
 }
 .dark .article-lead {
-  color: #e5e7eb;
+  color: #E4E4E7;
 }
 
 /* Article highlight box */
@@ -126,13 +126,13 @@ img, video, svg { transition: none; }
 .kfl-highlight-box li {
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: #374151;
+  color: #111111;
   padding: 0.35rem 0;
   padding-left: 1.5rem;
   position: relative;
 }
 .dark .kfl-highlight-box li {
-  color: #d1d5db;
+  color: #E4E4E7;
 }
 .kfl-highlight-box li::before {
   content: "✓";
@@ -152,21 +152,21 @@ img, video, svg { transition: none; }
 }
 .article-content p {
   margin-bottom: 1.5rem;
-  line-height: 1.8;
+  line-height: 1.7;
   font-size: 1.125rem;
-  color: #374151;
+  color: #111111;
 }
 .dark .article-content p {
-  color: #d1d5db;
+  color: #E4E4E7;
 }
 .article-content p:first-of-type {
   font-size: 1.25rem;
-  line-height: 1.75;
-  color: #1f2937;
+  line-height: 1.7;
+  color: #111111;
   font-weight: 450;
 }
 .dark .article-content p:first-of-type {
-  color: #e5e7eb;
+  color: #E4E4E7;
 }
 
 /* Article sections */
@@ -323,11 +323,11 @@ img, video, svg { transition: none; }
 
 /* Dark mode overrides for prose */
 .dark .prose {
-  --tw-prose-body: #d4d4d8;
+  --tw-prose-body: #E4E4E7;
   --tw-prose-headings: #fafafa;
   --tw-prose-links: #D32F2F;
   --tw-prose-bold: #fafafa;
-  --tw-prose-quotes: #d4d4d8;
+  --tw-prose-quotes: #E4E4E7;
   --tw-prose-quote-borders: #D32F2F;
   --tw-prose-code: #D32F2F;
 }

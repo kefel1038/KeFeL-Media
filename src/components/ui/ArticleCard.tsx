@@ -29,7 +29,7 @@ export default function ArticleCard({
               fill
               priority
               className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 768px) 100vw, 65vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 800px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute bottom-4 left-4 flex items-center gap-2">
@@ -82,7 +82,7 @@ export default function ArticleCard({
               alt={article.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
-              sizes="112px"
+              sizes="(max-width: 768px) 224px, 112px"
             />
           </div>
           <div className="flex-1 min-w-0">
@@ -152,7 +152,7 @@ export default function ArticleCard({
               alt={article.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
-              sizes="56px"
+              sizes="112px"
             />
           </div>
           <div className="flex-1 min-w-0">
@@ -180,7 +180,7 @@ export default function ArticleCard({
             alt={article.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
-            sizes="112px"
+            sizes="(max-width: 768px) 224px, 112px"
           />
         </div>
         <div className="flex-1 min-w-0">
