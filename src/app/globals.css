@@ -377,14 +377,27 @@ img, video, svg { transition: none; }
   --tw-prose-code: #D32F2F;
 }
 
-
-/* Article highlight box */
-.kfl-highlight-box {
-  background-color: color-mix(in srgb, #D32F2F 6%, transparent);
-  border: 1px solid color-mix(in srgb, #D32F2F 20%, transparent);
-  border-radius: 12px;
-  padding: 1.5rem 1.75rem;
-  margin: 2rem 0;
+/* Prose CSS variables */
+.prose {
+  --tw-prose-body: #1A1A1A;
+  --tw-prose-headings: #0D0D0D;
+  --tw-prose-lead: #1A1A1A;
+  --tw-prose-links: #D32F2F;
+  --tw-prose-bold: #0D0D0D;
+  --tw-prose-bullets: #D32F2F;
+  --tw-prose-quote-borders: #D32F2F;
+  --tw-prose-code: #D32F2F;
+}
+.dark .prose {
+  --tw-prose-body: #E4E4E7;
+  --tw-prose-headings: #F4F4F5;
+  --tw-prose-lead: #d4d4d8;
+  --tw-prose-links: #D32F2F;
+  --tw-prose-bold: #fafafa;
+  --tw-prose-bullets: #D32F2F;
+  --tw-prose-quotes: #E4E4E7;
+  --tw-prose-quote-borders: #D32F2F;
+  --tw-prose-code: #D32F2F;
 }
 .kfl-highlight-box h3 {
   font-family: var(--font-headline);

@@ -42,7 +42,7 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
   const safeHtml = sanitizeHtml(processed);
 
   return (
-    <div className="article-body-wrapper">
+    <div className="article-body-wrapper font-serif">
       <div
         className="
           prose prose-lg max-w-none

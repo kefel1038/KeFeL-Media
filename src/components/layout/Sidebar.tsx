@@ -23,7 +23,7 @@ export default async function Sidebar() {
           {latestArticles.map((article) => (
             <Link key={article.id} href={`/article/${article.slug}`}
               className="flex gap-3 p-4 hover:bg-gray-50 dark:hover:bg-zinc-800/50 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 group">
-              <div className="flex-shrink-0 w-20 h-20 rounded overflow-hidden relative bg-zinc-100 dark:bg-zinc-850">
+              <div className="flex-shrink-0 w-20 h-20 rounded-sm overflow-hidden relative bg-zinc-100 dark:bg-zinc-850 aspect-square">
                 <Image src={article.image} alt={article.title} fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="160px" />
                 <div className="absolute top-1 left-1 z-10 shadow-sm">
@@ -55,7 +55,7 @@ export default async function Sidebar() {
         <div className="grid grid-cols-2 gap-3 p-4">
           {weeklyHighlights.slice(0, 2).map((article) => (
             <Link key={article.id} href={`/article/${article.slug}`} className="group block hover:-translate-y-1 hover:shadow-sm transition-all duration-300">
-              <div className="relative aspect-[4/3] rounded overflow-hidden mb-2">
+              <div className="relative aspect-[4/3] rounded-sm overflow-hidden mb-2">
                 <Image src={article.image} alt={article.title} fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   sizes="(max-width: 1024px) 50vw, 300px" />
