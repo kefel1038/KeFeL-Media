@@ -279,5 +279,42 @@ img, video, svg { transition: none; }
   font-family: Georgia, serif;
 }
 
+/* =======================================================
+   CRITICAL OVERRIDE FOR LIGHT MODE READABILITY
+   Forces near-black text color when the html/body is in 
+   light mode, overriding any rogue text-white variables.
+   ======================================================= */
 
+main, 
+article, 
+.prose,
+[class*="article"] {
+  color: #1a1a1a !important;
+}
 
+main h1,
+article h1,
+main p,
+article p,
+main span,
+article span {
+  color: #1a1a1a !important;
+  opacity: 1 !important;
+}
+
+html.dark main,
+html.dark article,
+html.dark .prose,
+.dark main,
+.dark article,
+.dark p,
+.dark h1,
+.dark span {
+  color: #e4e4e7 !important;
+  opacity: 1 !important;
+}
+
+.bg-red-600 *, 
+[class*="bg-red"] * {
+  color: #ffffff !important;
+}
