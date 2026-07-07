@@ -47,10 +47,10 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-6">
-      <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-200 dark:border-zinc-700">
+      <div className="flex items-center gap-3 mb-8 pb-4 border-b border-zinc-700">
         <div className={`w-3 h-8 rounded ${cat?.color ?? "bg-brand"}`} />
         <div>
-          <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
+          <h1 className="text-3xl md:text-4xl font-black text-white">
             {cat?.label ?? "Latest News"}
           </h1>
           {cat?.description && (
@@ -65,15 +65,15 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       )}
 
-      <hr className="border-gray-200 dark:border-zinc-700 mb-8" />
+      <hr className="border-zinc-700 mb-8" />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
         <div>
           {rest.length > 0 ? (
             <>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-1 h-6 bg-gray-900 dark:bg-white rounded-full" />
-                <h2 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white">
+                <div className="w-1 h-6 bg-white rounded-full" />
+                <h2 className="text-xl md:text-2xl font-black text-white">
                   Latest {cat?.label ?? "News"}
                 </h2>
               </div>
@@ -81,7 +81,7 @@ export default async function CategoryPage({ params }: Props) {
                 {rest.map((article, i) => (
                   <div
                     key={article.id}
-                    className={`${i < rest.length - 1 ? "pb-5 border-b border-gray-200 dark:border-zinc-700" : ""}`}
+                    className={`${i < rest.length - 1 ? "pb-5 border-b border-zinc-700" : ""}`}
                   >
                     <ArticleCard article={article} variant="list" />
                   </div>

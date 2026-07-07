@@ -34,7 +34,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      <nav className="bg-black dark:bg-[#121212] border-b border-white/10 transition-colors duration-300">
+      <nav className="bg-black border-b border-white/10 transition-colors duration-300">
         <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-14">
           <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="KeFeL Media Home">
             <div className="w-7 h-7 bg-brand rounded flex items-center justify-center">
@@ -73,13 +73,13 @@ export default function Header() {
         </div>
 
         {searchOpen && (
-          <div className="border-t border-white/10 bg-black dark:bg-[#121212] px-4 py-3 transition-colors duration-300">
+          <div className="border-t border-white/10 bg-black px-4 py-3 transition-colors duration-300">
             <SearchBar onClose={() => setSearchOpen(false)} />
           </div>
         )}
 
         {mobileOpen && (
-          <div className="xl:hidden border-t border-white/10 bg-black dark:bg-[#121212] px-4 py-3 grid grid-cols-2 gap-1 transition-colors duration-300">
+          <div className="xl:hidden border-t border-white/10 bg-black px-4 py-3 grid grid-cols-2 gap-1 transition-colors duration-300">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
                 className="text-gray-300 hover:text-white text-sm font-medium px-3 py-2 rounded hover:bg-white/10 transition-colors">

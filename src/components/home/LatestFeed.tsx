@@ -10,7 +10,7 @@ export default async function LatestFeed() {
     <section>
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-3">
-          <div className="w-1 h-6 bg-gray-900 dark:bg-white rounded-full" />
+          <div className="w-1 h-6 bg-white rounded-full" />
           <h2 className="text-xl md:text-2xl font-black text-white">Latest Stories</h2>
         </div>
         <Link href="/latest"
@@ -21,7 +21,7 @@ export default async function LatestFeed() {
       <div className="space-y-5">
         {latest.map((article, i) => (
           <div key={article.id}
-            className={`${i < latest.length - 1 ? "pb-5 border-b border-gray-200 dark:border-zinc-700" : ""}`}>
+            className={`${i < latest.length - 1 ? "pb-5 border-b border-zinc-700" : ""}`}>
             <ArticleCard article={article} variant="list" />
           </div>
         ))}

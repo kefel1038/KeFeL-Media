@@ -26,10 +26,10 @@ export default function AboutPage() {
     <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-10">
       {/* Hero */}
       <div className="max-w-3xl mx-auto text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+        <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
           About <span className="text-brand">KeFeL Media</span>
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        <p className="text-lg text-gray-400 leading-relaxed">
           Informing, inspiring, and connecting Africa and the world through
           fearless, independent journalism.
         </p>
@@ -40,9 +40,9 @@ export default function AboutPage() {
         {stats.map((s) => {
           const Icon = s.icon;
           return (
-            <div key={s.label} className="text-center bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-6">
+            <div key={s.label} className="text-center bg-zinc-900 rounded-xl border border-zinc-800 p-6">
               <Icon size={24} className="text-brand mx-auto mb-2" />
-              <p className="text-2xl font-black text-gray-900 dark:text-white">{s.value}</p>
+              <p className="text-2xl font-black text-white">{s.value}</p>
               <p className="text-xs text-gray-500 mt-1">{s.label}</p>
             </div>
           );
@@ -52,8 +52,8 @@ export default function AboutPage() {
       {/* Our Story */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
         <div>
-          <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-4">Our Story</h2>
-          <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+          <h2 className="text-2xl font-black text-white mb-4">Our Story</h2>
+          <div className="space-y-4 text-gray-400 leading-relaxed">
             <p>
               KeFeL Media was founded with a singular mission: to deliver
               high-quality, independent journalism that serves the African
@@ -75,13 +75,13 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="bg-gradient-to-br from-brand/10 to-blue-500/10 rounded-2xl p-8 border border-brand/20">
-          <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-3">Our Mission</h3>
-          <p className="text-gray-600 dark:text-gray-400 italic leading-relaxed mb-6">
+          <h3 className="font-bold text-lg text-white mb-3">Our Mission</h3>
+          <p className="text-gray-400 italic leading-relaxed mb-6">
             &ldquo;To inform, inspire, and connect — delivering truth without
             fear or favor, and amplifying the stories that shape our world.&rdquo;
           </p>
-          <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-3">Our Vision</h3>
-          <p className="text-gray-600 dark:text-gray-400 italic leading-relaxed">
+          <h3 className="font-bold text-lg text-white mb-3">Our Vision</h3>
+          <p className="text-gray-400 italic leading-relaxed">
             &ldquo;A well-informed Africa where quality journalism is
             accessible to all, driving accountability, understanding, and
             progress across the continent.&rdquo;
@@ -91,11 +91,11 @@ export default function AboutPage() {
 
       {/* Values */}
       <div className="mb-16">
-        <h2 className="text-2xl font-black text-gray-900 dark:text-white text-center mb-8">Our Values</h2>
+        <h2 className="text-2xl font-black text-white text-center mb-8">Our Values</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((v) => (
-            <div key={v.title} className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-6">
-              <h3 className="font-bold text-gray-900 dark:text-white mb-2">{v.title}</h3>
+            <div key={v.title} className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
+              <h3 className="font-bold text-white mb-2">{v.title}</h3>
               <p className="text-sm text-gray-500 leading-relaxed">{v.desc}</p>
             </div>
           ))}
@@ -104,7 +104,7 @@ export default function AboutPage() {
 
       {/* Team */}
       <div className="text-center mb-16">
-        <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-4">Our Team</h2>
+        <h2 className="text-2xl font-black text-white mb-4">Our Team</h2>
         <p className="text-gray-500 max-w-2xl mx-auto mb-8">
           KeFeL Media is powered by a diverse team of journalists, editors,
           photographers, and digital media professionals across Africa and
@@ -119,26 +119,26 @@ export default function AboutPage() {
       </div>
 
       {/* Editorial Standards */}
-      <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-8">
-        <h2 className="text-xl font-black text-gray-900 dark:text-white mb-4">Editorial Standards</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600 dark:text-gray-400">
+      <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8">
+        <h2 className="text-xl font-black text-white mb-4">Editorial Standards</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
           <div className="space-y-4">
             <div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-1">Accuracy</h3>
+              <h3 className="font-bold text-white mb-1">Accuracy</h3>
               <p>Every story is fact-checked and sourced. We correct errors promptly and transparently.</p>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-1">Independence</h3>
+              <h3 className="font-bold text-white mb-1">Independence</h3>
               <p>Our reporting is free from political, commercial, or ideological influence.</p>
             </div>
           </div>
           <div className="space-y-4">
             <div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-1">Fairness</h3>
+              <h3 className="font-bold text-white mb-1">Fairness</h3>
               <p>We seek diverse perspectives and represent all sides of every story with respect.</p>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 dark:text-white mb-1">Accountability</h3>
+              <h3 className="font-bold text-white mb-1">Accountability</h3>
               <p>We hold power to account and welcome feedback from our readers.</p>
             </div>
           </div>

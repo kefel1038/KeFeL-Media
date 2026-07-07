@@ -18,10 +18,10 @@ export default function ContactPage() {
     <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-10">
       {/* Hero */}
       <div className="max-w-2xl mx-auto text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+        <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
           Get in <span className="text-brand">Touch</span>
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        <p className="text-lg text-gray-400 leading-relaxed">
           Have a story tip, feedback, or inquiry? We&rsquo;d love to hear from you.
           Reach out to the KeFeL Media team.
         </p>
@@ -33,30 +33,21 @@ export default function ContactPage() {
           {contactMethods.map((method) => (
             <div
               key={method.label}
-              className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5"
+              className="bg-zinc-900 rounded-xl border border-zinc-800 p-5"
             >
-              <div className="flex items-start gap-3">
-                <span className="text-xl mt-0.5">{method.icon}</span>
-                <div>
-                  <h3 className="font-bold text-gray-900 dark:text-white text-sm">
-                    {method.label}
-                  </h3>
-                  <a
-                    href={`mailto:${method.email}`}
-                    className="text-brand hover:text-brand-dark text-sm transition-colors"
-                  >
-                    {method.email}
-                  </a>
-                </div>
-              </div>
+              <h3 className="font-bold text-white text-sm">{method.label}</h3>
+              <a
+                href={`mailto:${method.email}`}
+                className="text-brand hover:text-brand-dark text-sm transition-colors"
+              >
+                {method.email}
+              </a>
             </div>
           ))}
 
-          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5">
-            <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-2">
-              Headquarters
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-5">
+            <h3 className="font-bold text-white text-sm mb-2">Visit Us</h3>
+            <p className="text-sm text-gray-400 leading-relaxed">
               KeFeL Media Centre<br />
               Kampala, Uganda<br />
               East Africa

@@ -106,9 +106,9 @@ export default function BlockEditor({ value, onChange }: BlockEditorProps) {
       {blocks.map((block, idx) => {
         const Icon = blockIcons[block.type];
         return (
-          <div key={block.id} className="group relative bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-lg p-3">
+          <div key={block.id} className="group relative bg-zinc-900 border border-zinc-700 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-2">
-              <GripVertical size={13} className="text-gray-300 dark:text-zinc-600 cursor-grab" />
+              <GripVertical size={13} className="text-zinc-600 cursor-grab" />
               <Icon size={13} className="text-brand" />
               <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">{blockLabels[block.type]}</span>
               <div className="flex-1" />
@@ -121,7 +121,7 @@ export default function BlockEditor({ value, onChange }: BlockEditorProps) {
                   </button>
                 ))}
                 <button type="button" onClick={() => removeBlock(idx)}
-                  className="p-1 rounded text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                  className="p-1 rounded text-gray-400 hover:text-red-500 hover:bg-red-900/20 transition-colors">
                   <Trash2 size={12} />
                 </button>
               </div>
@@ -129,7 +129,7 @@ export default function BlockEditor({ value, onChange }: BlockEditorProps) {
             {block.type === "image" ? (
               <input type="text" value={block.content} onChange={(e) => updateContent(idx, e.target.value)}
                 placeholder="Image URL..."
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded text-white px-3 py-1.5 text-xs focus:outline-none focus:border-brand" />
+                className="w-full bg-zinc-800 border border-zinc-700 rounded text-white px-3 py-1.5 text-xs focus:outline-none focus:border-brand" />
             ) : (
               <textarea value={block.content} onChange={(e) => updateContent(idx, e.target.value)}
                 rows={block.type === "bullets" || block.type === "highlight" ? 4 : 2}
@@ -146,7 +146,7 @@ export default function BlockEditor({ value, onChange }: BlockEditorProps) {
           const Icon = blockIcons[t];
           return (
             <button key={t} type="button" onClick={() => addBlock(t, blocks.length - 1)}
-              className="flex items-center gap-1 text-[10px] font-semibold text-gray-500 hover:text-brand bg-gray-50 dark:bg-zinc-800 hover:bg-brand/10 px-2 py-1 rounded transition-colors">
+              className="flex items-center gap-1 text-[10px] font-semibold text-gray-500 hover:text-brand bg-zinc-800 hover:bg-brand/10 px-2 py-1 rounded transition-colors">
               <Icon size={10} /> Add {blockLabels[t]}
             </button>
           );

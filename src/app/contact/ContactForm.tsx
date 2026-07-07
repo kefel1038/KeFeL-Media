@@ -42,9 +42,9 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-8 text-center">
+      <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 text-center">
         <CheckCircle size={40} className="text-green-500 mx-auto mb-3" />
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Message Sent!</h2>
+        <h2 className="text-xl font-bold text-white mb-2">Message Sent!</h2>
         <p className="text-gray-500 text-sm">
           Thank you for reaching out. Our team will respond within 24 hours.
         </p>
@@ -55,11 +55,11 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-6 md:p-8 space-y-5"
+      className="bg-zinc-900 rounded-xl border border-zinc-800 p-6 md:p-8 space-y-5"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+          <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-1.5">
             Full Name
           </label>
           <input
@@ -68,12 +68,12 @@ export default function ContactForm() {
             type="text"
             required
             maxLength={100}
-            className="w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition"
             placeholder="John Doe"
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+          <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-1.5">
             Email Address
           </label>
           <input
@@ -81,21 +81,21 @@ export default function ContactForm() {
             name="email"
             type="email"
             required
-            className="w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition"
             placeholder="you@example.com"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+        <label htmlFor="subject" className="block text-sm font-semibold text-gray-300 mb-1.5">
           Subject
         </label>
         <select
           id="subject"
           name="subject"
           required
-          className="w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition"
+          className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition"
         >
           <option value="">Select a subject...</option>
           <option value="General Inquiry">General Inquiry</option>
@@ -109,7 +109,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+        <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-1.5">
           Message
         </label>
         <textarea
@@ -118,7 +118,7 @@ export default function ContactForm() {
           required
           rows={6}
           maxLength={5000}
-          className="w-full rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2.5 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition resize-y"
+          className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition resize-y"
           placeholder="Tell us what's on your mind..."
         />
       </div>
@@ -126,7 +126,7 @@ export default function ContactForm() {
       <TurnstileWidget onVerify={setTurnstileToken} />
 
       {status === "error" && (
-        <div className="flex items-start gap-2 text-red-600 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 text-sm">
+        <div className="flex items-start gap-2 text-red-600 bg-red-900/20 border border-red-800 rounded-lg p-3 text-sm">
           <AlertCircle size={16} className="mt-0.5 shrink-0" />
           <span>{errorMsg}</span>
         </div>

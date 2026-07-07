@@ -62,16 +62,16 @@ export default async function AuthorPage({ params }: Props) {
             </div>
           )}
           <div>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 dark:text-white font-headline">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-white font-headline">
               {author.name}
             </h1>
-            <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mt-1">{author.role}</p>
+            <p className="text-sm md:text-base text-zinc-400 mt-1">{author.role}</p>
             {author.bio && (
-              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-3 max-w-xl leading-relaxed">
+              <p className="text-sm md:text-base text-zinc-400 mt-3 max-w-xl leading-relaxed">
                 {author.bio}
               </p>
             )}
-            <div className="flex items-center justify-center sm:justify-start gap-4 mt-4 text-xs text-gray-500 dark:text-gray-400">
+            <div className="flex items-center justify-center sm:justify-start gap-4 mt-4 text-xs text-zinc-400">
               <span className="flex items-center gap-1.5">
                 <FileText size={13} />
                 {articles.length} {articles.length === 1 ? "article" : "articles"}
@@ -99,8 +99,8 @@ export default async function AuthorPage({ params }: Props) {
       </div>
 
       {/* Articles grid */}
-      <div className="border-t border-gray-200 dark:border-zinc-800 pt-8 md:pt-10">
-        <h2 className="text-lg md:text-xl font-black text-gray-900 dark:text-white mb-6 md:mb-8 font-headline">
+      <div className="border-t border-zinc-800 pt-8 md:pt-10">
+        <h2 className="text-lg md:text-xl font-black text-white mb-6 md:mb-8 font-headline">
           Articles by {author.name}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">

@@ -8,7 +8,7 @@ export default function ArticleQuoteBlock({ text, author }: ArticleQuoteBlockPro
     <figure className="my-8 md:my-10 mx-0">
       <div className="relative bg-zinc-800/40 rounded-xl border-l-[4px] border-brand p-5 md:p-7">
         <svg
-          className="absolute top-4 left-4 w-8 h-8 md:w-10 md:h-10 text-brand/15 dark:text-brand/20"
+          className="absolute top-4 left-4 w-8 h-8 md:w-10 md:h-10 text-brand/20"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
@@ -18,7 +18,7 @@ export default function ArticleQuoteBlock({ text, author }: ArticleQuoteBlockPro
           {text}
         </blockquote>
         {author && (
-          <figcaption className="mt-3 pl-10 md:pl-12 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+          <figcaption className="mt-3 pl-10 md:pl-12 text-sm font-semibold text-zinc-400">
             — {author}
           </figcaption>
         )}

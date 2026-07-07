@@ -83,15 +83,15 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
         )}
         <div>
           <p className="font-bold text-zinc-100 text-sm">{article.author.name}</p>
-          <p className="text-zinc-500 dark:text-zinc-400 text-xs">{article.author.role}</p>
+          <p className="text-zinc-400 text-xs">{article.author.role}</p>
         </div>
       </div>
-      <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+      <div className="flex items-center gap-4 text-xs text-zinc-400">
         <span className="flex items-center gap-1.5"><Calendar size={13} />{formatDate(article.publishedAt)}</span>
         <span className="flex items-center gap-1.5"><Clock size={13} />{readingTimeLabel(article.readingTime)}</span>
       </div>
       <div className="flex items-center gap-2 w-full lg:w-auto">
-        <span className="text-xs text-zinc-500 dark:text-zinc-400 font-bold mr-1">Share:</span>
+        <span className="text-xs text-zinc-400 font-bold mr-1">Share:</span>
         {shareButtons.map(({ Icon, label, onClick }) => (
           <button key={label} onClick={onClick} aria-label={`Share on ${label}`} title={label}
             className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand transition-all">

@@ -31,7 +31,7 @@ export default function SearchClient() {
   return (
     <div className="max-w-screen-xl mx-auto px-4 py-10">
       <div className="max-w-2xl mb-10">
-        <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-6">
+        <h1 className="text-3xl font-black text-white mb-6">
           Search KeFeL Media
         </h1>
         <form onSubmit={handleSearch} className="flex gap-3">
@@ -45,7 +45,7 @@ export default function SearchClient() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Search for news, topics, people..."
-              className="w-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-xl text-gray-900 dark:text-white pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-brand transition-colors shadow-sm"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl text-white pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-brand transition-colors shadow-sm"
             />
           </div>
           <button
@@ -61,7 +61,7 @@ export default function SearchClient() {
         <div>
           <p className="text-sm text-gray-500 mb-6">
             {results.length} result{results.length !== 1 ? "s" : ""} for{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
+            <span className="font-semibold text-white">
               &ldquo;{q}&rdquo;
             </span>
           </p>
@@ -75,7 +75,7 @@ export default function SearchClient() {
           ) : (
             <div className="text-center py-20">
               <Search size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <p className="text-xl font-bold text-white mb-2">
                 No results found
               </p>
               <p className="text-gray-500">

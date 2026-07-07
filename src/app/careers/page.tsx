@@ -57,10 +57,10 @@ export default function CareersPage() {
     <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-10">
       {/* Hero */}
       <div className="max-w-2xl mx-auto text-center mb-14">
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+        <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
           Join the <span className="text-brand">Team</span>
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        <p className="text-lg text-gray-400 leading-relaxed">
           Help us shape the future of African journalism. KeFeL Media is looking
           for passionate, talented people who believe in the power of great storytelling.
         </p>
@@ -71,25 +71,25 @@ export default function CareersPage() {
         {perks.map((p) => {
           const Icon = p.icon;
           return (
-            <div key={p.label} className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-4 text-center">
+            <div key={p.label} className="bg-zinc-900 rounded-xl border border-zinc-800 p-4 text-center">
               <Icon size={20} className="text-brand mx-auto mb-2" />
-              <p className="text-xs text-gray-600 dark:text-gray-400 font-medium">{p.label}</p>
+              <p className="text-xs text-gray-400 font-medium">{p.label}</p>
             </div>
           );
         })}
       </div>
 
       {/* Open Roles */}
-      <h2 className="text-2xl font-black text-gray-900 dark:text-white mb-6">Open Positions</h2>
+      <h2 className="text-2xl font-black text-white mb-6">Open Positions</h2>
       <div className="space-y-4 mb-14">
         {openRoles.map((role) => (
           <div
             key={role.title}
-            className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-brand/40 transition-colors"
-          >
-            <div>
-              <h3 className="font-bold text-gray-900 dark:text-white">{role.title}</h3>
-              <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-gray-500">
+            className="bg-zinc-900 rounded-xl border border-zinc-800 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-brand/40 transition-colors"
+            >
+              <div>
+                <h3 className="font-bold text-white">{role.title}</h3>
+                <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-gray-400">
                 <span className="flex items-center gap-1">
                   <Briefcase size={12} /> {role.type}
                 </span>
@@ -110,8 +110,8 @@ export default function CareersPage() {
       </div>
 
       {/* CTA */}
-      <div className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-8 text-center">
-        <h2 className="text-xl font-black text-gray-900 dark:text-white mb-2">Don&rsquo;t See Your Role?</h2>
+      <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 text-center">
+        <h2 className="text-xl font-black text-white mb-2">Don&rsquo;t See Your Role?</h2>
         <p className="text-gray-500 text-sm max-w-lg mx-auto mb-5">
           We&rsquo;re always looking for talented journalists, engineers, designers, and media professionals.
           Send us your CV and we&rsquo;ll keep you in mind.

@@ -43,10 +43,10 @@ export default function ArticleCard({
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-zinc-100 leading-tight group-hover:text-brand transition-colors mb-3 line-clamp-3">
             {article.title}
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed mb-3 line-clamp-3">
+          <p className="text-zinc-400 text-base leading-relaxed mb-3 line-clamp-3">
             {article.excerpt}
           </p>
-          <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="flex items-center gap-3 text-sm text-zinc-400">
             <div className="flex items-center gap-1.5">
               {article.author.avatar && (
                 <Image
@@ -57,7 +57,7 @@ export default function ArticleCard({
                   className="rounded-full object-cover"
                 />
               )}
-              <span className="font-medium text-zinc-600 dark:text-zinc-400">
+              <span className="font-medium text-zinc-400">
                 {article.author.name}
               </span>
             </div>
@@ -90,10 +90,10 @@ export default function ArticleCard({
             <h3 className="text-lg font-bold text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
               {article.title}
             </h3>
-            <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mt-1 line-clamp-2">
+            <p className="text-zinc-400 text-sm leading-relaxed mt-1 line-clamp-2">
               {article.excerpt}
             </p>
-            <div className="flex items-center gap-1 mt-2 text-zinc-400 dark:text-zinc-500 text-xs">
+            <div className="flex items-center gap-1 mt-2 text-zinc-500 text-xs">
               <Clock size={11} />
               <span>{readingTimeLabel(article.readingTime)}</span>
             </div>
@@ -127,10 +127,10 @@ export default function ArticleCard({
           <h3 className="text-xl font-black text-zinc-100 leading-snug group-hover:text-brand transition-colors line-clamp-2 mb-1.5">
             {article.title}
           </h3>
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2 mb-2">
+          <p className="text-zinc-400 text-sm leading-relaxed line-clamp-2 mb-2">
             {article.excerpt}
           </p>
-          <div className="flex items-center gap-1 text-zinc-400 dark:text-zinc-500 text-xs">
+          <div className="flex items-center gap-1 text-zinc-500 text-xs">
             <Clock size={11} />
             <span>{formatRelativeTime(article.publishedAt)}</span>
           </div>
@@ -159,7 +159,7 @@ export default function ArticleCard({
             <h3 className="text-sm font-semibold text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-snug">
               {article.title}
             </h3>
-            <p className="text-[10px] text-zinc-400 dark:text-zinc-500 mt-1">
+            <p className="text-[10px] text-zinc-500 mt-1">
               {formatRelativeTime(article.publishedAt)}
             </p>
           </div>
@@ -188,10 +188,10 @@ export default function ArticleCard({
           <h3 className="text-xl font-bold text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
             {article.title}
           </h3>
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1 line-clamp-2">
+          <p className="text-zinc-400 text-sm mt-1 line-clamp-2">
             {article.excerpt}
           </p>
-          <div className="flex items-center gap-3 mt-1.5 text-xs text-zinc-400 dark:text-zinc-500">
+          <div className="flex items-center gap-3 mt-1.5 text-xs text-zinc-500">
             <span>{article.author.name}</span>
             <span>•</span>
             <span className="flex items-center gap-1">
