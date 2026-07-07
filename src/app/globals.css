@@ -36,16 +36,8 @@
   }
 }
 
-/* ── Semantic design tokens ── */
+/* ── Semantic design tokens (permanent dark theme) ── */
 :root {
-  --background: #F9F9F9;
-  --foreground: #111827;
-  --article-body: #27272a;
-  --muted-text: #52525b;
-  --brand-primary: #D32F2F;
-}
-
-.dark {
   --background: #1A1A1A;
   --foreground: #f4f4f5;
   --article-body: #e4e4e7;

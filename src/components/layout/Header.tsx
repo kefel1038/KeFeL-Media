@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { Search, Moon, Sun, Menu, X } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { categories } from "@/data/categories";
-import ThemeToggle from "@/components/ui/ThemeToggle";
 import SearchBar from "@/components/ui/SearchBar";
 
 const breakingHeadlines = [
@@ -62,7 +61,6 @@ export default function Header() {
               className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded transition-colors" aria-label="Search">
               <Search size={18} />
             </button>
-            <ThemeToggle />
             <Link href="/subscribe"
               className="hidden sm:flex items-center gap-1 bg-brand hover:bg-brand-dark text-white text-[13px] font-semibold px-4 py-2 rounded transition-colors">
               Subscribe

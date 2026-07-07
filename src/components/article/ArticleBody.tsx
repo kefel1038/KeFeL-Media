@@ -45,12 +45,12 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
     <div className="urban-rich-text font-serif">
       <div
         className="
-          prose prose-lg max-w-none prose-zinc dark:prose-invert
+          prose prose-lg max-w-none prose-zinc prose-invert
           prose-headings:font-headline prose-headings:font-black prose-headings:tracking-tight
           prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-a:font-medium
-          prose-blockquote:border-l-brand prose-blockquote:italic prose-blockquote:bg-zinc-50 dark:prose-blockquote:bg-zinc-800/50 prose-blockquote:rounded-r-lg
+          prose-blockquote:border-l-brand prose-blockquote:italic prose-blockquote:bg-zinc-800/50 prose-blockquote:rounded-r-lg
           prose-img:rounded-xl prose-img:shadow-md prose-img:my-8
-          prose-code:bg-zinc-100 dark:prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+          prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
           prose-hr:my-10
           text-zinc-800 dark:text-zinc-200
         "
