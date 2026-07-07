@@ -39,7 +39,7 @@ export default function SocialMediaCopy({ article }: SocialMediaCopyProps) {
   };
 
   return (
-      <div className="mt-10 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+      <div className="mt-10 pt-8 border-t border-zinc-800">
       <h3 className="text-sm font-bold text-zinc-100 mb-4">Share This Story</h3>
       <div className="flex gap-1.5 mb-4">
         {platforms.map((p) => (
@@ -49,7 +49,7 @@ export default function SocialMediaCopy({ article }: SocialMediaCopyProps) {
             className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors ${
               active === p.key
                 ? "bg-brand text-white"
-                : "bg-gray-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-gray-200 dark:hover:bg-zinc-700"
+                : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
             }`}
           >
             <p.icon size={13} />
@@ -57,11 +57,11 @@ export default function SocialMediaCopy({ article }: SocialMediaCopyProps) {
           </button>
         ))}
       </div>
-      <div className="relative bg-gray-50 dark:bg-zinc-800/50 rounded-lg border border-gray-200 dark:border-zinc-700 p-4">
+      <div className="relative bg-zinc-800/50 rounded-lg border border-zinc-700 p-4">
         <p className="text-sm text-zinc-200 whitespace-pre-wrap pr-8">{getContent(active)}</p>
         <button
           onClick={() => handleCopy(getContent(active))}
-          className="absolute top-3 right-3 p-1.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 text-zinc-400 dark:text-zinc-500 hover:text-brand transition-colors"
+          className="absolute top-3 right-3 p-1.5 rounded-lg bg-zinc-800 border border-zinc-800 text-zinc-500 hover:text-brand transition-colors"
           title="Copy"
         >
           {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}

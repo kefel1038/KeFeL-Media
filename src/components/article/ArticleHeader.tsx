@@ -71,7 +71,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
   ];
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-zinc-200 dark:border-zinc-800">
+    <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-zinc-800">
       <div className="flex items-center gap-3">
         {article.author.avatar ? (
           <img src={article.author.avatar} alt={article.author.name} width={44} height={44}
@@ -94,7 +94,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
         <span className="text-xs text-zinc-500 dark:text-zinc-400 font-bold mr-1">Share:</span>
         {shareButtons.map(({ Icon, label, onClick }) => (
           <button key={label} onClick={onClick} aria-label={`Share on ${label}`} title={label}
-            className="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-white hover:bg-brand transition-all">
+            className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand transition-all">
             <Icon size={14} />
           </button>
         ))}

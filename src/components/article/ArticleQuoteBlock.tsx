@@ -6,7 +6,7 @@ interface ArticleQuoteBlockProps {
 export default function ArticleQuoteBlock({ text, author }: ArticleQuoteBlockProps) {
   return (
     <figure className="my-8 md:my-10 mx-0">
-      <div className="relative bg-gray-50 dark:bg-zinc-800/40 rounded-xl border-l-[4px] border-brand p-5 md:p-7">
+      <div className="relative bg-zinc-800/40 rounded-xl border-l-[4px] border-brand p-5 md:p-7">
         <svg
           className="absolute top-4 left-4 w-8 h-8 md:w-10 md:h-10 text-brand/15 dark:text-brand/20"
           fill="currentColor"

@@ -170,7 +170,7 @@ export default async function ArticlePage({ params }: Props) {
             </header>
 
             {/* Author bar + metadata */}
-            <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-6 md:mb-8 border-y border-zinc-200 dark:border-zinc-800">
+            <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-6 md:mb-8 border-y border-zinc-800">
               <Link
                 href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
                 className="flex items-center gap-3 group"
@@ -213,7 +213,7 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Featured image */}
             {article.image && (
-              <div className="relative w-full aspect-video min-h-[250px] sm:min-h-[350px] md:max-h-[450px] overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 border border-zinc-200/50 dark:border-zinc-800/50 mb-8">
+              <div className="relative w-full aspect-video min-h-[250px] sm:min-h-[350px] md:max-h-[450px] overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800/50 mb-8">
                 <img
                   src={
                     typeof article.image === "string" && article.image.startsWith("http")
@@ -241,7 +241,7 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Author profile card */}
             <div className="mx-auto" style={{ maxWidth: "720px" }}>
-              <div className="mt-10 md:mt-12 p-5 md:p-6 bg-gray-50 dark:bg-zinc-800/40 rounded-xl border border-zinc-200 dark:border-zinc-800">
+              <div className="mt-10 md:mt-12 p-5 md:p-6 bg-zinc-800/40 rounded-xl border border-zinc-800">
                 <div className="flex items-start gap-4">
                   {article.author?.avatar ? (
                     <img

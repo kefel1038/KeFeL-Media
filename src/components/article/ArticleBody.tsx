@@ -58,7 +58,7 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
       />
       {secondaryImage && (
         <figure className="w-full md:w-80 float-right md:ml-6 md:mb-4 space-y-1 hidden md:block mt-6 md:mt-0">
-          <div className="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3] w-full bg-gray-200 dark:bg-zinc-800 shadow-sm">
+          <div className="relative overflow-hidden rounded-lg aspect-video md:aspect-[4/3] w-full bg-zinc-800 shadow-sm">
             <img
               src={secondaryImage}
               alt={secondaryImageCaption ?? "Article illustration"}
@@ -66,7 +66,7 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
             />
           </div>
           {secondaryImageCaption && (
-            <p className="text-right text-zinc-500 dark:text-zinc-400 text-xs italic">{secondaryImageCaption}</p>
+            <p className="text-right text-zinc-400 text-xs italic">{secondaryImageCaption}</p>
           )}
         </figure>
       )}
