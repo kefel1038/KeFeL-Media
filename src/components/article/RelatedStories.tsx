@@ -16,7 +16,7 @@ export default function RelatedStories({ article, related }: RelatedStoriesProps
       <div className="flex items-center justify-between mb-6 md:mb-8">
         <div className="flex items-center gap-3">
           <div className="w-1 h-6 md:h-7 bg-brand rounded-full" />
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-zinc-900 dark:text-zinc-100 font-headline">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-zinc-100 font-headline">
             Related Stories
           </h2>
         </div>

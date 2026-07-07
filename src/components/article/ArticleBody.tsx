@@ -52,7 +52,7 @@ export default function ArticleBody({ content, secondaryImage, secondaryImageCap
           prose-img:rounded-xl prose-img:shadow-md prose-img:my-8
           prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
           prose-hr:my-10
-          text-zinc-800 dark:text-zinc-200
+          text-zinc-200
         "
         dangerouslySetInnerHTML={{ __html: safeHtml }}
       />

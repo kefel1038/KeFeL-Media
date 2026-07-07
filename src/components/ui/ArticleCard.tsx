@@ -40,7 +40,7 @@ export default function ArticleCard({
               </span>
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-zinc-900 dark:text-zinc-100 leading-tight group-hover:text-brand transition-colors mb-3 line-clamp-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-zinc-100 leading-tight group-hover:text-brand transition-colors mb-3 line-clamp-3">
             {article.title}
           </h2>
           <p className="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed mb-3 line-clamp-3">
@@ -87,7 +87,7 @@ export default function ArticleCard({
           </div>
           <div className="flex-1 min-w-0">
             <CategoryBadge category={article.category} size="xs" />
-            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
+            <h3 className="text-lg font-bold text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
               {article.title}
             </h3>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mt-1 line-clamp-2">
@@ -124,7 +124,7 @@ export default function ArticleCard({
               </span>
             </div>
           </div>
-          <h3 className="text-xl font-black text-zinc-900 dark:text-zinc-100 leading-snug group-hover:text-brand transition-colors line-clamp-2 mb-1.5">
+          <h3 className="text-xl font-black text-zinc-100 leading-snug group-hover:text-brand transition-colors line-clamp-2 mb-1.5">
             {article.title}
           </h3>
           <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2 mb-2">
@@ -156,7 +156,7 @@ export default function ArticleCard({
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-snug">
+            <h3 className="text-sm font-semibold text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-snug">
               {article.title}
             </h3>
             <p className="text-[10px] text-zinc-400 dark:text-zinc-500 mt-1">
@@ -185,7 +185,7 @@ export default function ArticleCard({
         </div>
         <div className="flex-1 min-w-0">
           <CategoryBadge category={article.category} size="xs" />
-          <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
+          <h3 className="text-xl font-bold text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
             {article.title}
           </h3>
           <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1 line-clamp-2">

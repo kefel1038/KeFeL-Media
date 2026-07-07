@@ -129,12 +129,12 @@ export default function BlockEditor({ value, onChange }: BlockEditorProps) {
             {block.type === "image" ? (
               <input type="text" value={block.content} onChange={(e) => updateContent(idx, e.target.value)}
                 placeholder="Image URL..."
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded text-gray-900 dark:text-white px-3 py-1.5 text-xs focus:outline-none focus:border-brand" />
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded text-white px-3 py-1.5 text-xs focus:outline-none focus:border-brand" />
             ) : (
               <textarea value={block.content} onChange={(e) => updateContent(idx, e.target.value)}
                 rows={block.type === "bullets" || block.type === "highlight" ? 4 : 2}
                 placeholder={block.type === "bullets" ? "One item per line..." : block.type === "highlight" ? "One highlight per line..." : `Enter ${blockLabels[block.type].toLowerCase()} content...`}
-                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded text-gray-900 dark:text-white px-3 py-1.5 text-xs focus:outline-none focus:border-brand resize-y" />
+                className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded text-white px-3 py-1.5 text-xs focus:outline-none focus:border-brand resize-y" />
             )}
           </div>
         );

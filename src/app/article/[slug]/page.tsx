@@ -161,7 +161,7 @@ export default async function ArticlePage({ params }: Props) {
               <div className="mb-3 md:mb-4">
                 <CategoryBadge category={article.category || ""} size="lg" />
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.1] mb-4 md:mb-5 font-headline">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-100 leading-[1.1] mb-4 md:mb-5 font-headline">
                 {article.title || "Untitled Story"}
               </h1>
               <p className="article-lead !border-l-0 !pl-0 !text-lg md:!text-xl !text-zinc-600 dark:!text-zinc-400 !font-normal !mb-0">
@@ -187,7 +187,7 @@ export default async function ArticlePage({ params }: Props) {
                   </div>
                 )}
                 <div>
-                  <p className="font-bold text-zinc-900 dark:text-zinc-100 text-sm md:text-base group-hover:text-brand transition-colors">
+                  <p className="font-bold text-zinc-100 text-sm md:text-base group-hover:text-brand transition-colors">
                     {article.author?.name || "KeFeL Media"}
                   </p>
                   <p className="text-zinc-500 dark:text-zinc-400 text-xs">{article.author?.role || ""}</p>
@@ -257,7 +257,7 @@ export default async function ArticlePage({ params }: Props) {
                   <div className="flex-1 min-w-0">
                     <Link
                       href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
-                      className="font-bold text-zinc-900 dark:text-zinc-100 hover:text-brand transition-colors"
+                      className="font-bold text-zinc-100 hover:text-brand transition-colors"
                     >
                       {article.author?.name || "KeFeL Media"}
                     </Link>

@@ -82,7 +82,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
           </div>
         )}
         <div>
-          <p className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">{article.author.name}</p>
+          <p className="font-bold text-zinc-100 text-sm">{article.author.name}</p>
           <p className="text-zinc-500 dark:text-zinc-400 text-xs">{article.author.role}</p>
         </div>
       </div>

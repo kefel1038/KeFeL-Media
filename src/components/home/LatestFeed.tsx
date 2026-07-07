@@ -11,7 +11,7 @@ export default async function LatestFeed() {
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-3">
           <div className="w-1 h-6 bg-gray-900 dark:bg-white rounded-full" />
-          <h2 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white">Latest Stories</h2>
+          <h2 className="text-xl md:text-2xl font-black text-white">Latest Stories</h2>
         </div>
         <Link href="/latest"
           className="flex items-center gap-1 text-brand text-sm font-semibold hover:gap-2 transition-all">

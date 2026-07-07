@@ -13,7 +13,7 @@ export default async function Sidebar() {
     <aside className="space-y-6 md:sticky md:top-24 self-start">
       <div className="bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 overflow-hidden">
         <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
-          <h2 className="text-base font-black font-sans text-zinc-900 dark:text-zinc-100 flex items-center gap-2 uppercase tracking-wider">
+          <h2 className="text-base font-black font-sans text-zinc-100 flex items-center gap-2 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-brand" />
             Latest News
           </h2>
@@ -31,7 +31,7 @@ export default async function Sidebar() {
                 </div>
               </div>
               <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
-                <h3 className="font-sans text-sm font-bold text-zinc-900 dark:text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-tight">
+                <h3 className="font-sans text-sm font-bold text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-tight">
                   {article.title}
                 </h3>
                 <div className="flex items-center gap-1 mt-1.5 text-zinc-400 dark:text-zinc-500 text-[11px] font-sans">
@@ -46,7 +46,7 @@ export default async function Sidebar() {
 
       <div className="bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 overflow-hidden">
         <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
-          <h2 className="text-base font-black font-sans text-zinc-900 dark:text-zinc-100 flex items-center gap-2 uppercase tracking-wider">
+          <h2 className="text-base font-black font-sans text-zinc-100 flex items-center gap-2 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             Weekly Highlights
           </h2>
@@ -62,7 +62,7 @@ export default async function Sidebar() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-2 left-2"><CategoryBadge category={article.category} size="xs" /></div>
               </div>
-              <h3 className="font-sans text-xs font-bold text-zinc-900 dark:text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-tight">
+              <h3 className="font-sans text-xs font-bold text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-tight">
                 {article.title}
               </h3>
             </Link>
@@ -73,7 +73,7 @@ export default async function Sidebar() {
             <Link key={article.id} href={`/article/${article.slug}`} className="flex items-start gap-2 py-3 group hover:-translate-y-0.5 transition-all duration-300">
               <span className="text-brand font-black text-lg leading-none mt-0.5">•</span>
               <div className="flex-1 min-w-0">
-                <h3 className="font-sans text-sm font-bold text-zinc-900 dark:text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-snug">
+                <h3 className="font-sans text-sm font-bold text-zinc-100 line-clamp-2 group-hover:text-brand transition-colors leading-snug">
                   {article.title}
                 </h3>
                 <div className="flex items-center gap-1 mt-1 text-zinc-400 dark:text-zinc-500 text-xs font-sans">
