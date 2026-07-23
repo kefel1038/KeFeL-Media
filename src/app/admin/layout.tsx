@@ -21,6 +21,7 @@ import {
   Settings,
   Zap,
   TrendingUp,
+  Bot,
 } from "lucide-react";
 import { canManageArticles, canPublishArticles, canManageMedia, canManageNewsletter, canManageBreakingNews, canManageUsers, canManageSettings } from "@/lib/permissions";
 import type { Role } from "@/lib/permissions";
@@ -34,6 +35,12 @@ type NavItem = {
 };
 
 const navSections: { heading: string; items: NavItem[] }[] = [
+  {
+    heading: "AI Newsroom",
+    items: [
+      { href: "/admin/newsroom", label: "AI Newsroom", icon: Bot, badge: "NEW" },
+    ],
+  },
   {
     heading: "Main",
     items: [

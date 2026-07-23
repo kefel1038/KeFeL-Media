@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
 import { categories } from "@/data/categories";
+import { siteConfig } from "@/lib/seo";
 
-// Inline brand SVGs (lucide-react v4 removed these)
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -32,15 +32,6 @@ const TikTokIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
-const companyLinks = [
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Advertise", href: "/advertise" },
-  { label: "Careers", href: "/careers" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Use", href: "/terms" },
-];
-
 const socialLinks = [
   { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100063718801347", Icon: FacebookIcon },
   { label: "X / Twitter", href: "#", Icon: XIcon },
@@ -49,62 +40,88 @@ const socialLinks = [
   { label: "TikTok", href: "#", Icon: TikTokIcon },
 ];
 
+const footerSections = [
+  {
+    title: "Company",
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Advertise", href: "/advertise" },
+      { label: "Careers", href: "/careers" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Use", href: "/terms" },
+      { label: "Cookie Policy", href: "/cookies" },
+      { label: "Corrections", href: "/corrections" },
+    ],
+  },
+  {
+    title: "Features",
+    links: [
+      { label: "Newsletters", href: "/newsletters" },
+      { label: "Podcasts", href: "/podcasts" },
+      { label: "Videos", href: "/videos" },
+      { label: "RSS Feed", href: "/rss.xml" },
+    ],
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-[#111111] text-gray-400 mt-16">
+    <footer className="bg-zinc-950 text-gray-400 mt-16 border-t border-[var(--card-border)]">
       {/* Newsletter Banner */}
-      <div className="bg-brand/10 border-t border-b border-brand/20 py-8">
-        <div className="max-w-screen-xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <h3 className="text-white font-bold text-lg">
+      <div className="bg-brand-dark/10 border-b border-white/5 py-10">
+        <div className="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-center md:text-left">
+            <h3 className="text-white font-bold text-xl font-headline tracking-wide">
               Stay Informed. Subscribe to KeFeL Media.
             </h3>
-            <p className="text-gray-400 text-sm mt-1">
-              Daily briefings on Africa's biggest stories, straight to your inbox.
+            <p className="text-gray-400 text-sm mt-2">
+              Daily briefings on Africa&apos;s biggest stories, straight to your inbox.
             </p>
           </div>
-          <form className="flex w-full sm:w-auto gap-2">
-            <div className="relative flex-1 sm:w-72">
-              <Mail
-                size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
-              />
+          <form className="flex w-full md:w-auto gap-2">
+            <div className="relative flex-1 md:w-80">
+              <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full bg-white/10 border border-white/20 rounded text-white text-sm placeholder-gray-500 pl-9 pr-4 py-2.5 focus:outline-none focus:border-brand transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-gray-500 pl-11 pr-4 py-3 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/50 transition-all"
               />
             </div>
             <button
               type="submit"
-              className="bg-brand hover:bg-orange-600 text-white font-semibold text-sm px-5 py-2.5 rounded transition-colors flex items-center gap-1 whitespace-nowrap"
+              className="bg-brand-primary hover:bg-brand-dark text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap tracking-wide uppercase"
             >
-              Subscribe <ArrowRight size={14} />
+              Subscribe <ArrowRight size={16} />
             </button>
           </form>
         </div>
       </div>
 
       {/* Main Footer Grid */}
-      <div className="max-w-screen-xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-screen-xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
-          <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-brand rounded-sm flex items-center justify-center">
-                <span className="text-white font-black text-lg">K</span>
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center gap-2 mb-6">
+              <div className="w-9 h-9 bg-brand-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-black text-xl">K</span>
               </div>
               <div className="flex items-baseline gap-[2px]">
-                <span className="text-white font-black text-lg">KEFEL</span>
-                <span className="text-brand font-black text-lg">.</span>
-                <span className="text-white font-black text-lg">MEDIA</span>
+                <span className="text-white font-black text-xl font-headline">KEFEL</span>
+                <span className="text-brand-primary font-black text-xl">.</span>
+                <span className="text-white font-black text-xl font-headline">MEDIA</span>
               </div>
             </Link>
-            <p className="text-sm leading-relaxed text-gray-500 mb-4">
-              Informing, Inspiring, Connecting Africa and the World. Bringing you
-              the stories that matter, with depth and integrity.
+            <p className="text-sm leading-relaxed text-gray-400 mb-6 font-serif italic max-w-sm">
+              &ldquo;Informing, Inspiring, Connecting Africa and the World. Bringing you
+              the stories that matter, with depth and integrity.&rdquo;
             </p>
-            {/* Social Icons */}
             <div className="flex items-center gap-3">
               {socialLinks.map(({ label, href, Icon }) => (
                 <a
@@ -113,85 +130,64 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-gray-500 hover:text-white hover:border-brand hover:bg-brand/20 transition-all"
+                  className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-primary transition-all duration-200"
                 >
-                  <Icon size={14} />
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Categories */}
-          <div>
-            <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
-              Categories
-            </h4>
-            <ul className="space-y-2">
-              {categories.map((cat) => (
-                <li key={cat.slug}>
-                  <Link
-                    href={`/${cat.slug}`}
-                    className="text-sm hover:text-brand transition-colors flex items-center gap-1.5"
-                  >
-                    <span className={`w-1.5 h-1.5 rounded-full ${cat.color}`} />
-                    {cat.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
-              Company
-            </h4>
-            <ul className="space-y-2">
-              {companyLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm hover:text-brand transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Follow & Download */}
-          <div>
-            <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
-              Follow Us
-            </h4>
-            <div className="space-y-3">
-              {socialLinks.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm hover:text-white transition-colors group"
-                >
-                  <div className="w-7 h-7 rounded bg-white/5 group-hover:bg-brand/20 flex items-center justify-center transition-colors">
-                    <Icon size={13} />
-                  </div>
-                  {label}
-                </a>
-              ))}
+          {/* Link Sections */}
+          {footerSections.map((section) => (
+            <div key={section.title}>
+              <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-6 border-l-2 border-brand-primary pl-3">
+                {section.title}
+              </h4>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm hover:text-white hover:pl-1 transition-all duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+          ))}
+        </div>
+
+        {/* Categories Quick Links */}
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4 text-center">
+            Sections
+          </h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((cat) => (
+              <Link
+                key={cat.slug}
+                href={`/category/${cat.slug}`}
+                className="text-xs text-gray-500 hover:text-white px-3 py-1.5 rounded-full border border-white/10 hover:border-white/30 transition-all duration-200"
+              >
+                {cat.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Copyright Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-600">
-          <p>© 2026 KeFeL Media. All Rights Reserved.</p>
-          <p>
-            Informing, Inspiring, Connecting Africa and the World
-          </p>
+      <div className="border-t border-white/10 bg-black/50">
+        <div className="max-w-screen-xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All Rights Reserved.</p>
+          <div className="flex gap-4">
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link>
+          </div>
         </div>
       </div>
     </footer>

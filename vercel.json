@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/cron/news-scout",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/pipeline-monitor",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/trending-topics",
+      "schedule": "*/15 * * * *"
+    }
+  ]
+}

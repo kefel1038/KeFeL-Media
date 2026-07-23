@@ -1,4 +1,4 @@
-import { getCategoryColor } from "@/data/categories";
+import { getCategoryBySlug } from "@/data/categories";
 
 interface CategoryBadgeProps {
   category: string;
@@ -11,7 +11,9 @@ export default function CategoryBadge({
   size = "sm",
   className = "",
 }: CategoryBadgeProps) {
-  const color = getCategoryColor(category);
+  const cat = getCategoryBySlug(category);
+  const color = cat?.color || "bg-brand-primary";
+  const label = cat?.label || category;
 
   const sizeClasses = {
     xs: "text-[10px] px-1.5 py-0.5",
@@ -24,7 +26,7 @@ export default function CategoryBadge({
     <span
       className={`inline-block rounded font-sans font-bold text-white uppercase tracking-wider ${color} ${sizeClasses[size]} ${className}`}
     >
-      {category}
+      {label}
     </span>
   );
 }

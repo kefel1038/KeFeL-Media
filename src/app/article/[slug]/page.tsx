@@ -6,14 +6,17 @@ import Link from "next/link";
 import { getArticleBySlug, getRelatedArticles, getArticlesByAuthor } from "@/data/articles";
 import ArticleBody from "@/components/article/ArticleBody";
 import ArticleHighlights from "@/components/article/ArticleHighlights";
-import ArticleMetadata from "@/components/article/ArticleMetadata";
 import SocialMediaCopy from "@/components/article/SocialMediaCopy";
 import RelatedStories from "@/components/article/RelatedStories";
 import Sidebar from "@/components/layout/Sidebar";
 import PageViewTracker from "@/components/analytics/PageViewTracker";
 import CategoryBadge from "@/components/ui/CategoryBadge";
+import BreadcrumbNav from "@/components/ui/BreadcrumbNav";
+import BookmarkButton from "@/components/ui/BookmarkButton";
+import ShareToolbar from "@/components/ui/ShareToolbar";
 import { formatDate, readingTimeLabel, generateMetaDescription, stripHtml } from "@/lib/utils";
-import { Calendar, Clock, Eye, User, ChevronRight } from "lucide-react";
+import { generateArticleJsonLd, generateBreadcrumbJsonLd } from "@/lib/seo";
+import { Calendar, Clock, Eye, User } from "lucide-react";
 import { ReadingProgressBar } from "./ReadingProgress";
 import { ShareButton } from "./ShareButton";
 
@@ -85,39 +88,32 @@ export default async function ArticlePage({ params }: Props) {
   const wordCount = stripHtml(article.content || "").split(/\s+/).filter(Boolean).length;
   const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: article?.title || "",
-    description: generateMetaDescription(article.excerpt || article.content || ""),
-    image: article.image || "",
-    datePublished: article.publishedAt || "",
-    dateModified: article.updatedAt || article.publishedAt || "",
-    author: {
-      "@type": "Person",
-      name: article.author?.name || "KeFeL Media",
-      url: article.author?.name
-        ? `https://kefelmedia.com/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}`
-        : "https://kefelmedia.com",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "KeFeL Media",
-      logo: { "@type": "ImageObject", url: "https://kefelmedia.com/logo.png" },
-    },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://kefelmedia.com/article/${article.slug}` },
+  const jsonLd = generateArticleJsonLd({
+    ...article,
     wordCount,
-    articleSection: article.category || "",
-    keywords: (article.tags ?? []).join(", "),
-  };
+    author: {
+      name: article.author?.name || "KeFeL Media",
+      avatar: article.author?.avatar,
+      role: article.author?.role,
+      bio: article.author?.bio,
+    },
+  });
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: article.category || "News", href: `/category/${article.category || ""}` },
+    { label: article.title || "Untitled Story", href: `/article/${article.slug}` },
+  ];
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd(breadcrumbs.map(b => ({ name: b.label, url: `https://kefelmedia.com${b.href === "/" ? "" : b.href}` })));
 
   return (
     <>
       <PageViewTracker slug={slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       {/* Reading progress indicator */}
-      <ReadingProgress />
+      <ReadingProgressBar />
 
       {/* Mobile sticky share bar */}
       <div className="mobile-share-bar md:hidden shadow-lg">
@@ -142,15 +138,7 @@ export default async function ArticlePage({ params }: Props) {
 
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-zinc-400 mb-6 md:mb-8">
-          <Link href="/" className="hover:text-brand transition-colors">Home</Link>
-          <ChevronRight size={10} />
-          <Link href={`/${article.category || ""}`} className="hover:text-brand transition-colors capitalize">
-            {article.category || ""}
-          </Link>
-          <ChevronRight size={10} />
-          <span className="text-zinc-500 truncate max-w-[200px]">{article.title || "Untitled Story"}</span>
-        </nav>
+        <BreadcrumbNav items={breadcrumbs} className="mb-6 md:mb-8" />
 
         {/* Main grid: 12-col — article 8col + sidebar 4col */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
@@ -169,7 +157,7 @@ export default async function ArticlePage({ params }: Props) {
               </p>
             </header>
 
-            {/* Author bar + metadata */}
+            {/* Author bar + metadata + actions */}
             <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-6 md:mb-8 border-y border-zinc-800">
               <Link
                 href={article.author?.name ? `/author/${encodeURIComponent(article.author.name.toLowerCase().replace(/\s+/g, "-"))}` : "#"}
@@ -193,7 +181,7 @@ export default async function ArticlePage({ params }: Props) {
                   <p className="text-zinc-400 text-xs">{article.author?.role || ""}</p>
                 </div>
               </Link>
-              <div className="flex items-center gap-4 text-xs md:text-sm text-zinc-400">
+              <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-400">
                 <span className="flex items-center gap-1.5">
                   <Calendar size={14} />
                   <time dateTime={article.publishedAt || ""}>{article.publishedAt ? formatDate(article.publishedAt) : ""}</time>
@@ -208,6 +196,7 @@ export default async function ArticlePage({ params }: Props) {
                     {(article.views ?? 0).toLocaleString()}
                   </span>
                 )}
+                <BookmarkButton articleId={article.id} />
               </div>
             </div>
 
@@ -224,6 +213,16 @@ export default async function ArticlePage({ params }: Props) {
                   className="absolute inset-0 w-full h-full object-cover object-center block"
                   loading="eager"
                 />
+                {(article.imageCaption || article.imageCredit) && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                    {article.imageCaption && (
+                      <p className="text-white/90 text-xs">{article.imageCaption}</p>
+                    )}
+                    {article.imageCredit && (
+                      <p className="text-white/60 text-[10px] mt-1">{article.imageCredit}</p>
+                    )}
+                  </div>
+                )}
               </div>
             )}
 
@@ -237,6 +236,31 @@ export default async function ArticlePage({ params }: Props) {
                 secondaryImage={article.secondaryImage}
                 secondaryImageCaption={article.secondaryImageCaption}
               />
+            </div>
+
+            {/* Tags */}
+            {article.tags && article.tags.length > 0 && (
+              <div className="mx-auto mt-8" style={{ maxWidth: "720px" }}>
+                <div className="flex flex-wrap gap-2">
+                  {article.tags.map((tag) => (
+                    <Link
+                      key={tag}
+                      href={`/search?q=${encodeURIComponent(tag)}`}
+                      className="text-xs px-3 py-1.5 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--muted-text)] hover:text-brand-primary hover:border-brand-primary/50 transition-all"
+                    >
+                      #{tag}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Share toolbar */}
+            <div className="mx-auto mt-8" style={{ maxWidth: "720px" }}>
+              <div className="py-4 border-t border-b border-[var(--card-border)]">
+                <p className="text-xs font-semibold text-[var(--muted-text)] uppercase tracking-wider mb-3">Share this story</p>
+                <ShareToolbar title={article.title} slug={article.slug} excerpt={article.excerpt} />
+              </div>
             </div>
 
             {/* Author profile card */}
@@ -306,8 +330,4 @@ export default async function ArticlePage({ params }: Props) {
       </div>
     </>
   );
-}
-
-function ReadingProgress() {
-  return <ReadingProgressBar />;
 }

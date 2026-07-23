@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import TrendingSection from "@/components/home/TrendingSection";
 import LatestFeed from "@/components/home/LatestFeed";
+import JustInStrip from "@/components/home/JustInStrip";
+import MostRead from "@/components/home/MostRead";
+import TopicExplorer from "@/components/home/TopicExplorer";
+import CategorySection from "@/components/home/CategorySection";
 import Sidebar from "@/components/layout/Sidebar";
 import NewsletterSection from "@/components/ui/NewsletterSection";
-import { categories } from "@/data/categories";
-import Link from "next/link";
 
 export const revalidate = 0;
 
@@ -17,33 +19,55 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <nav className="bg-zinc-900 border-b border-zinc-800 sticky top-[92px] z-40">
-        <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6">
-          <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide py-2">
-            {categories.map((cat) => (
-              <Link key={cat.slug} href={`/${cat.slug}`}
-                className="flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded hover:bg-brand hover:text-white text-zinc-300 transition-colors whitespace-nowrap">
-                {cat.label}
-              </Link>
-            ))}
+      {/* Just In strip */}
+      <JustInStrip />
+
+      <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-8">
+        {/* Hero + Trending Section (BBC style lead) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          <div className="lg:col-span-8">
+            <HeroSection />
+          </div>
+          <div className="lg:col-span-4 flex flex-col">
+            <div className="border-l-4 border-brand-primary pl-4 mb-4">
+              <h2 className="text-xl font-bold font-headline">Trending</h2>
+            </div>
+            <TrendingSection />
           </div>
         </div>
-      </nav>
 
-      <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-6">
-        <HeroSection />
-        <TrendingSection />
-        <hr className="border-zinc-700 mb-10" />
+        <hr className="border-[var(--card-border)] mb-12" />
+
+        {/* Main Grid: Articles + Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
           <div>
+            <div className="border-b-2 border-[var(--card-border)] mb-6 pb-2">
+              <h2 className="text-2xl font-bold font-headline text-brand-primary">
+                Latest Stories
+              </h2>
+            </div>
             <LatestFeed />
           </div>
-          <div>
+          <aside className="space-y-8">
+            <MostRead />
             <Sidebar />
-          </div>
+          </aside>
+        </div>
+
+        {/* Category Sections */}
+        <div className="mt-12 space-y-8">
+          <CategorySection categorySlug="technology" />
+          <CategorySection categorySlug="business" />
+        </div>
+
+        {/* Newsletter CTA mid-page */}
+        <div className="mt-12">
+          <NewsletterSection />
         </div>
       </div>
-      <NewsletterSection />
+
+      {/* Topic Explorer - full width */}
+      <TopicExplorer />
     </>
   );
 }
