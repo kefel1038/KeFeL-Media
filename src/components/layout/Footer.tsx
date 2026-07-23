@@ -55,17 +55,25 @@ const footerSections = [
     links: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Use", href: "/terms" },
-      { label: "Cookie Policy", href: "/cookies" },
-      { label: "Corrections", href: "/corrections" },
+      { label: "Editorial Standards", href: "/editorial-standards" },
+      { label: "Corrections Policy", href: "/corrections" },
     ],
   },
   {
     title: "Features",
     links: [
-      { label: "Newsletters", href: "/newsletters" },
+      { label: "Fact-Checking", href: "/fact-checking" },
       { label: "Podcasts", href: "/podcasts" },
       { label: "Videos", href: "/videos" },
       { label: "RSS Feed", href: "/rss.xml" },
+    ],
+  },
+  {
+    title: "Account",
+    links: [
+      { label: "Sign In", href: "/signin" },
+      { label: "Subscribe", href: "/subscribe" },
+      { label: "Admin Login", href: "/admin/login" },
     ],
   },
 ];
@@ -186,7 +194,7 @@ export default function Footer() {
           <div className="flex gap-4">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link>
+            <Link href="/editorial-standards" className="hover:text-white transition-colors">Editorial Standards</Link>
           </div>
         </div>
       </div>

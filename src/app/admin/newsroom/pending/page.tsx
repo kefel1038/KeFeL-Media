@@ -95,7 +95,7 @@ export default function PendingVerificationPage() {
 
       <div className="space-y-4">
         {items.map((item) => (
-          <div key={item.id} className="bg-white border rounded-lg p-4">
+          <div key={item.id} className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
             <div className="flex items-start justify-between mb-3">
               <div>
                 <h3 className="font-semibold text-lg">{item.title}</h3>

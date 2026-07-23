@@ -139,7 +139,7 @@ export default function EditorQueuePage() {
         </select>
       </div>
 
-      <div className="bg-white border rounded-lg overflow-hidden">
+      <div className="bg-zinc-900 border-zinc-800 rounded-lg overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>

@@ -28,7 +28,7 @@ export default async function CategorySection({ categorySlug, limit = 4 }: Categ
           </h2>
         </div>
         <Link
-          href={`/category/${categorySlug}`}
+          href={`/${categorySlug}`}
           className="flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all"
           style={{ color: category?.accentColor || "#D32F2F" }}
         >

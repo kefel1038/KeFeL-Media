@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Home, Newspaper } from "lucide-react";
-import BackButton from "@/components/ui/BackButton";
+import { Home, Search, ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -8,17 +7,12 @@ export default function NotFound() {
       <div className="text-center max-w-md">
         <div className="text-8xl font-black text-brand mb-4">404</div>
         <h1 className="text-3xl font-black text-white mb-3">
-          Story Not Found
+          Page Not Found
         </h1>
-        <p className="text-gray-400 mb-6 leading-relaxed">
-          This story may have been removed, updated, or is no longer available.
+        <p className="text-gray-400 mb-8 leading-relaxed">
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          Try searching for what you need, or head back to the homepage.
         </p>
-        <Link
-          href="/latest"
-          className="inline-flex items-center gap-2 text-brand font-semibold hover:underline mb-8"
-        >
-          <Newspaper size={16} /> Explore the latest stories from KeFeL Media
-        </Link>
         <div className="flex items-center justify-center gap-4">
           <Link
             href="/"
@@ -26,7 +20,12 @@ export default function NotFound() {
           >
             <Home size={16} /> Go Home
           </Link>
-          <BackButton />
+          <Link
+            href="/search"
+            className="flex items-center gap-2 bg-zinc-800 text-white font-semibold px-5 py-2.5 rounded-xl hover:bg-zinc-700 border border-zinc-700 transition-colors"
+          >
+            <Search size={16} /> Search
+          </Link>
         </div>
       </div>
     </div>

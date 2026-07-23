@@ -19,6 +19,9 @@ import { generateArticleJsonLd, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { Calendar, Clock, Eye, User } from "lucide-react";
 import { ReadingProgressBar } from "./ReadingProgress";
 import { ShareButton } from "./ShareButton";
+import { ArticleToolbar } from "./ArticleToolbar";
+import ArticleSummary from "@/components/article/ArticleSummary";
+import ArticleQnA from "@/components/article/ArticleQnA";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -114,6 +117,9 @@ export default async function ArticlePage({ params }: Props) {
 
       {/* Reading progress indicator */}
       <ReadingProgressBar />
+
+      {/* Reading toolbar with font size + TOC */}
+      <ArticleToolbar />
 
       {/* Mobile sticky share bar */}
       <div className="mobile-share-bar md:hidden shadow-lg">
@@ -255,6 +261,11 @@ export default async function ArticlePage({ params }: Props) {
               </div>
             )}
 
+            {/* AI Summary */}
+            <div className="mx-auto mt-6" style={{ maxWidth: "720px" }}>
+              <ArticleSummary articleId={article.id} content={article.content} />
+            </div>
+
             {/* Share toolbar */}
             <div className="mx-auto mt-8" style={{ maxWidth: "720px" }}>
               <div className="py-4 border-t border-b border-[var(--card-border)]">
@@ -328,6 +339,13 @@ export default async function ArticlePage({ params }: Props) {
         {/* Bottom spacer for mobile share bar */}
         <div className="h-16 md:h-0" />
       </div>
+
+      {/* AI Q&A chat widget */}
+      <ArticleQnA
+        articleId={article.id}
+        articleTitle={article.title || ""}
+        content={stripHtml(article.content)}
+      />
     </>
   );
 }

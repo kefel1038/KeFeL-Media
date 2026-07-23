@@ -111,7 +111,7 @@ export default function TranslationsPage() {
         {Object.entries(LANGUAGE_CONFIG).map(([code, config]) => (
           <div
             key={code}
-            className="bg-white border rounded-lg p-3 text-center"
+            className="bg-zinc-900 border-zinc-800 rounded-lg p-3 text-center"
           >
             <div className="text-2xl mb-1">{config.flag}</div>
             <div className="font-medium text-sm">{config.name}</div>
@@ -148,7 +148,7 @@ export default function TranslationsPage() {
         </select>
       </div>
 
-      <div className="bg-white border rounded-lg overflow-hidden">
+      <div className="bg-zinc-900 border-zinc-800 rounded-lg overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>

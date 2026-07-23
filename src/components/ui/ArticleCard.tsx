@@ -4,6 +4,7 @@ import { Clock } from "lucide-react";
 import { Article } from "@/lib/types";
 import { formatRelativeTime, readingTimeLabel } from "@/lib/utils";
 import CategoryBadge from "@/components/ui/CategoryBadge";
+import CardActions from "@/components/ui/CardActions";
 
 type CardVariant = "hero" | "side" | "trending" | "list" | "compact";
 
@@ -184,16 +185,21 @@ export default function ArticleCard({
           />
         </div>
         <div className="flex-1 min-w-0">
-          <CategoryBadge category={article.category} size="xs" />
-          <h3 className="text-xl font-bold text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
-            {article.title}
-          </h3>
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex-1 min-w-0">
+              <CategoryBadge category={article.category} size="xs" />
+              <h3 className="text-xl font-bold text-zinc-100 leading-snug mt-1 group-hover:text-brand transition-colors line-clamp-2">
+                {article.title}
+              </h3>
+            </div>
+            <CardActions articleSlug={article.slug} articleTitle={article.title} />
+          </div>
           <p className="text-zinc-400 text-sm mt-1 line-clamp-2">
             {article.excerpt}
           </p>
           <div className="flex items-center gap-3 mt-1.5 text-xs text-zinc-500">
             <span>{article.author.name}</span>
-            <span>•</span>
+            <span>·</span>
             <span className="flex items-center gap-1">
               <Clock size={10} />
               {readingTimeLabel(article.readingTime)}

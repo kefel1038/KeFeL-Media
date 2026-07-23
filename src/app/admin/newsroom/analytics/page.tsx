@@ -90,7 +90,7 @@ export default function AnalyticsPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border rounded-lg p-4">
+        <div className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Total Articles</p>
@@ -100,7 +100,7 @@ export default function AnalyticsPage() {
           </div>
           <p className="text-xs text-green-600 mt-2">+12% from last period</p>
         </div>
-        <div className="bg-white border rounded-lg p-4">
+        <div className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Total Views</p>
@@ -110,7 +110,7 @@ export default function AnalyticsPage() {
           </div>
           <p className="text-xs text-green-600 mt-2">+24% from last period</p>
         </div>
-        <div className="bg-white border rounded-lg p-4">
+        <div className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Total Shares</p>
@@ -120,7 +120,7 @@ export default function AnalyticsPage() {
           </div>
           <p className="text-xs text-green-600 mt-2">+18% from last period</p>
         </div>
-        <div className="bg-white border rounded-lg p-4">
+        <div className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">Avg. Read Time</p>
@@ -133,7 +133,7 @@ export default function AnalyticsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white border rounded-lg p-4">
+        <div className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
           <h2 className="font-semibold mb-4">Top Categories</h2>
           <div className="space-y-3">
             {data.topCategories.map((cat) => (
@@ -157,7 +157,7 @@ export default function AnalyticsPage() {
           </div>
         </div>
 
-        <div className="bg-white border rounded-lg p-4">
+        <div className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
           <h2 className="font-semibold mb-4">Performance Trend</h2>
           <div className="space-y-2">
             {data.recentPerformance.map((day) => (

@@ -86,7 +86,7 @@ export default function AuditLog({ entries, onFilter }: AuditLogProps) {
     .filter((entry) => filter === "all" || entry.action === filter);
 
   return (
-    <div className="bg-white border rounded-lg">
+    <div className="bg-zinc-900 border-zinc-800 rounded-lg">
       <div className="p-4 border-b">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold flex items-center gap-2">

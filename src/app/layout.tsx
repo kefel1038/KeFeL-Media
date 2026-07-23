@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { TranslationProvider } from "@/components/providers/TranslationProvider";
 import { generateOrganizationJsonLd, generateWebSiteJsonLd, siteConfig } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -82,9 +83,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${inter.variable} ${playfair.variable} ${arabic.variable} font-sans antialiased min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)]`}>
         <ThemeProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <TranslationProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </TranslationProvider>
         </ThemeProvider>
       </body>
     </html>

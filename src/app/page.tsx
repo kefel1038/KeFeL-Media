@@ -6,6 +6,10 @@ import JustInStrip from "@/components/home/JustInStrip";
 import MostRead from "@/components/home/MostRead";
 import TopicExplorer from "@/components/home/TopicExplorer";
 import CategorySection from "@/components/home/CategorySection";
+import FeaturedCategories from "@/components/home/FeaturedCategories";
+import EditorsChoice from "@/components/home/EditorsChoice";
+import OpinionSection from "@/components/home/OpinionSection";
+import MultimediaSection from "@/components/home/MultimediaSection";
 import Sidebar from "@/components/layout/Sidebar";
 import NewsletterSection from "@/components/ui/NewsletterSection";
 
@@ -19,32 +23,36 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* Just In strip */}
+      {/* Breaking news ticker */}
       <JustInStrip />
 
       <div className="w-full max-w-screen-xl mx-auto px-4 md:px-6 py-8">
-        {/* Hero + Trending Section (BBC style lead) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-          <div className="lg:col-span-8">
-            <HeroSection />
-          </div>
-          <div className="lg:col-span-4 flex flex-col">
-            <div className="border-l-4 border-brand-primary pl-4 mb-4">
-              <h2 className="text-xl font-bold font-headline">Trending</h2>
-            </div>
-            <TrendingSection />
-          </div>
-        </div>
+        {/* ── Hero block ── */}
+        <HeroSection />
 
-        <hr className="border-[var(--card-border)] mb-12" />
+        <hr className="border-zinc-800 my-10" />
 
-        {/* Main Grid: Articles + Sidebar */}
+        {/* ── Trending section ── */}
+        <TrendingSection />
+
+        <hr className="border-zinc-800 my-10" />
+
+        {/* ── Featured categories ── */}
+        <FeaturedCategories />
+
+        <hr className="border-zinc-800 my-10" />
+
+        {/* ── Editor's Pick ── */}
+        <EditorsChoice />
+
+        <hr className="border-zinc-800 my-10" />
+
+        {/* ── Main content grid: articles + sidebar ── */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
           <div>
-            <div className="border-b-2 border-[var(--card-border)] mb-6 pb-2">
-              <h2 className="text-2xl font-bold font-headline text-brand-primary">
-                Latest Stories
-              </h2>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-1 h-6 bg-white rounded-full" />
+              <h2 className="text-xl md:text-2xl font-black text-white">Latest Stories</h2>
             </div>
             <LatestFeed />
           </div>
@@ -54,19 +62,31 @@ export default function HomePage() {
           </aside>
         </div>
 
-        {/* Category Sections */}
-        <div className="mt-12 space-y-8">
+        <hr className="border-zinc-800 my-10" />
+
+        {/* ── Category sections ── */}
+        <div className="space-y-8">
           <CategorySection categorySlug="technology" />
           <CategorySection categorySlug="business" />
         </div>
 
-        {/* Newsletter CTA mid-page */}
+        <hr className="border-zinc-800 my-10" />
+
+        {/* ── Multimedia ── */}
+        <MultimediaSection />
+
+        <hr className="border-zinc-800 my-10" />
+
+        {/* ── Opinion ── */}
+        <OpinionSection />
+
+        {/* ── Newsletter CTA ── */}
         <div className="mt-12">
           <NewsletterSection />
         </div>
       </div>
 
-      {/* Topic Explorer - full width */}
+      {/* ── Topic Explorer — full width ── */}
       <TopicExplorer />
     </>
   );

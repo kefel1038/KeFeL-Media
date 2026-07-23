@@ -10,8 +10,9 @@ interface Props {
 }
 
 const VALID_CATEGORIES = [
-  "uganda", "africa", "world", "business", "technology",
-  "entertainment", "sports", "opinion", "latest",
+  "uganda", "africa", "world", "business", "technology", "politics",
+  "entertainment", "sports", "opinion", "latest", "engineering", "science",
+  "education", "videos", "podcasts", "innovation", "ai",
 ];
 
 export async function generateStaticParams() {

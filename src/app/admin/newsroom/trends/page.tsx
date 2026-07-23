@@ -143,7 +143,7 @@ export default function LiveTrendsPage() {
           {filteredTrends.map((trend) => (
             <div
               key={trend.id}
-              className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow"
+              className="bg-zinc-900 border-zinc-800 rounded-lg p-4 hover:shadow-md transition-shadow"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">

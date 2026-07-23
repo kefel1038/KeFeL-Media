@@ -141,7 +141,7 @@ export default function SocialQueuePage() {
 
       <div className="space-y-4">
         {filteredPosts.map((post) => (
-          <div key={post.id} className="bg-white border rounded-lg p-4">
+          <div key={post.id} className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">

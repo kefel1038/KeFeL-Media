@@ -10,6 +10,9 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { getCategoryColor } from "@/data/categories";
+import ContentCalendar from "@/components/admin/ContentCalendar";
+import QuickPublish from "@/components/admin/QuickPublish";
+import NotificationsPanel from "@/components/admin/NotificationsPanel";
 
 function StatCard({
   icon: Icon,
@@ -180,6 +183,36 @@ export default async function AdminDashboard() {
             <p className="text-sm text-gray-500 text-center py-4">No articles yet.</p>
           )}
         </div>
+      </div>
+
+      {/* Content Calendar */}
+      <div className="mt-8">
+        <ContentCalendar articles={(articles ?? []).map((a: Record<string, unknown>) => ({
+          id: String(a.id),
+          title: String(a.title),
+          slug: String(a.slug ?? ""),
+          category: String(a.category),
+          status: String(a.status ?? "draft"),
+          scheduled_at: a.scheduled_at ? String(a.scheduled_at) : undefined,
+          published_at: a.published_at ? String(a.published_at) : undefined,
+        }))} />
+      </div>
+
+      {/* Quick Publish + Notifications */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+        <QuickPublish
+          drafts={(articles ?? [])
+            .filter((a: Record<string, unknown>) => (a.status ?? "draft") === "draft")
+            .slice(0, 5)
+            .map((a: Record<string, unknown>) => ({
+              id: String(a.id),
+              title: String(a.title),
+              category: String(a.category),
+              status: String(a.status ?? "draft"),
+              updated_at: String(a.created_at ?? ""),
+            }))}
+        />
+        <NotificationsPanel notifications={[]} />
       </div>
     </div>
   );

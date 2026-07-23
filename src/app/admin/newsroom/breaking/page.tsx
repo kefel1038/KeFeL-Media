@@ -104,7 +104,7 @@ export default function BreakingNewsPage() {
         </div>
       </div>
 
-      <div className="bg-white border rounded-lg p-4">
+      <div className="bg-zinc-900 border-zinc-800 rounded-lg p-4">
         <h2 className="font-semibold mb-4">Create Breaking News</h2>
         <div className="space-y-4">
           <div>
@@ -164,7 +164,7 @@ export default function BreakingNewsPage() {
         {breakingNews.map((item) => (
           <div
             key={item.id}
-            className={`bg-white border rounded-lg p-4 ${getPriorityColor(item.priority)}`}
+            className={`bg-zinc-900 border-zinc-800 rounded-lg p-4 ${getPriorityColor(item.priority)}`}
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
