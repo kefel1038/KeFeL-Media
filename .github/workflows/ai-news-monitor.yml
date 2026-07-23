@@ -1,0 +1,38 @@
+name: AI News Scout
+
+on:
+  schedule:
+    # Every 30 minutes (GitHub Actions supports this on free plan)
+    - cron: "*/30 * * * *"
+  workflow_dispatch: # Allow manual trigger
+
+env:
+  BASE_URL: ${{ secrets.VERCEL_URL || 'https://kefelmedia.vercel.app' }}
+  CRON_SECRET: ${{ secrets.CRON_SECRET }}
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Trigger News Scout
+        run: |
+          curl -s -X GET \
+            "${BASE_URL}/api/cron/news-scout" \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            -H "Content-Type: application/json" || echo "News scout request failed"
+
+      - name: Trigger Trending Topics
+        run: |
+          curl -s -X GET \
+            "${BASE_URL}/api/cron/trending-topics" \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            -H "Content-Type: application/json" || echo "Trending topics request failed"
+
+      - name: Trigger Pipeline Monitor
+        run: |
+          curl -s -X GET \
+            "${BASE_URL}/api/cron/pipeline-monitor" \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            -H "Content-Type: application/json" || echo "Pipeline monitor request failed"

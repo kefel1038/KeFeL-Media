@@ -1,0 +1,32 @@
+name: Daily Operations
+
+on:
+  schedule:
+    # Once daily at 6:00 AM UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+env:
+  BASE_URL: ${{ secrets.VERCEL_URL || 'https://kefelmedia.vercel.app' }}
+  CRON_SECRET: ${{ secrets.CRON_SECRET }}
+
+jobs:
+  daily-tasks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Daily News Digest
+        run: |
+          curl -s -X GET \
+            "${BASE_URL}/api/cron/news-scout" \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            -H "Content-Type: application/json" || echo "Request failed"
+
+      - name: Send Newsletter
+        run: |
+          curl -s -X POST \
+            "${BASE_URL}/api/admin/newsletter/campaigns" \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            -H "Content-Type: application/json" \
+            -d '{"type": "daily_digest"}' || echo "Newsletter request failed"
