@@ -2,59 +2,33 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light" | "system";
-
 interface ThemeProviderProps {
   children: React.ReactNode;
-  defaultTheme?: Theme;
 }
 
 interface ThemeContextState {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
+  theme: "dark";
+  setTheme: (theme: "dark") => void;
 }
 
 const ThemeContext = createContext<ThemeContextState>({
-  theme: "system",
+  theme: "dark",
   setTheme: () => null,
 });
 
-export function ThemeProvider({
-  children,
-  defaultTheme = "system",
-}: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>(defaultTheme);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("kfl-theme") as Theme | null;
-    if (savedTheme) {
-      setThemeState(savedTheme);
-    }
-  }, []);
-
+export function ThemeProvider({ children }: ThemeProviderProps) {
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
+    root.classList.remove("light");
+    root.classList.add("dark");
+  }, []);
 
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
-      root.classList.add(systemTheme);
-      return;
-    }
-
-    root.classList.add(theme);
-  }, [theme]);
-
-  const setTheme = (newTheme: Theme) => {
-    localStorage.setItem("kfl-theme", newTheme);
-    setThemeState(newTheme);
+  const setTheme = () => {
+    // Always dark - no-op
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme: "dark", setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

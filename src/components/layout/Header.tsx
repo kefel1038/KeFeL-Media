@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Search, Menu, X, User, Bell } from "lucide-react";
-import ThemeToggle from "@/components/ui/ThemeToggle";
 import LanguageSelector from "@/components/ui/LanguageSelector";
 import LiveClock from "@/components/ui/LiveClock";
 import SearchBar from "@/components/ui/SearchBar";
@@ -53,9 +52,6 @@ export default function Header() {
             <button className="h-full flex items-center px-3 border-l border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
               <Bell size={16} />
             </button>
-            <div className="border-l border-white/10 h-full flex items-center px-1">
-              <ThemeToggle />
-            </div>
             <Link
               href="/subscribe"
               className="bg-brand-primary hover:bg-brand-dark text-white text-xs font-bold px-4 h-full flex items-center uppercase tracking-wider transition-colors"
