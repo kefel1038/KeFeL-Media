@@ -3,15 +3,15 @@
   "crons": [
     {
       "path": "/api/cron/news-scout",
-      "schedule": "*/30 * * * *"
+      "schedule": "0 6 * * *"
     },
     {
       "path": "/api/cron/pipeline-monitor",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 12 * * *"
     },
     {
       "path": "/api/cron/trending-topics",
-      "schedule": "*/15 * * * *"
+      "schedule": "0 18 * * *"
     }
   ]
 }
