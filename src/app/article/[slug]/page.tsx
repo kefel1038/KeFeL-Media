@@ -263,7 +263,7 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* AI Summary */}
             <div className="mx-auto mt-6" style={{ maxWidth: "720px" }}>
-              <ArticleSummary articleId={article.id} content={article.content} />
+              <ArticleSummary content={article.content} />
             </div>
 
             {/* Share toolbar */}

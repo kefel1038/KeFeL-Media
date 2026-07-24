@@ -1,11 +1,47 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Globe, Check } from "lucide-react";
 import { useTranslation } from "@/components/providers/TranslationProvider";
 import { LANGUAGE_CONFIG, type SupportedLanguage } from "@/lib/translation";
 
 const languageOrder: SupportedLanguage[] = ["en", "sw", "ar", "fr", "pt"];
+
+function triggerGoogleTranslate(targetLang: string) {
+  if (targetLang === "en") {
+    const select = document.querySelector(
+      "#google_translate_element select"
+    ) as HTMLSelectElement | null;
+    if (select) {
+      select.value = "";
+      select.dispatchEvent(new Event("change"));
+    }
+    return;
+  }
+
+  const tryTranslate = (attempts: number) => {
+    if (attempts > 10) return;
+
+    const select = document.querySelector(
+      "#google_translate_element select"
+    ) as HTMLSelectElement | null;
+
+    if (select && select.options.length > 1) {
+      const option = Array.from(select.options).find(
+        (opt) => opt.value === targetLang
+      );
+      if (option) {
+        select.value = targetLang;
+        select.dispatchEvent(new Event("change"));
+        return;
+      }
+    }
+
+    setTimeout(() => tryTranslate(attempts + 1), 300);
+  };
+
+  tryTranslate(0);
+}
 
 export default function LanguageSelector() {
   const { language, setLanguage } = useTranslation();
@@ -22,6 +58,15 @@ export default function LanguageSelector() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleLanguageChange = useCallback(
+    (code: SupportedLanguage) => {
+      setLanguage(code);
+      triggerGoogleTranslate(code);
+      setOpen(false);
+    },
+    [setLanguage]
+  );
+
   const current = LANGUAGE_CONFIG[language];
 
   return (
@@ -33,7 +78,9 @@ export default function LanguageSelector() {
         aria-expanded={open}
       >
         <Globe size={14} />
-        <span className="uppercase">{current.flag} {language}</span>
+        <span className="uppercase">
+          {current.flag} {language}
+        </span>
       </button>
 
       {open && (
@@ -44,10 +91,7 @@ export default function LanguageSelector() {
             return (
               <button
                 key={code}
-                onClick={() => {
-                  setLanguage(code);
-                  setOpen(false);
-                }}
+                onClick={() => handleLanguageChange(code)}
                 className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-colors ${
                   isActive
                     ? "text-brand bg-brand/10"
@@ -57,7 +101,9 @@ export default function LanguageSelector() {
                 <span className="text-base">{config.flag}</span>
                 <div className="flex-1 text-left">
                   <div className="font-medium">{config.nativeName}</div>
-                  <div className="text-[10px] text-gray-500">{config.name}</div>
+                  <div className="text-[10px] text-gray-500">
+                    {config.name}
+                  </div>
                 </div>
                 {isActive && <Check size={14} className="text-brand" />}
               </button>

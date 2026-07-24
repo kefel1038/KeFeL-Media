@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Menu, X, User, Bell } from "lucide-react";
 import LanguageSelector from "@/components/ui/LanguageSelector";
 import LiveClock from "@/components/ui/LiveClock";
@@ -30,6 +30,11 @@ const mainNavLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full flex flex-col">
@@ -72,14 +77,18 @@ export default function Header() {
               aria-label="KeFeL Media Home"
             >
               <div className="w-9 h-9 bg-brand-primary rounded-lg flex items-center justify-center shadow-sm">
-                <span className="text-white font-black text-xl leading-none">K</span>
+                <span className="text-white font-black text-xl leading-none">
+                  K
+                </span>
               </div>
-              <div className="hidden sm:flex items-baseline gap-[1px]">
-                <span className="text-[var(--foreground)] font-black text-2xl tracking-tight font-headline">
+              <div className="flex items-baseline gap-[1px]">
+                <span className="text-[var(--foreground)] font-black text-lg sm:text-2xl tracking-tight font-headline">
                   KEFEL
                 </span>
-                <span className="text-brand-primary font-black text-2xl">.</span>
-                <span className="text-[var(--foreground)] font-black text-2xl tracking-tight font-headline">
+                <span className="text-brand-primary font-black text-lg sm:text-2xl">
+                  .
+                </span>
+                <span className="text-[var(--foreground)] font-black text-lg sm:text-2xl tracking-tight font-headline">
                   MEDIA
                 </span>
               </div>
@@ -101,13 +110,13 @@ export default function Header() {
           <div className="flex items-center gap-1">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 text-[var(--muted-text)] hover:text-[var(--foreground)] rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+              className="p-2 text-[var(--muted-text)] hover:text-[var(--foreground)] rounded-full hover:bg-zinc-800 transition-colors"
               aria-label="Search"
             >
               <Search size={20} />
             </button>
             <button
-              className="lg:hidden p-2 text-[var(--muted-text)] hover:text-[var(--foreground)] rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+              className="lg:hidden p-2 text-[var(--muted-text)] hover:text-[var(--foreground)] rounded-full hover:bg-zinc-800 transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
@@ -134,7 +143,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-[var(--foreground)] hover:text-brand-primary text-sm font-medium px-3 py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+                  className="text-[var(--foreground)] hover:text-brand-primary text-sm font-medium px-3 py-2.5 rounded-lg hover:bg-zinc-800 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -160,7 +169,7 @@ export default function Header() {
       </div>
 
       {/* Breaking News Ticker */}
-      <div className="bg-zinc-100 dark:bg-zinc-900 border-b border-[var(--card-border)] overflow-hidden h-9 flex items-center transition-colors duration-300">
+      <div className="bg-zinc-900 border-b border-zinc-800 overflow-hidden h-9 flex items-center transition-colors duration-300">
         <div className="flex items-center h-full w-full">
           <div className="flex-shrink-0 bg-brand-primary h-full flex items-center px-4 z-10 relative">
             <span className="text-white text-[11px] font-bold tracking-wider uppercase whitespace-nowrap">
@@ -169,23 +178,24 @@ export default function Header() {
             <div className="absolute right-[-10px] top-0 w-0 h-0 border-t-[18px] border-t-transparent border-l-[10px] border-l-brand-primary border-b-[18px] border-b-transparent" />
           </div>
           <div className="flex-1 overflow-hidden relative h-full flex items-center ml-4">
-            <div className="flex gap-0 items-center">
-              <div
-                className="flex gap-10 animate-marquee hover:[animation-play-state:paused] whitespace-nowrap items-center"
-                aria-live="polite"
-              >
-                {[...breakingHeadlines, ...breakingHeadlines].map((headline, i) => (
-                  <Link
-                    href="#"
-                    key={i}
-                    className="text-[var(--foreground)] hover:text-brand-primary text-[13px] font-medium flex-shrink-0 inline-flex items-center gap-3 transition-colors"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-primary flex-shrink-0 animate-pulse" />
-                    {headline}
-                  </Link>
-                ))}
+            {mounted && (
+              <div className="flex gap-0 items-center w-full">
+                <div className="flex gap-10 animate-marquee hover:[animation-play-state:paused] whitespace-nowrap items-center">
+                  {[...breakingHeadlines, ...breakingHeadlines].map(
+                    (headline, i) => (
+                      <Link
+                        href="#"
+                        key={i}
+                        className="text-gray-100 hover:text-white text-[13px] font-medium flex-shrink-0 inline-flex items-center gap-3 transition-colors"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-primary flex-shrink-0 animate-pulse" />
+                        {headline}
+                      </Link>
+                    )
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

@@ -4,11 +4,10 @@ import { useState, useCallback } from "react";
 import { Sparkles, Loader2, ChevronDown, ChevronUp } from "lucide-react";
 
 interface ArticleSummaryProps {
-  articleId: string;
   content: string;
 }
 
-export default function ArticleSummary({ articleId, content }: ArticleSummaryProps) {
+export default function ArticleSummary({ content }: ArticleSummaryProps) {
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,20 +23,16 @@ export default function ArticleSummary({ articleId, content }: ArticleSummaryPro
     setError(null);
 
     try {
-      const res = await fetch("/api/admin/ai", {
+      const res = await fetch("/api/ai/summarize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          tool: "summarize",
-          content,
-          articleId,
-        }),
+        body: JSON.stringify({ content }),
       });
 
       const data = await res.json();
 
-      if (data.success && data.result) {
-        setSummary(data.result);
+      if (data.success && data.summary) {
+        setSummary(data.summary);
         setExpanded(true);
       } else {
         setError(data.error || "Failed to generate summary");
@@ -47,7 +42,7 @@ export default function ArticleSummary({ articleId, content }: ArticleSummaryPro
     } finally {
       setLoading(false);
     }
-  }, [content, articleId, summary]);
+  }, [content, summary]);
 
   return (
     <div className="bg-zinc-900/80 border border-zinc-800 rounded-xl overflow-hidden">
