@@ -6,7 +6,7 @@ export const siteConfig = {
   description: "Informing, Inspiring, Connecting Africa and the World. Africa's premier digital news platform.",
   url: "https://kefelmedia.com",
   ogImage: "https://kefelmedia.com/og-image.jpg",
-  logo: "https://kefelmedia.com/logo.png",
+  logo: "https://kefelmedia.com/logo.jpg",
   locale: "en_US",
   type: "website",
   twitter: "@KeFeLMedia",
@@ -25,7 +25,7 @@ export const siteConfig = {
   organization: {
     name: "KeFeL Media",
     url: "https://kefelmedia.com",
-    logo: "https://kefelmedia.com/logo.png",
+    logo: "https://kefelmedia.com/logo.jpg",
     foundingDate: "2024",
     founders: [{ name: "KeFeL Media Team" }],
     sameAs: [

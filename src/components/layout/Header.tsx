@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Search, Menu, X, User, Bell } from "lucide-react";
 import LanguageSelector from "@/components/ui/LanguageSelector";
@@ -76,22 +77,14 @@ export default function Header() {
               className="flex items-center gap-2 flex-shrink-0"
               aria-label="KeFeL Media Home"
             >
-              <div className="w-9 h-9 bg-brand-primary rounded-lg flex items-center justify-center shadow-sm">
-                <span className="text-white font-black text-xl leading-none">
-                  K
-                </span>
-              </div>
-              <div className="flex items-baseline gap-[1px]">
-                <span className="text-[var(--foreground)] font-black text-lg sm:text-2xl tracking-tight font-headline">
-                  KEFEL
-                </span>
-                <span className="text-brand-primary font-black text-lg sm:text-2xl">
-                  .
-                </span>
-                <span className="text-[var(--foreground)] font-black text-lg sm:text-2xl tracking-tight font-headline">
-                  MEDIA
-                </span>
-              </div>
+              <Image
+                src="/logo.jpg"
+                alt="KeFeL Media"
+                width={140}
+                height={40}
+                className="h-10 w-auto object-contain"
+                priority
+              />
             </Link>
 
             <div className="hidden lg:flex items-center h-full ml-4">
